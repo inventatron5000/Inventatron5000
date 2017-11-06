@@ -7,4 +7,5 @@ $(document).ready(function(){
     $("#stock-collapsible").click(function(){
          $('.collapsible').collapsible('open', 0);
     });
+    $(".modal").modal();
 });

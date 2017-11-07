@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INVENTATRON-5000</title>
+    <!-- Libreria de jQuery, la ocupa el Materialize -->
+    <script src="jquery/jquery-3.2.0.min.js"></script>
+
+    <!-- Framework MaterializeCSS -->
+        <!-- Iconos -->
+        <link rel="stylesheet" href="materialize/css/materialize.min.css">
+        <!-- Hoja de estilos -->
+        <link href="materialize/css/material_icons.css" rel="stylesheet">
+        <!-- Scripts de JS -->
+        <script src="materialize/js/materialize.min.js"></script>
+
+    <!-- Estilos y Scripts propios -->
+        <script src="scripts.js"></script>
+        <link rel="stylesheet" href="estilos.css">
+    <!-- Estilos para la tabla responsiva-->
+        <link rel="stylesheet" href="tabla-responsiva.css">
+</head>
+<body >
+    <!-- Dentro de la etiqueta nav van todos los elementos de navegacion: menu de escritorio y menu movil-->
+        <!-- En Materializ todo es con clases, 'degradado-gris' no es del framework-->
+    <nav class="grey lighten-3 degradado-gris alto">
+            <!--Esta seccion contiene el logo principal-->
+        <section id="star-logo" class="brand-logo left">
+           <img src="imagenes/logo.png" alt="" width="auto" height="120px" id="logoStar" class="">
+        </section>
+            <!-- nav-wrapper  contiene el menú de escritorio-->
+        <div class="nav-wrapper">
+                  <!-- Este es el boton del menu, se muestra en moviles -->
+            <a href="#" data-activates="nav-mobile" class="button-collapse black-text">
+                   <!-- Con la clase material-icons incluyen los iconos y el texto los identifica-->
+                <i class="material-icons">menu</i>
+            </a>
+                    <!-- Este ul es el menu principal, de escritorio -->
+
+                    <!-- Es responsivo para tablets y celulares (hide-on-med-and-down) y alineado a la derecha. Son los botones principales-->
+            <ul class="hide-on-med-and-down right">
+                   <!--  -->
+                <li class="centro">
+                    <a href="#" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/equipos.png">
+                        <br><br>
+                        Equipos
+                    </a>
+                </li>
+                <li class="centro alto active">
+                    <a href="#" class="black-text dropdown-button alto">
+                        <br>
+                        <img src="iconos/principal/stock.png">
+                        <br><br>
+                        Pedidos <br>
+                        y Stock
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="#" class="black-text dropdown-button alto single-line" data-activates="dropdown-clientes">
+                        <br>
+                        <img src="iconos/principal/clientes.png">
+                        <br><br>
+                        Clientes
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="#" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/departamentos.png"><br><br>
+                        Departamentos
+                    </a>
+                </li>
+                <li class="centro">
+                    <a href="#" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/pisos.png">
+                        <br><br>
+                        Pisos
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="#" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/proveedores.png">
+                        <br><br>
+                        Proveedores
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="#" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/informes.png">
+                        <br><br>
+                        Informes
+                    </a>
+                </li>
+
+                <li class="separador"></li>
+
+                <li class="centro ">
+                    <a href="#" class="black-text dropdown-button alto" data-activates="dropdown-admin">
+                        <br>
+                        <img src="iconos/principal/doctor.png" class="padding-top">
+                        <br>
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="#" class="black-text alto2">
+                        Lorem
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="#" class="black-text alto2">
+                        Salir
+                    </a>
+                </li>
+            </ul>
+
+                <!-- Menu lateral para moviles -->
+            <ul class="side-nav" id="nav-mobile">
+                <li><a href="#" class="black-text">Equipos</a></li>
+                <li><a href="#" class="black-text">Stock</a></li>
+                <li><a href="#" class="black-text">Clientes</a></li>
+                <li><a href="#" class="black-text">Departamentos</a></li>
+                <li><a href="#" class="black-text">Pisos</a></li>
+                <li><a href="#" class="black-text">Proveedores</a></li>
+                <li><a href="#" class="black-text">Informes</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="tabs tabs-transparent degradado-gris">
+    <!-- Cada tab va dentro de un <li> y dentro debe llevar un <a> -->
+        <li class="tab">
+            <a href="" class="black-text">
+                <i class="material-icons left">home</i>
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#" class="black-text">
+                <i class="material-icons left">add_box</i>Pedir Stock
+            </a>
+        </li>
+        <li class="tab">
+                    <a href="#" class="black-text">
+                        <i class="material-icons left">indeterminate_check_box</i>Cancelar Pedido
+                    </a>
+                </li>
+        <li class="tab">
+                    <a href="#" class="black-text">
+                        <i class="material-icons left">mode_edit</i>Editar Pedido
+                    </a>
+                </li>
+        <li class="tab">
+                <a href="#" class="black-text">
+                <i class="material-icons left">archive</i>Recibir Stock
+                </a>
+                </li>
+        <li class="separadorTabs tab"></li>
+        <li class="tab">
+            <a href="#" class="black-text">
+                <i class="material-icons left">visibility</i>Vista Previa
+            </a>
+        </li>
+        <li class="tab">
+                    <a href="#" class="black-text">
+                        <i class="material-icons left">save</i>Guardar
+                    </a>
+                </li>
+        <li class="tab">
+                    <a href="#" class="black-text">
+                        <i class="material-icons left">local_printshop</i>Imprimir
+                    </a>
+                </li>
+        <li class="tab">
+                    <a href="#" class="black-text alto_tabs">
+                        <i class="material-icons left">mail_outline</i>Correo
+                    </a>
+                </li>
+    </ul>
+    <!-- #contenidoWrapper es para que el fondo abarce todo el ancho y el contenido de enmedio se limite a 1200px-->
+    <div id="contenidoWrapper" class="degradado-cafe">
+       <!-- Aqui van todas las tablas, formularios y weas así -->
+        <div id="contenidoPrincipal">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>Fecha de Emisión</th>
+                        <th>No. Pedido</th>
+                        <th>Proveedor</th>
+                        <th>Importe</th>
+                        <th>Estado</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="Fecha de Emisión" contenteditable="false">01/10/3024</td>
+                            <td data-title="No. Pedido" contenteditable="false">10</td>
+                            <td data-title="Proveedor" contenteditable="false">Cisco</td>
+                            <td data-title="Importe" contenteditable="false">1203</td>
+                            <td data-title="Estado" contenteditable="false">VTP</td>
+                        </tr>
+                        <tr>
+                            <td data-title="Fecha de Emisión" contenteditable="false">23/12/3024</td>
+                            <td data-title="No. Pedido" contenteditable="false">34</td>
+                            <td data-title="Proveedor" contenteditable="false">HP</td>
+                            <td data-title="Importe" contenteditable="false">453</td>
+                            <td data-title="Estado" contenteditable="false">SSH</td>
+                        </tr>
+                        <tr>
+                            <td data-title="Fecha de Emisión" contenteditable="false">01/10/2166</td>
+                            <td data-title="No. Pedido" contenteditable="false">32</td>
+                            <td data-title="Proveedor" contenteditable="false">Dell</td>
+                            <td data-title="Importe" contenteditable="false">483</td>
+                            <td data-title="Estado" contenteditable="false">ROUTER</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large brown darken-2">
+          <i class="large material-icons">more_horiz</i>
+        </a>
+        <ul>
+            <li>
+                <a href="#agregarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">add_box</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Pedir Stock</a>
+            </li>
+            <li>
+                <a href="#buscarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">indeterminate_check_box</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Cancelar Pedido</a>
+            </li>
+            <li>
+                <a href="#confirmarEliminar" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">mode_edit</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Editar Pedido</a>
+            </li>
+            <li>
+                <a href="#confirmarEliminar" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">archive</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Recibir Stock</a>
+            </li>
+            <li>
+                <a href="#confirmarEliminar" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text"></i></a>
+            </li>
+            <li>
+                <a href="#confirmarEliminar" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">visibility</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Vista Previa</a>
+            </li>
+            <li>
+                <a href="#confirmarEliminar" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">save</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Guardar</a>
+            </li>
+            <li>
+                <a href="#confirmarEliminar" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">local_printshop</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Imprimir</a>
+            </li>
+            <li>
+                <a href="#confirmarEliminar" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">mail_outline</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Correo</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Modals o ventanas emergentes -->
+        <!-- Agregar Piso -->
+        <div class="modal modal-fixed-footer" id="agregarPiso">
+           <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>Agregar Piso</h4>
+            </div>
+            <div class="modal-content">
+                <form action="#">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" id="numeroPiso" class="validate">
+                            <label for="numeroPiso">Número de Piso</label>
+                        </div>
+                        <sdiv class="input-field col s12">
+                            <input type="text" id="direccionPiso" class="validate">
+                            <label for="direccionPiso">Dirección/Nombre de Piso</label>
+                        </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action btn-flat black-text degradado-cafeHoriz">Agregar</a>
+                <a href="#!" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cancelar</a>
+            </div>
+        </div>
+
+
+        <!-- Buscar un piso para editar o eliminar -->
+        <div class="modal modal-fixed-footer" id="buscarPiso">
+           <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>Eliminar Piso</h4>
+            </div>
+            <div class="modal-content">
+                <form action="#">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" id="numeroPiso" class="validate">
+                            <label for="numeroPiso">Número de Piso</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action btn-flat black-text degradado-cafeHoriz">Buscar</a>
+                <a href="#!" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cancelar</a>
+            </div>
+        </div>
+
+
+        <!-- Confirmación para eliminar un piso -->
+        <div class="modal modal-fixed-footer" id="confirmarEliminar">
+            <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>Eliminar Piso</h4>
+            </div>
+            <div class="modal-content">
+                <p>El piso XXX está a punto de ser eliminado del sistema <br> ¿Desa continuar?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action btn-flat black-text degradado-cafeHoriz">Eliminar</a>
+                <a href="#!" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cancelar</a>
+            </div>
+        </div>
+</body>
+</html>

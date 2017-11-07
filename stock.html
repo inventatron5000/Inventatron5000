@@ -138,7 +138,7 @@
             </a>
         </li>
         <li class="tab">
-            <a href="#" class="black-text">
+            <a href="#pedirStock" class="black-text modal-trigger">
                 <i class="material-icons left">add_box</i>Pedir Stock
             </a>
         </li>
@@ -226,7 +226,7 @@
         </a>
         <ul>
             <li>
-                <a href="#agregarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">add_box</i></a>
+                <a href="#pedirStock" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">add_box</i></a>
                 <a href="#" class="btn-floating mobile-fab-tip">Pedir Stock</a>
             </li>
             <li>
@@ -264,27 +264,51 @@
     </div>
 
     <!-- Modals o ventanas emergentes -->
-        <!-- Agregar Piso -->
-        <div class="modal modal-fixed-footer" id="agregarPiso">
+        <!-- Pedir Stock -->
+        <div class="modal modal-fixed-footer" id="pedirStock">
            <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
-                <h4>Agregar Piso</h4>
+                <h4>PEDIR STOCK</h4>
             </div>
             <div class="modal-content">
                 <form action="#">
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" id="numeroPiso" class="validate">
-                            <label for="numeroPiso">Número de Piso</label>
+                        <div class="input-field col s10">
+                            <select name="nombreProveedor" id="">
+                                <option value="1">Cisco</option>
+                                <option value="2">Dell</option>
+                            </select>
+                            <label for="nombreProveedor">Proveedor</label>
                         </div>
-                        <sdiv class="input-field col s12">
-                            <input type="text" id="direccionPiso" class="validate">
-                            <label for="direccionPiso">Dirección/Nombre de Piso</label>
+                        <div class="input-field col s2">
+                            <a href="#" class="btn grey"><i class="material-icons">add</i></a>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                           <!-- <input type="date" name="fechaEmision"> -->
+                            <input type="text" class="datepicker" name="fechaEmision">
+                            <label for="fechaEmision">Fecha de Emisión</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" class="datepicker" name="fechaRecibes">
+                            <label for="fechaRecibes">Fecha Estimada de Recibo (esta)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" name="num_seguimiento">
+                            <label for="num_seguimiento">No. de Seguimiento</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" name="op_envio">
+                            <label for="num_seguimiento">Opción de Envio</label>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-action btn-flat black-text degradado-cafeHoriz">Agregar</a>
+                <a href="#!" class="btn-flat black-text degradado-cafeHoriz">Agregar</a>
                 <a href="#!" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cancelar</a>
             </div>
         </div>

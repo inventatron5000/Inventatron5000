@@ -20,29 +20,7 @@
     <!-- Estilos para la tabla responsiva-->
         <link rel="stylesheet" href="tabla-responsiva.css">
 </head>
-<body >
-    <!-- Secciones de Menu desplegable, no se ven hasta hacer cierto click -->
-           <!-- Menu desplegable de Stock -->
-           <ul id="dropdown-stock" class="dropdown-content">
-               <li>Opcion 1</li>
-               <li>Opcion 2</li>
-               <li>Opcion 3</li>
-               <li>Opcion 4</li>
-           </ul>
-           <!-- Menu desplegable de Clientes -->
-           <ul id="dropdown-clientes" class="dropdown-content">
-               <li>Opcion 1</li>
-               <li>Opcion 2</li>
-               <li>Opcion 3</li>
-               <li>Opcion 4</li>
-           </ul>
-           <!-- Menu desplegable de Administrador -->
-           <ul id="dropdown-admin" class="dropdown-content">
-               <li>Opcion 1</li>
-               <li>Opcion 2</li>
-               <li>Opcion 3</li>
-               <li>Opcion 4</li>
-           </ul>
+<body>
     <!-- Dentro de la etiqueta nav van todos los elementos de navegacion: menu de escritorio y menu movil-->
         <!-- En Materializ todo es con clases, 'degradado-gris' no es del framework-->
     <nav class="grey lighten-3 degradado-gris alto">
@@ -151,38 +129,33 @@
                 <li><a href="#" class="black-text">Informes</a></li>
             </ul>
         </div>
-
-            <!-- Contenedor de las opciones de cada sección, tabs de abajo-->
-        <div class="nav-content">
-               <!-- Lista de Opciones -->
-            <ul class="tabs tabs-transparent">
-                <!-- Cada tab va dentro de un <li> y dentro debe llevar un <a> -->
-                <li class="tab">
-                    <a href="" class="black-text">
-                        <i class="material-icons left">home</i>
-                    </a>
-                </li>
-                <li class="tab">
-                    <a href="#" class="black-text">
-                        <i class="material-icons left">add</i>
-                        Agregar Equipo
-                    </a>
-                </li>
-                <li class="tab">
-                    <a href="#" class="black-text">
-                        <i class="material-icons left">edit</i>
-                        Editar Equipo
-                    </a>
-                </li>
-                <li class="tab">
-                    <a href="#" class="black-text">
-                        <i class="material-icons left">search</i>
-                        Buscar Equipo
-                    </a>
-                </li>
-            </ul>
-        </div>
     </nav>
+    <ul class="tabs tabs-transparent degradado-gris">
+                <!-- Cada tab va dentro de un <li> y dentro debe llevar un <a> -->
+        <li class="tab">
+            <a href="" class="black-text">
+                <i class="material-icons left">home</i>
+            </a>
+            </li>
+        <li class="tab">
+            <a href="#agregarPiso" class="black-text modal-trigger">
+                <i class="material-icons left">add</i>
+                Agregar Piso
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#buscarPiso" class="black-text modal-trigger">
+                <i class="material-icons left">mode_edit</i>
+                Editar Piso
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#confirmarEliminar" class="black-text modal-trigger">
+                <i class="material-icons left">delete</i>
+                Eliminar Piso
+            </a>
+        </li>
+    </ul>
     <!-- #contenidoWrapper es para que el fondo abarce todo el ancho y el contenido de enmedio se limite a 1200px-->
     <div id="contenidoWrapper" class="degradado-cafe">
        <!-- Aqui van todas las tablas, formularios y weas así -->
@@ -235,8 +208,11 @@
     <!-- Modals o ventanas emergentes -->
         <!-- Agregar Piso -->
         <div class="modal modal-fixed-footer" id="agregarPiso">
-            <div class="modal-content">
+           <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
                 <h4>Agregar Piso</h4>
+            </div>
+            <div class="modal-content">
                 <form action="#">
                     <div class="row">
                         <div class="input-field col s12">
@@ -259,8 +235,11 @@
 
         <!-- Buscar un piso para editar o eliminar -->
         <div class="modal modal-fixed-footer" id="buscarPiso">
+           <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>Eliminar Piso</h4>
+            </div>
             <div class="modal-content">
-                <h4>Buscar Piso</h4>
                 <form action="#">
                     <div class="row">
                         <div class="input-field col s12">
@@ -279,8 +258,11 @@
 
         <!-- Confirmación para eliminar un piso -->
         <div class="modal modal-fixed-footer" id="confirmarEliminar">
-            <div class="modal-content">
+            <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
                 <h4>Eliminar Piso</h4>
+            </div>
+            <div class="modal-content">
                 <p>El piso XXX está a punto de ser eliminado del sistema <br> ¿Desa continuar?</p>
             </div>
             <div class="modal-footer">

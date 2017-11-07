@@ -153,37 +153,35 @@
         </div>
         
             <!-- Contenedor de las opciones de cada sección, tabs de abajo-->
-        <div class="nav-content">
                <!-- Lista de Opciones -->
-            <ul class="tabs tabs-transparent">
-                <!-- Cada tab va dentro de un <li> y dentro debe llevar un <a> -->
-                <li class="tab">
-                    <a href="" class="black-text">
-                        <i class="material-icons left">home</i>
-                    </a>
-                </li>
-                <li class="tab">
-                    <a href="#" class="black-text">
-                        <i class="material-icons left">add</i>
-                        Agregar Equipo
-                    </a>
-                </li>
-                <li class="tab">
-                    <a href="#" class="black-text">
-                        <i class="material-icons left">edit</i>
-                        Editar Equipo
-                    </a>
-                </li>
-                <li class="tab">
-                    <a href="#" class="black-text">
-                        <i class="material-icons left">search</i>
-                        Buscar Equipo
-                    </a>
-                </li>
-            </ul>
-        </div>
     </nav>
     <!-- #contenidoWrapper es para que el fondo abarce todo el ancho y el contenido de enmedio se limite a 1200px-->
+    <ul class="tabs tabs-transparent degradado-gris">
+        <!-- Cada tab va dentro de un <li> y dentro debe llevar un <a> -->
+        <li class="tab">
+            <a href="" class="black-text">
+                <i class="material-icons left">home</i>
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#" class="black-text">
+                <i class="material-icons left">add</i>
+                Agregar Equipo
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#" class="black-text">
+                <i class="material-icons left">edit</i>
+                Editar Equipo
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#" class="black-text">
+                <i class="material-icons left">search</i>
+                Buscar Equipo
+            </a>
+        </li>
+    </ul>
     <div id="contenidoWrapper" class="degradado-cafe">
        <!-- Aqui van todas las tablas, formularios y weas así -->
         <div id="contenidoPrincipal">
@@ -235,7 +233,7 @@
         </a>
         <ul>
             <li>
-                <a href="#!" class="btn-floating waves-effect waves-light grey lighten-3"><i class="material-icons black-text">add</i></a>
+                <a href="#modal_agregar" class="btn-floating waves-effect waves-light modal-trigger grey lighten-3"><i class="material-icons black-text">add</i></a>
                 <a href="#" class="btn-floating mobile-fab-tip">Agregar Equipo</a>
             </li>
             <li>
@@ -243,10 +241,104 @@
                 <a href="#" class="btn-floating mobile-fab-tip">Editar Equipo</a>
             </li>
             <li>
-                <a href="#!" class="btn-floating waves-effect waves-light grey lighten-3"><i class="material-icons black-text">search</i></a>
+                <a href="#modal_buscar" class="btn-floating waves-effect waves-light btn modal-trigger grey lighten-3"><i class="material-icons black-text">search</i></a>
                 <a href="#" class="btn-floating mobile-fab-tip">Buscar Equipo</a>
             </li>
         </ul>
+    </div>
+
+    <!-- MODAL STRUCTURE-->
+    <div id="modal_buscar" class="modal">
+       <!-- Para solucionar lo de la barra hice la clase .modal-header, use elementos de lo que me habias mandado pero sin tanto relajo (sin ofender :v) y tambien use la misma clase de .degradado-gris del menu -->
+        <div class="modal-header degradado-gris">
+            <img src="imagenes/logo.png" alt="">
+            <h4>BUSCAR EQUIPO</h4>
+        </div>
+        <!-- Ahora si viene lo chido -->
+        <div class="modal-content">
+            <form id="modal-form">
+                <!-- Por cada "renglón" ocupas un div.row -->
+                <div class="row">
+                    <!-- Y por cada input, checkbox y weas asi, un div.input-field y usas .col y .s12 para que la columna abarque todo el ancho, .s6 para la mitad y así -->
+                    <div class="input-field col s6">
+                        <input name="radio-gap" type="radio" value="radio-gap-1" id="radio-gap-1"/>
+                        <label for="radio-gap-1">Buscar por código &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="radio-gap" type="radio" value="radio-gap-2" id="radio-gap-2"/> <label id="form-label" for="radio-gap-2">Buscar por nombre</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Buscar" id="buscar-equipo" type="text" class="validate"/>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <!-- En la .modal-footer quedan los puros botones para no mezclar con lo demas y no hacer un relajo -->
+        <div class="modal-footer">
+            <a href="#!" class="waves-effect waves-light brown lighten-4 btn-flat modal-button">Buscar</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-light brown lighten-4 btn-flat modal-button">Cerrar</a>
+        </div>
+    </div>
+
+    <div id="modal_agregar" class="modal">
+        <div class="modal-header degradado-gris">
+            <img src="imagenes/logo.png" alt="">
+            <h4>AÑADIR EQUIPO</h4>
+        </div>
+        <div class="modal-content">
+            <form>
+                <div class="row modal-div">
+                   <div class="input-field col s6">
+                      <label for="codigo">Código</label>
+                      <input id="codigo" type="text" class="validate input-field inline">
+                   </div>
+                   <div class="input-field col s6">
+                    <label for="equipo">Equipo</label>
+                    <input id="equipo" type="text" class="validate">
+                   </div>
+                   <br>
+                   <div class="input-field col s6">
+                    <label for="modelo">Modelo</label>
+                    <input id="modelo" type="text" class="validate">
+                   </div>
+                  <div class="input-field col s6">
+                    <label for="serie">Serie</label>
+                    <input id="serie" type="text" class="validate">
+                   </div>
+                </div>
+                <div class="row modal-div">
+                    <div class="input-field col s10">
+                        <select name="select_departamento">
+                            <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                            <option value="2" disabled="disabled">Option 2</option>
+                        </select>
+                        <label for="select_departamento">Departamento</label>
+                    </div>
+                    <div class="input-field col s2">
+                         <a href="#" class="btn grey"><i class="material-icons">add</i></a>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="select_area">
+                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        </select>
+                        <label for="select_area">Área</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="select_piso">
+                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        </select>
+                        <label for="select_piso">Piso</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="waves-effect waves-light brown lighten-4 btn-flat modal-button">Agregar</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-light brown lighten-4 btn-flat modal-button">Cerrar</a>
+        </div>
     </div>
         
 </body>

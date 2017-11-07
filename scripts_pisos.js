@@ -39,6 +39,7 @@ $(document).ready(function(){
         var numeroPiso = $(this).find("input[name='numeroPiso']").val();
         var direccionPiso = $(this).find("input[name='direccionPiso']").val();
         //AQUI VA LA FUNCION QUE CONECTA CON LA DB
+        $("#editarPisoForm").modal("close");
         var stg = "Se editó el piso "+numeroPiso;
         Materialize.toast(stg,2000,'rounded');
         return false;

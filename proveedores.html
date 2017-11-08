@@ -132,6 +132,7 @@
             </ul>
         </div>
     </nav>
+
     <ul class="tabs tabs-transparent degradado-gris">
                 <!-- Cada tab va dentro de un <li> y dentro debe llevar un <a> -->
         <li class="tab">
@@ -158,7 +159,7 @@
             </a>
         </li>
         <li class="tab">
-            <a href="#buscarProveedor" class="black-text modal-trigger">
+            <a href="#enviarCorreo" class="black-text modal-trigger">
                 <i class="material-icons left">mail_outline</i>
                 Correo
             </a>
@@ -227,7 +228,7 @@
     </div>
 
     <!-- Modals o ventanas emergentes -->
-        <!-- Agregar Piso -->
+        <!-- Agregar proveedor -->
         <div class="modal " id="agregarProveedor">
            <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
@@ -273,7 +274,7 @@
             </div>
         </div>
 
-        <!-- Modal para editar piso, identico a agregar -->
+        <!-- Modal para editar proveedor, identico a agregar -->
         <div class="modal" id="editarProveedorForm">
            <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
@@ -284,7 +285,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input type="text" class="validate" name="nombreProveedor" required>
-                            <label for="nombreProveedor">Nombre del Cliente</label>
+                            <label for="nombreProveedor">Nombre del Proveedor</label>
                         </div>
                         <div class="input-field col s12">
                             <input type="text" name="personaContacto" class="validate" required>
@@ -294,7 +295,7 @@
                     <div class="row">
                        <div class="input-field col s12">
                            <textarea name="direccion" id="" cols="30" rows="10" class="materialize-textarea"></textarea>
-                           <label for="direccion">Dirección de Facturación</label>
+                           <label for="direccion">Dirección de Proveedor</label>
                        </div>
                      </div>
                     <div class="row">
@@ -319,7 +320,7 @@
             </div>
         </div>
 
-        <!-- Buscar un piso para editar -->
+        <!-- Buscar un proveedor para editar -->
         <div class="modal modal_buscar" id="editarProveedor">
            <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
@@ -345,18 +346,18 @@
             </div>
         </div>
 
-        <!-- Buscar un piso para eliminar -->
+        <!-- Buscar un proveedor para eliminar -->
         <div class="modal modal_buscar" id="buscarProveedor">
            <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
-                <h4>ELIMINAR CLIENTE</h4>
+                <h4>ELIMINAR PROVEEDOR</h4>
             </div>
             <div class="modal-content">
                 <form action="#" id="form-eliminarProveedor">
                     <div class="row">
                         <div class="input-field col s12">
                             <input type="text" name="nombreProveedor" class="validate" required>
-                            <label for="nombreProveedor">Número de Piso</label>
+                            <label for="nombreProveedor">Nombre del Proveedor</label>
                         </div>
                     </div>
                     <div class="row">
@@ -370,20 +371,87 @@
                 </form>
             </div>
         </div>
-        <!-- Confirmación para eliminar un piso -->
+
+        <!-- Confirmación para eliminar un proveedor -->
         <div class="modal modal-fixed-footer modal_buscar" id="confirmarEliminar">
             <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
-                <h4>Eliminar Piso</h4>
+                <h4>ELIMINAR PROVEEDOR</h4>
             </div>
             <div class="modal-content">
-                <p>El cliente <span class="nombreProveedor"></span> está a punto de ser eliminado del sistema <br> ¿Desa continuar?</p>
+                <p>El proveedor <span class="nombreProveedor"></span> está a punto de ser eliminado del sistema <br> ¿Desa continuar?</p>
             </div>
             <div class="modal-footer">
-                <a href="#" class="modal-action btn-flat black-text degradado-cafeHoriz" id="btnEliminarPiso">Eliminar</a>
+                <a href="#" class="modal-action btn-flat black-text degradado-cafeHoriz" id="btnEliminar">Eliminar</a>
                 <a href="#" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cancelar</a>
             </div>
         </div>
 
+        <!-- Buscar proveedor para enviar correo -->
+        <div class="modal modal_buscar" id="enviarCorreo">
+           <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>ENVIAR CORREO</h4>
+            </div>
+            <div class="modal-content">
+                <form action="#" id="form-enviarCorreo">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="nombreProveedor" class="validate" required>
+                            <label for="nombreProveedor">Nombre del Proveedor</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <input type="submit" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Buscar"/>
+                        </div>
+                        <div class="col s6">
+                            <a href="#" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cancelar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal" id="cuerpoCorreo">
+            <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>ENVIAR CORREO</h4>
+            </div>
+            <div class="modal-content">
+                <form action="#" id="form-cuerpoCorreo">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="nombreProveedor" class="validate" disabled>
+                            <label for="nombreProveedor">Nombre del Proveedor</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input type="text" name="correo" class="validate" disabled>
+                            <label for="correo">Correo</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="asunto" class="validate" required>
+                            <label for="asunto">Asunto</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class="input-field col s12">
+                           <textarea name="mensaje" id="" cols="30" rows="10" class="materialize-textarea" required></textarea>
+                           <label for="mensaje">Mensaje</label>
+                       </div>
+                     </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <input type="submit" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Enviar"/>
+                        </div>
+                        <div class="col s6">
+                            <a href="#" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cancelar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 </body>
 </html>

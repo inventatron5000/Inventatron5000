@@ -145,10 +145,6 @@ html,body{
         max-width:500px;
         max-height: 350px;
     }
-    #buscarPiso{
-        max-width: 500px;
-        max-height: 280px;
-    }
     #confirmarEliminar{
         max-width: 500px;
         max-height: 250px;
@@ -156,6 +152,11 @@ html,body{
 /*  Estilos para modals de equipos  */
     #modal_agregar{
         min-height: 500px;
+    }
+/*    Estilos para modals en general     */
+    .modal_buscar{
+        max-height: 300px;
+        max-width: 500px;
     }
 /*Tamaños de fuente de la tabla responsiva*/
 .table thead th{

@@ -1,14 +1,10 @@
 $(document).ready(function(){
     //Funcion para agregar un nuevo piso
-    $("#form-agregarCliente").submit(function(data){
+    $("#form-agregarProveedor").submit(function(data){
 
-        var nombreCliente = $(this).find("input[name='nombreCliente']").val();
+        var nombreCliente = $(this).find("input[name='agregarProveedor']").val();
         var personaContacto = $(this).find("input[name='personaContacto']").val();
-        var pais = $(this).find("input[name='pais']").val();
-        var estado = $(this).find("input[name='estado']").val();
-        var ciudad = $(this).find("input[name='ciudad']").val();
-        var cp = $(this).find("input[name='cp']").val();
-        var direccionFact = $(this).find("textarea[name='direccionFact']").val();
+        var direccion = $(this).find("textarea[name='direccion']").val();
         var telefono = $(this).find("input[name='telefono']").val();
         var correo = $(this).find("input[name='correo']").val();
         var str="Se dió de alta el cliente "+nombreCliente;
@@ -20,11 +16,7 @@ $(document).ready(function(){
         //Borrar datos y cerrar modal
         $(this).find("input[name='nombreCliente']").val("");
         $(this).find("input[name='personaContacto']").val("");
-        $(this).find("input[name='pais']").val("");
-        $(this).find("input[name='estado']").val("");
-        $(this).find("input[name='ciudad']").val("");
-        $(this).find("input[name='cp']").val("");
-        $(this).find("textarea[name='direccionFact']").val("");
+        $(this).find("textarea[name='']").val("");
         $(this).find("input[name='telefono']").val("");
         $(this).find("input[name='correo']").val("");
         $("#agregarCliente").modal('close');
@@ -32,14 +24,10 @@ $(document).ready(function(){
     });
 
     //Buscar un cliente para editarlo
-    $("#form-buscarCliente").submit(function(evt){
-        var nombreCliente = $(this).find("input[name='nombreCliente']").val();
+    $("#form-buscarProveedor").submit(function(evt){
+        var nombreCliente = $(this).find("input[name='nombreProveedor']").val();
         var personaContacto = "Walter White";
-        var pais = "Mejico";
-        var estado = "Michoacan";
-        var ciudad = "Morelia";
-        var cp = "234";
-        var direccionFact = "308 Negra Arroyo Lane, Albuquerque, New Mexico";
+        var direccion = "308 Negra Arroyo Lane, Albuquerque, New Mexico";
         var telefono = "32142134";
         var correo = "adf@rewqwer";
         if(Math.random()<0.5){  //Existe
@@ -62,8 +50,8 @@ $(document).ready(function(){
             $("#editarClienteForm").find("input[name='cp']").val(cp);
             $("#editarClienteForm").find("label[for='cp']").attr("class","active");
 
-            $("#editarClienteForm").find("textarea[name='direccionFact']").val(direccionFact);
-            $("#editarClienteForm").find("label[for='direccionFact']").attr("class","active");
+            $("#editarClienteForm").find("textarea[name='direccion']").val(direccion);
+            $("#editarClienteForm").find("label[for='direccion']").attr("class","active");
 
             $("#editarClienteForm").find("input[name='telefono']").val(telefono);
             $("#editarClienteForm").find("label[for='telefono']").attr("class","active");
@@ -89,7 +77,7 @@ $(document).ready(function(){
         var estado = $(this).find("input[name='estado']").val();
         var ciudad = $(this).find("input[name='ciudad']").val();
         var cp = $(this).find("input[name='cp']").val();
-        var direccionFact = $(this).find("textarea[name='direccionFact']").val();
+        var direccion = $(this).find("textarea[name='direccion']").val();
         var telefono = $(this).find("input[name='telefono']").val();
         var correo = $(this).find("input[name='correo']").val();
 

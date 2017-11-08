@@ -20,7 +20,7 @@
     <!-- Estilos para la tabla responsiva-->
         <link rel="stylesheet" href="tabla-responsiva.css">
     <!-- Scripts de este subsistema -->
-        <script src="scripts_clientes.js"></script>
+        <script src="scripts_proveedores.js"></script>
 </head>
 <body>
     <!-- Dentro de la etiqueta nav van todos los elementos de navegacion: menu de escritorio y menu movil-->
@@ -59,7 +59,7 @@
                         y Stock
                     </a>
                 </li>
-                <li class="centro active">
+                <li class="centro">
                     <a href="#" class="black-text dropdown-button alto single-line" data-activates="dropdown-clientes">
                         <br>
                         <img src="iconos/principal/clientes.png">
@@ -82,7 +82,7 @@
                         Pisos
                     </a>
                 </li>
-                <li class="centro ">
+                <li class="centro active">
                     <a href="#" class="black-text alto single-line">
                         <br>
                         <img src="iconos/principal/proveedores.png">
@@ -140,21 +140,27 @@
             </a>
             </li>
         <li class="tab">
-            <a href="#agregarCliente" class="black-text modal-trigger">
+            <a href="#agregarProveedor" class="black-text modal-trigger">
                 <i class="material-icons left">add</i>
-                Agregar Cliente
+                Agregar Proveedor
             </a>
         </li>
         <li class="tab">
-            <a href="#editarCliente" class="black-text modal-trigger">
+            <a href="#editarProveedor" class="black-text modal-trigger">
                 <i class="material-icons left">mode_edit</i>
-                Editar Cliente
+                Editar Proveedor
             </a>
         </li>
         <li class="tab">
-            <a href="#buscarCliente" class="black-text modal-trigger">
+            <a href="#buscarProveedor" class="black-text modal-trigger">
                 <i class="material-icons left">delete</i>
-                Eliminar Cliente
+                Eliminar Proveedor
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#buscarProveedor" class="black-text modal-trigger">
+                <i class="material-icons left">mail_outline</i>
+                Correo
             </a>
         </li>
     </ul>
@@ -165,17 +171,29 @@
             <div class="table-responsive-vertical">
                 <table class="table striped">
                     <thead>
-                        <th>Lista de Clientes</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
                     </thead>
                     <tbody>
                         <tr>
-                            <td data-title="Nombre del Cliente" contenteditable="false">Bruce Wayne</td>
+                            <td data-title="Nombre" contenteditable="false">Bruce Wayne</td>
+                            <td data-title="Dirección" contenteditable="false">Baticueva</td>
+                            <td data-title="Correo" contenteditable="false">supsmelapela@waynetech.com</td>
+                            <td data-title="Teléfono" contenteditable="false">1342543</td>
                         </tr>
                         <tr>
-                            <td data-title="Nombre del Cliente" contenteditable="false">Barry Allen</td>
+                            <td data-title="Nombre" contenteditable="false">Barry Allen</td>
+                            <td data-title="Dirección" contenteditable="false">Star Labs</td>
+                            <td data-title="Correo" contenteditable="false">barry@ayuda.cisco.com</td>
+                            <td data-title="Teléfono" contenteditable="false">67543</td>
                         </tr>
                         <tr>
-                            <td data-title="Nombre del Cliente" contenteditable="false">Peter Parker</td>
+                            <td data-title="Nombre" contenteditable="false">Peter Parker</td>
+                            <td data-title="Dirección" contenteditable="false">Queens</td>
+                            <td data-title="Correo" contenteditable="false">homblealaña@starkindustries.com</td>
+                            <td data-title="Teléfono" contenteditable="false">1342543</td>
                         </tr>
                     </tbody>
                 </table>
@@ -183,39 +201,44 @@
         </div>
     </div>
 
+    <!-- Botones redondos -->
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large brown darken-2">
           <i class="large material-icons">more_horiz</i>
         </a>
         <ul>
             <li>
-                <a href="#agregarCliente" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">add</i></a>
-                <a href="#" class="btn-floating mobile-fab-tip">Agregar Cliente</a>
+                <a href="#agregarProveedor" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">add</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Agregar Proveedor</a>
             </li>
             <li>
-                <a href="#editarCliente" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">mode_edit</i></a>
-                <a href="#" class="btn-floating mobile-fab-tip">Editar Cliente</a>
+                <a href="#editarProveedor" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">mode_edit</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Editar Proveedor</a>
             </li>
             <li>
-                <a href="#buscarCliente" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">delete</i></a>
-                <a href="#" class="btn-floating mobile-fab-tip">Eliminar Cliente</a>
+                <a href="#buscarProveedor" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">delete</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Eliminar Proveedor</a>
+            </li>
+            <li>
+                <a href="#enviarCorreo" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">mail_outline</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Correo</a>
             </li>
         </ul>
     </div>
 
     <!-- Modals o ventanas emergentes -->
         <!-- Agregar Piso -->
-        <div class="modal " id="agregarCliente">
+        <div class="modal " id="agregarProveedor">
            <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
-                <h4>AGREGAR CLIENTE</h4>
+                <h4>AGREGAR PROVEEDOR</h4>
             </div>
             <div class="modal-content">
-                <form action="#" id="form-agregarCliente">
+                <form action="#" id="form-agregarProveedor">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="nombreCliente" required>
-                            <label for="nombreCliente">Nombre del Cliente</label>
+                            <input type="text" class="validate" name="nombreProveedor" required>
+                            <label for="nombreProveedor">Nombre del Proveedor</label>
                         </div>
                         <div class="input-field col s12">
                             <input type="text" name="personaContacto" class="validate" required>
@@ -223,29 +246,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" name="pais" class="validate" required>
-                            <label for="pais">País</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s4">
-                            <input type="text" name="estado" class="validate" required>
-                            <label for="estado">Estado</label>
-                        </div>
-                        <div class="input-field col s4">
-                            <input type="text" name="ciudad" class="validate" required>
-                            <label for="ciudad">Ciudad</label>
-                        </div>
-                        <div class="input-field col s4">
-                            <input type="number" name="cp" class="validate" required>
-                            <label for="cp">C.P.</label>
-                        </div>
-                    </div>
-                    <div class="row">
                        <div class="input-field col s12">
-                           <textarea name="direccionFact" id="" cols="30" rows="10" class="materialize-textarea"></textarea>
-                           <label for="direccionFact">Dirección de Facturación</label>
+                           <textarea name="direccion" id="" cols="30" rows="10" class="materialize-textarea"></textarea>
+                           <label for="direccion">Dirección del Proveedor</label>
                        </div>
                      </div>
                     <div class="row">
@@ -271,17 +274,17 @@
         </div>
 
         <!-- Modal para editar piso, identico a agregar -->
-        <div class="modal" id="editarClienteForm">
+        <div class="modal" id="editarProveedorForm">
            <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
-                <h4>EDITAR PISO</h4>
+                <h4>EDITAR PROVEEDOR</h4>
             </div>
             <div class="modal-content">
-                <form action="#" id="form-editarCliente">
+                <form action="#" id="form-editarProveedor">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="nombreCliente" required>
-                            <label for="nombreCliente">Nombre del Cliente</label>
+                            <input type="text" class="validate" name="nombreProveedor" required>
+                            <label for="nombreProveedor">Nombre del Cliente</label>
                         </div>
                         <div class="input-field col s12">
                             <input type="text" name="personaContacto" class="validate" required>
@@ -289,29 +292,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" name="pais" class="validate" required>
-                            <label for="pais">País</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s4">
-                            <input type="text" name="estado" class="validate" required>
-                            <label for="estado">Estado</label>
-                        </div>
-                        <div class="input-field col s4">
-                            <input type="text" name="ciudad" class="validate" required>
-                            <label for="ciudad">Ciudad</label>
-                        </div>
-                        <div class="input-field col s4">
-                            <input type="number" name="cp" class="validate" required>
-                            <label for="cp">C.P.</label>
-                        </div>
-                    </div>
-                    <div class="row">
                        <div class="input-field col s12">
-                           <textarea name="direccionFact" id="" cols="30" rows="10" class="materialize-textarea"></textarea>
-                           <label for="direccionFact">Dirección de Facturación</label>
+                           <textarea name="direccion" id="" cols="30" rows="10" class="materialize-textarea"></textarea>
+                           <label for="direccion">Dirección de Facturación</label>
                        </div>
                      </div>
                     <div class="row">
@@ -337,17 +320,17 @@
         </div>
 
         <!-- Buscar un piso para editar -->
-        <div class="modal modal-fixed-footer modal_buscar" id="editarCliente">
+        <div class="modal modal_buscar" id="editarProveedor">
            <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
-                <h4>EDITAR CLIENTE</h4>
+                <h4>EDITAR PROVEEDOR</h4>
             </div>
             <div class="modal-content">
-                <form action="#" id="form-buscarCliente">
+                <form action="#" id="form-buscarProveedor">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" name="nombreCliente" class="validate" required>
-                            <label for="nombreCliente">Nombre del Cliente</label>
+                            <input type="text" name="nombreProveedor" class="validate" required>
+                            <label for="nombreProveedor">Nombre del Proveedor</label>
                         </div>
                     </div>
                     <div class="row">
@@ -363,17 +346,17 @@
         </div>
 
         <!-- Buscar un piso para eliminar -->
-        <div class="modal modal-fixed-footer modal_buscar" id="buscarCliente">
+        <div class="modal modal_buscar" id="buscarProveedor">
            <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
                 <h4>ELIMINAR CLIENTE</h4>
             </div>
             <div class="modal-content">
-                <form action="#" id="form-eliminarCliente">
+                <form action="#" id="form-eliminarProveedor">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" name="nombreCliente" class="validate" required>
-                            <label for="nombreCliente">Número de Piso</label>
+                            <input type="text" name="nombreProveedor" class="validate" required>
+                            <label for="nombreProveedor">Número de Piso</label>
                         </div>
                     </div>
                     <div class="row">
@@ -394,7 +377,7 @@
                 <h4>Eliminar Piso</h4>
             </div>
             <div class="modal-content">
-                <p>El cliente <span class="nombreCliente"></span> está a punto de ser eliminado del sistema <br> ¿Desa continuar?</p>
+                <p>El cliente <span class="nombreProveedor"></span> está a punto de ser eliminado del sistema <br> ¿Desa continuar?</p>
             </div>
             <div class="modal-footer">
                 <a href="#" class="modal-action btn-flat black-text degradado-cafeHoriz" id="btnEliminarPiso">Eliminar</a>

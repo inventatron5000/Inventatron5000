@@ -145,6 +145,10 @@ html,body{
         max-width:500px;
         max-height: 350px;
     }
+    #buscarPiso{
+        max-width: 500px;
+        max-height: 280px;
+    }
     #confirmarEliminar{
         max-width: 500px;
         max-height: 250px;

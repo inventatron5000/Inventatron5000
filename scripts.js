@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $(".button-collapse").sideNav();
-    $(".modal").modal({
+   $(".modal").modal({
         //Esta funcion selecciona el primer tab (del icono home) cuando cierras un modal
         complete:function(data){
             $("ul.tabs").tabs('select_tab','home');

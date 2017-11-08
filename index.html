@@ -22,28 +22,8 @@
 </head>
 <body >
     <!-- Secciones de Menu desplegable, no se ven hasta hacer cierto click -->
-           <!-- Menu desplegable de Stock -->
-           <ul id="dropdown-stock" class="dropdown-content">
-               <li>Opcion 1</li>
-               <li>Opcion 2</li>
-               <li>Opcion 3</li>
-               <li>Opcion 4</li>
-           </ul>
-           <!-- Menu desplegable de Clientes -->
-           <ul id="dropdown-clientes" class="dropdown-content">
-               <li>Opcion 1</li>
-               <li>Opcion 2</li>
-               <li>Opcion 3</li>
-               <li>Opcion 4</li>
-           </ul>
-           <!-- Menu desplegable de Administrador -->
-           <ul id="dropdown-admin" class="dropdown-content">
-               <li>Opcion 1</li>
-               <li>Opcion 2</li>
-               <li>Opcion 3</li>
-               <li>Opcion 4</li>
-           </ul>
-    <!-- Dentro de la etiqueta nav van todos los elementos de navegacion: menu de escritorio y menu movil-->
+
+           <!-- Dentro de la etiqueta nav van todos los elementos de navegacion: menu de escritorio y menu movil-->
         <!-- En Materializ todo es con clases, 'degradado-gris' no es del framework-->
     <nav class="grey lighten-3 degradado-gris alto">
             <!--Esta seccion contiene el logo principal-->
@@ -159,24 +139,30 @@
     <ul class="tabs tabs-transparent degradado-gris">
         <!-- Cada tab va dentro de un <li> y dentro debe llevar un <a> -->
         <li class="tab">
-            <a href="" class="black-text">
+            <a href="#home" class="black-text">
                 <i class="material-icons left">home</i>
             </a>
         </li>
         <li class="tab">
-            <a href="#" class="black-text">
+            <a href="#modal_agregar" class="black-text waves-effect waves-light modal-trigger">
                 <i class="material-icons left">add</i>
                 Agregar Equipo
             </a>
         </li>
         <li class="tab">
-            <a href="#" class="black-text">
+            <a href="#modal_eliminar" class="black-text waves-effect waves-light modal-trigger">
+                <i class="material-icons left">close</i>
+                Eliminar Equipo
+            </a>
+        </li>
+        <li class="tab">
+            <a href="#modal_editar" class="black-text waves-effect waves-light modal-trigger">
                 <i class="material-icons left">edit</i>
                 Editar Equipo
             </a>
         </li>
         <li class="tab">
-            <a href="#" class="black-text">
+            <a href="#modal_buscar" class="black-text waves-effect waves-light modal-trigger">
                 <i class="material-icons left">search</i>
                 Buscar Equipo
             </a>
@@ -237,7 +223,11 @@
                 <a href="#" class="btn-floating mobile-fab-tip">Agregar Equipo</a>
             </li>
             <li>
-                <a href="#!" class="btn-floating waves-effect waves-light grey lighten-3"><i class="material-icons black-text">mode_edit</i></a>
+                <a href="#modal_eliminar" class="btn-floating waves-effect waves-light btn modal-trigger grey lighten-3"><i class="material-icons black-text">close</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Eliminar Equipo</a>
+            </li>
+            <li>
+                <a href="#modal_editar" class="btn-floating waves-effect waves-light modal-trigger grey lighten-3"><i class="material-icons black-text">mode_edit</i></a>
                 <a href="#" class="btn-floating mobile-fab-tip">Editar Equipo</a>
             </li>
             <li>
@@ -280,6 +270,59 @@
         <div class="modal-footer">
             <a href="#!" class="waves-effect waves-light brown lighten-4 btn-flat modal-button">Buscar</a>
             <a href="#!" class="modal-action modal-close waves-effect waves-light brown lighten-4 btn-flat modal-button">Cerrar</a>
+        </div>
+    </div>
+
+    <div id="modal_eliminar" class="modal">
+        <div class="modal-header degradado-gris">
+            <img src="imagenes/logo.png" alt="">
+            <h4>ELIMINAR EQUIPO</h4>
+        </div>
+        <div class="modal-content">
+            <form id="modal-form">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="radio-gap" type="radio" value="radio-gap-1" id="radio-gap-1"/>
+                        <label for="radio-gap-1">Buscar por código &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="radio-gap" type="radio" value="radio-gap-2" id="radio-gap-2"/> <label id="form-label" for="radio-gap-2">Buscar por nombre</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Buscar" id="buscar-equipo" type="text" class="validate"/>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#eliminar" class="waves-effect waves-light modal-trigger brown lighten-4 btn-flat modal-button">Eliminar</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-light brown lighten-4 btn-flat modal-button">Cerrar</a>
+        </div>
+    </div>
+
+     <div id="eliminar" class="modal">
+        <div class="modal-header degradado-gris">
+            <img src="imagenes/logo.png" alt="">
+            <h4>ELIMINAR EQUIPO</h4>
+        </div>
+        <div class="modal-content">
+            <form id="modal-form">
+                <div class="input-field col s12">
+                       <label>El equipo [EQUIPO] con código [CÓDIGO] está apunto de ser eliminado del inventario</label>
+                       <br>
+                </div>
+                <div class="input-field col s12">
+                       <label>¿Desea continuar?</label>
+                </div>
+                <br>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="waves-effect waves-light brown lighten-4 btn-flat modal-button">Si</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-light brown lighten-4 btn-flat modal-button">No</a>
         </div>
     </div>
 
@@ -333,11 +376,127 @@
                         <label for="select_piso">Piso</label>
                     </div>
                 </div>
+
+                <div class="row modal-div">
+                   <div class="input-field col s4">
+                      <label for="cantidad">Cantidad</label>
+                      <input id="cantidad" type="text" class="validate input-field inline">
+                   </div>
+                   <div class="input-field col s4">
+                    <label for="costo-c">Costo de Compra</label>
+                    <input id="costo-c" type="text" class="validate">
+                   </div>
+                   <div class="input-field col s4">
+                    <label for="precio-ven">Precio de Venta</label>
+                    <input id="precio-ven" type="text" class="validate">
+                   </div>
+                </div>
+                <div class="row ">
+                   <div class="input-field col s12">
+                      <label for="fecha-sol">Fecha de solicitud</label>
+                      <input type="text" class="datepicker">
+                   </div>
+                   <div class="input-field col s12">
+                    <label for="fecha-recibo">Fecha de recibo</label>
+                    <input type="text" class="datepicker">
+                   </div>
+                   <div class="input-field col s12">
+                    <label for="fecha-inst">Fecha de instalación</label>
+                    <input type="text" class="datepicker">
+                   </div>
+                </div>
             </form>
         </div>
         <div class="modal-footer">
             <a href="#!" class="waves-effect waves-light brown lighten-4 btn-flat modal-button">Agregar</a>
-            <a href="#!" class="modal-action modal-close waves-effect waves-light brown lighten-4 btn-flat modal-button">Cerrar</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-light brown lighten-4 btn-flat modal-button">Cancelar</a>
+        </div>
+    </div>
+
+    <div id="modal_editar" class="modal">
+        <div class="modal-header degradado-gris">
+            <img src="imagenes/logo.png" alt="">
+            <h4>EDITAR EQUIPO</h4>
+        </div>
+        <div class="modal-content">
+            <form>
+                <div class="row modal-div">
+                   <div class="input-field col s6">
+                      <label for="codigo">Código</label>
+                      <input id="codigo" type="text" class="validate input-field inline">
+                   </div>
+                   <div class="input-field col s6">
+                    <label for="equipo">Equipo</label>
+                    <input id="equipo" type="text" class="validate">
+                   </div>
+                   <br>
+                   <div class="input-field col s6">
+                    <label for="modelo">Modelo</label>
+                    <input id="modelo" type="text" class="validate">
+                   </div>
+                  <div class="input-field col s6">
+                    <label for="serie">Serie</label>
+                    <input id="serie" type="text" class="validate">
+                   </div>
+                </div>
+                <div class="row modal-div">
+                    <div class="input-field col s10">
+                        <select name="select_departamento">
+                            <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                            <option value="2" disabled="disabled">Option 2</option>
+                        </select>
+                        <label for="select_departamento">Departamento</label>
+                    </div>
+                    <div class="input-field col s2">
+                         <a href="#" class="btn grey"><i class="material-icons">add</i></a>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="select_area">
+                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        </select>
+                        <label for="select_area">Área</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="select_piso">
+                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        </select>
+                        <label for="select_piso">Piso</label>
+                    </div>
+                </div>
+
+                <div class="row modal-div">
+                   <div class="input-field col s4">
+                      <label for="cantidad">Cantidad</label>
+                      <input id="cantidad" type="text" class="validate input-field inline">
+                   </div>
+                   <div class="input-field col s4">
+                    <label for="costo-c">Costo de Compra</label>
+                    <input id="costo-c" type="text" class="validate">
+                   </div>
+                   <div class="input-field col s4">
+                    <label for="precio-ven">Precio de Venta</label>
+                    <input id="precio-ven" type="text" class="validate">
+                   </div>
+                </div>
+                <div class="row ">
+                   <div class="input-field col s12">
+                      <label for="fecha-sole">Fecha de solicitud</label>
+                      <input type="text" class="datepicker">
+                   </div>
+                   <div class="input-field col s12">
+                    <label for="fecha-recibo">Fecha de recibo</label>
+                    <input type="text" class="datepicker">
+                   </div>
+                   <div class="input-field col s12">
+                    <label for="fecha-inst">Fecha de instalación</label>
+                    <input type="text" class="datepicker">
+                   </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="waves-effect waves-light brown lighten-4 btn-flat modal-button">Guardar Cambios</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-light brown lighten-4 btn-flat modal-button">Cancelar</a>
         </div>
     </div>
         

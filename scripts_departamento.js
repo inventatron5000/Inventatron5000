@@ -1,0 +1,68 @@
+$(document).ready(function(){
+    //Funcion para agregar un nuevo depa
+    $("#form-agregarDepa").submit(function(data){
+        //Aqui pondría la función que registra a la base de datos, SU TUVIERAMOS UNA!
+        var nomDepa = $(this).find("input[name='nomDepa']").val();
+        var areaDepa =$(this).find("input[name='areaDepa']").val();
+        var str="Se dió de alta el departamento "+nomDepa;
+        Materialize.toast(str,1500,'rounded');
+
+        //Borrar datos y cerrar modal
+        $(this).find("input[name='nomDepa']").val("");
+        $(this).find("input[name='areaDepa']").val("");
+        $("#agregarDepa").modal('close');
+        return false;
+    });
+
+    //Buscar un depa para editarlo
+    $("#form-buscarDepa").submit(function(evt){
+        var nomDepa = $(this).find("input[name='nomDepa']").val();
+        if(Math.random()<0.5){  //Existe
+            var direccionPiso = "DATOS DE DB";  //Aqui asigno el valor obtenido de la db
+            //Colocar los valores en el modal
+            $("#editarDepaForm").find("input[name='nomDepa']").val(nomDepa);
+            $("#editarDepaForm").find("label[for='nomDepa']").attr("class","active");
+            //Cerrar ste modal y mostrar e lotro
+            $("#editarDepa").modal("close");
+            $("#editarDepaForm").modal("open");
+        }else{                  //No existe
+            var stg = "No se encontró el departamento \""+nomDepa+"\"";
+            Materialize.toast(stg,1500,'rounded');
+            $("#editarDepa").modal("close");
+        }
+        return false;
+    });
+    //Editar un depa
+    $("#form-editarDepa").submit(function(evt){
+        var nomDepa = $(this).find("input[name='nomDepa']").val();
+        var areaDepa= $(this).find("input[name='areaDepa']").val();
+        //AQUI VA LA FUNCION QUE CONECTA CON LA DB
+        $("#editarDepaForm").modal("close");
+        var stg = "Se editó el departamento "+nomDepa;
+        Materialize.toast(stg,2000,'rounded');
+        return false;
+    });
+
+    //Funcion para buscar un piso y eliminarlo
+    $("#form-eliminarDepa").submit(function(evt){
+        var nomDepa = $(this).find("input[name='nomDepa']").val();
+        if(Math.random()<0.5){
+            $("#confirmarEliminar").find("span.nomDepa").html(nomDepa);
+            $("#buscarDepa").modal("close");
+            $("#confirmarEliminar").modal("open");
+        }
+        else{
+            $("#buscarDepa").modal("close");
+            var stg = "No se encontró el departamento \""+nomDepa+"\"";
+            Materialize.toast(stg,1500,'rounded');
+        }
+        return false;
+    });
+    //Funcion para eliminar un piso
+    $("#btnEliminarDepa").click(function(evt){
+        $("#confirmarEliminar").modal("close");
+        //FUNCION PARA BORRAR EN LA DB
+        var stg = "Se eliminó el departamento "+$("#confirmarEliminar").find("span.nomDepa").html();
+        Materialize.toast(stg,2000,"rounded");
+    });
+});

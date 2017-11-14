@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INVENTATRON-5000</title>
+    <!-- Libreria de jQuery, la ocupa el Materialize -->
+    <script src="jquery/jquery-3.2.0.min.js"></script>
+
+    <!-- Framework MaterializeCSS -->
+        <!-- Iconos -->
+        <link rel="stylesheet" href="materialize/css/materialize.min.css">
+        <!-- Hoja de estilos -->
+        <link href="materialize/css/material_icons.css" rel="stylesheet">
+        <!-- Scripts de JS -->
+        <script src="materialize/js/materialize.min.js"></script>
+
+    <!-- Estilos y Scripts propios -->
+        <script src="scripts.js"></script>
+        <link rel="stylesheet" href="estilos.css">
+    <!-- Estilos para la tabla responsiva-->
+        <link rel="stylesheet" href="tabla-responsiva.css">
+    <!-- Scripts de este subsistema -->
+        <script src="scripts_pisos.js"></script>
+</head>
+<body>
+    <!-- Dentro de la etiqueta nav van todos los elementos de navegacion: menu de escritorio y menu movil-->
+        <!-- En Materializ todo es con clases, 'degradado-gris' no es del framework-->
+    <nav class="grey lighten-3 degradado-gris alto">
+            <!--Esta seccion contiene el logo principal-->
+        <section id="star-logo" class="brand-logo left">
+           <img src="imagenes/logo.png" alt="" width="auto" height="120px" id="logoStar" class="">
+        </section>
+            <!-- nav-wrapper  contiene el menú de escritorio-->
+        <div class="nav-wrapper">
+                  <!-- Este es el boton del menu, se muestra en moviles -->
+            <a href="#" data-activates="nav-mobile" class="button-collapse black-text">
+                   <!-- Con la clase material-icons incluyen los iconos y el texto los identifica-->
+                <i class="material-icons">menu</i>
+            </a>
+                    <!-- Este ul es el menu principal, de escritorio -->
+
+                    <!-- Es responsivo para tablets y celulares (hide-on-med-and-down) y alineado a la derecha. Son los botones principales-->
+            <ul class="hide-on-med-and-down right">
+                   <!--  -->
+                <li class="centro">
+                    <a href="index.html" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/equipos.png">
+                        <br><br>
+                        Equipos
+                    </a>
+                </li>
+                <li class="centro alto">
+                    <a href="stock.html" class="black-text dropdown-button alto">
+                        <br>
+                        <img src="iconos/principal/stock.png">
+                        <br><br>
+                        Pedidos <br>
+                        y Stock
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="clientes.html" class="black-text dropdown-button alto single-line" data-activates="dropdown-clientes">
+                        <br>
+                        <img src="iconos/principal/clientes.png">
+                        <br><br>
+                        Clientes
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="departamento.html" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/departamentos.png"><br><br>
+                        Departamentos
+                    </a>
+                </li>
+                <li class="centro">
+                    <a href="pisos.html" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/pisos.png">
+                        <br><br>
+                        Pisos
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="proveedores.html" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/proveedores.png">
+                        <br><br>
+                        Proveedores
+                    </a>
+                </li>
+                <li class="centro active">
+                    <a href="Informe_Inventario_General.html" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/informes.png">
+                        <br><br>
+                        Informes
+                    </a>
+                </li>
+
+                <li class="separador"></li>
+
+                <li class="centro ">
+                    <a href="#" class="black-text dropdown-button alto" data-activates="dropdown-admin">
+                        <br>
+                        <img src="iconos/principal/doctor.png" class="padding-top">
+                        <br>
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="#" class="black-text alto2">
+                        Lorem
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="#" class="black-text alto2">
+                        Salir
+                    </a>
+                </li>
+            </ul>
+
+                <!-- Menu lateral para moviles -->
+            <ul class="side-nav" id="nav-mobile">
+                <li><a href="index.html" class="black-text">Equipos</a></li>
+                <li><a href="stock.html" class="black-text">Stock</a></li>
+                <li><a href="clientes.html" class="black-text">Clientes</a></li>
+                <li><a href="departamento.html" class="black-text">Departamentos</a></li>
+                <li><a href="pisos.html" class="black-text">Pisos</a></li>
+                <li><a href="proveedores.html" class="black-text">Proveedores</a></li>
+                <li><a href="Informe_Inventario_General.html" class="black-text">Informes</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="tabs tabs-transparent degradado-gris" id="tabs-swipe">
+                <!-- Cada tab va dentro de un <li> y dentro debe llevar un <a> -->
+        <li class="tab">
+            <a href="#home" class="black-text">
+                <i class="material-icons left">home</i>
+            </a>
+            </li>
+        <li class="tab col s3"><a class="active black-text" href="#general">General</a></li>
+        <li class="tab col s3"><a class="black-text" href="#pisoYdepartamento">Piso y Departamento</a></li>
+        <li class="tab col s3"><a class="black-text" href="#pedidosPendientes">Pedidos pendientes</a></li>
+        <li class="tab col s3"><a class="black-text" href="#proveedor">Proveedor</a></li>
+        <li class="tab col s3"><a class="black-text"href="#ventas">Ventas</a></li>
+  </ul>  
+    <!-- #contenidoWrapper es para que el fondo abarce todo el ancho y el contenido de enmedio se limite a 1200px-->
+    <div id="contenidoWrapper" class="degradado-cafe">
+       <!-- Aqui van todas las tablas, formularios y weas así -->
+        <div id="general" class="col s12">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>Piso</th>
+                        <th>Departamento</th>
+                        <th>Código</th>
+                        <th>Equipo</th>
+                        <th>Cantidad</th>
+                        <th>blabla</th>
+                        <th>Total en línea</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="Piso" contenteditable="false">1A</td>
+                            <td data-title="Departamento" contenteditable="false">Laboratorio</td>
+                            <td data-title="Código" contenteditable="false">LCYN120</td>
+                            <td data-title="Equipo" contenteditable="false">Centrífuga</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">Recepción</td>
+                            <td data-title="TotLinea" contenteditable="false">$4000</td>
+                        </tr>
+                        <tr>
+                            <td data-title="Piso" contenteditable="false">1B</td>
+                            <td data-title="Departamento" contenteditable="false">Urgencias</td>
+                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
+                            <td data-title="Equipo" contenteditable="false">Báscula</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">Recepción</td>
+                            <td data-title="TotLinea" contenteditable="false">$500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+         <!-- PISO Y DEPARTAMENTO  -->
+        <div id="pisoYdepartamento" class="col s12">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>Código</th>
+                        <th>Equipo</th>
+                        <th>Cantidad</th>
+                        <th>blabla</th>
+                        <th>Total en línea</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">LCYN120</td>
+                            <td data-title="Equipo" contenteditable="false">Centrífuga</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">Recepción</td>
+                            <td data-title="TotLinea" contenteditable="false">$4000</td>
+                        </tr>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
+                            <td data-title="Equipo" contenteditable="false">Báscula</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">Recepción</td>
+                            <td data-title="TotLinea" contenteditable="false">$500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+         <!-- PEDIDOS PENDIENTES  -->
+        <div id="pedidosPendientes" class="col s12">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>No. Pedido</th>
+                        <th>Código</th>
+                        <th>Cantidad</th>
+                        <th>Piso</th>
+                        <th>blabla</th>
+                        <th>Fecha estimada de recibo</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="NoPedido" contenteditable="false">1123</td>
+                            <td data-title="Código" contenteditable="false">LCYN120</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="Piso" contenteditable="false">1A</td>
+                            <td data-title="blabla" contenteditable="false">Recepción</td>
+                            <td data-title="FechaEstimada" contenteditable="false">04/11/17</td>
+                        </tr>
+                        <tr>
+                            <td data-title="NoPedido" contenteditable="false">1811</td>
+                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="Piso" contenteditable="false">1B</td>
+                            <td data-title="blabla" contenteditable="false">Recepción</td>
+                            <td data-title="FechaEstimada" contenteditable="false">17/11/17</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- PROVEEDORES  -->
+        <div id="proveedor" class="col s12">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>Código</th>
+                        <th>Equipo</th>
+                        <th>Piso</th>
+                        <th>Cantidad</th>
+                        <th>blabla</th>
+                        <th>Valor de precio</th>
+                        <th>Total en línea</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">LCYN120</td>
+                            <td data-title="Equipo" contenteditable="false">Centrífuga</td>
+                            <td data-title="Piso" contenteditable="false">1A</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">Recepción</td>
+                            <td data-title="ValPrecio" contenteditable="false">$400</td>
+                            <td data-title="TotLinea" contenteditable="false">$4000</td>
+                        </tr>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
+                            <td data-title="Equipo" contenteditable="false">Báscula</td>
+                            <td data-title="Piso" contenteditable="false">1B</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">Recepción</td>
+                            <td data-title="ValPrecio" contenteditable="false">$50</td>
+                            <td data-title="TotLinea" contenteditable="false">$500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- VENTAS  -->
+        <div id="ventas" class="col s12">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Valor de</th>
+                        <th>Valor de precio</th>
+                        <th>Cambio total</th>
+                        <th>Venta total</th>
+                        <th>Total en línea</th>
+                        <th>Ganancia bruta</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">LCYN120</td>
+                            <td data-title="Nombre" contenteditable="false">Centrífuga</td>
+                            <td data-title="Valor" contenteditable="false">$567</td>
+                            <td data-title="ValPrecio" contenteditable="false">$400</td>
+                            <td data-title="CambioTot" contenteditable="false">$567</td>
+                            <td data-title="VentaTot" contenteditable="false">$5679</td>
+                            <td data-title="TotLinea" contenteditable="false">$4000</td>
+                            <td data-title="GananciaBrut" contenteditable="false">$40</td>
+                        </tr>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
+                            <td data-title="Nombre" contenteditable="false">Báscula</td>
+                            <td data-title="Valor" contenteditable="false">$56</td>
+                            <td data-title="ValPrecio" contenteditable="false">$50</td>
+                            <td data-title="CambioTot" contenteditable="false">$123</td>
+                            <td data-title="VentaTot" contenteditable="false">$189</td>
+                            <td data-title="TotLinea" contenteditable="false">$500</td>
+                            <td data-title="GananciaBrut" contenteditable="false">$40</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large brown darken-2">
+          <i class="large material-icons">more_horiz</i>
+        </a>
+        <ul>
+            <li>
+                <a href="#agregarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">remove_red_eye</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Vista Previa</a>
+            </li>
+            <li>
+                <a href="#editarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">file_download</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Guardar</a>
+            </li>
+            <li>
+                <a href="#buscarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">print</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Imprimir</a>
+            </li>
+            <li>
+                <a href="#buscarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">mail_outline</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Correo</a>
+            </li>
+        </ul>
+    </div>
+
+   
+
+</body>
+</html>

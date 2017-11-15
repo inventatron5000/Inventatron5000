@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INVENTATRON-5000</title>
+    <!-- Libreria de jQuery, la ocupa el Materialize -->
+    <script src="jquery/jquery-3.2.0.min.js"></script>
+
+    <!-- Framework MaterializeCSS -->
+        <!-- Iconos -->
+        <link rel="stylesheet" href="materialize/css/materialize.min.css">
+        <!-- Hoja de estilos -->
+        <link href="materialize/css/material_icons.css" rel="stylesheet">
+        <!-- Scripts de JS -->
+        <script src="materialize/js/materialize.min.js"></script>
+
+    <!-- Estilos y Scripts propios -->
+        <script src="scripts.js"></script>
+        <script src="scripts_informe.js"></script>
+        <link rel="stylesheet" href="estilos.css">
+    <!-- Estilos para la tabla responsiva-->
+        <link rel="stylesheet" href="tabla-responsiva.css">
+    <!-- Scripts de este subsistema -->
+        <script src="scripts_pisos.js"></script>
+</head>
+<body>
+    <!-- Dentro de la etiqueta nav van todos los elementos de navegacion: menu de escritorio y menu movil-->
+        <!-- En Materializ todo es con clases, 'degradado-gris' no es del framework-->
+    <nav class="grey lighten-3 degradado-gris alto">
+            <!--Esta seccion contiene el logo principal-->
+        <section id="star-logo" class="brand-logo left">
+           <img src="imagenes/logo.png" alt="" width="auto" height="120px" id="logoStar" class="">
+        </section>
+            <!-- nav-wrapper  contiene el menú de escritorio-->
+        <div class="nav-wrapper">
+                  <!-- Este es el boton del menu, se muestra en moviles -->
+            <a href="#" data-activates="nav-mobile" class="button-collapse black-text">
+                   <!-- Con la clase material-icons incluyen los iconos y el texto los identifica-->
+                <i class="material-icons">menu</i>
+            </a>
+                    <!-- Este ul es el menu principal, de escritorio -->
+
+                    <!-- Es responsivo para tablets y celulares (hide-on-med-and-down) y alineado a la derecha. Son los botones principales-->
+            <ul class="hide-on-med-and-down right">
+                   <!--  -->
+                <li class="centro">
+                    <a href="index.html" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/equipos.png">
+                        <br><br>
+                        Equipos
+                    </a>
+                </li>
+                <li class="centro alto">
+                    <a href="stock.html" class="black-text dropdown-button alto">
+                        <br>
+                        <img src="iconos/principal/stock.png">
+                        <br><br>
+                        Pedidos <br>
+                        y Stock
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="clientes.html" class="black-text dropdown-button alto single-line" data-activates="dropdown-clientes">
+                        <br>
+                        <img src="iconos/principal/clientes.png">
+                        <br><br>
+                        Clientes
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="departamento.html" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/departamentos.png"><br><br>
+                        Departamentos
+                    </a>
+                </li>
+                <li class="centro">
+                    <a href="pisos.html" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/pisos.png">
+                        <br><br>
+                        Pisos
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="proveedores.html" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/proveedores.png">
+                        <br><br>
+                        Proveedores
+                    </a>
+                </li>
+                <li class="centro active">
+                    <a href="Informe.html" class="black-text alto single-line">
+                        <br>
+                        <img src="iconos/principal/informes.png">
+                        <br><br>
+                        Informes
+                    </a>
+                </li>
+
+                <li class="separador"></li>
+
+                <li class="centro ">
+                    <a href="#" class="black-text dropdown-button alto" data-activates="dropdown-admin">
+                        <br>
+                        <img src="iconos/principal/doctor.png" class="padding-top">
+                        <br>
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="#" class="black-text alto2">
+                        Lorem
+                    </a>
+                </li>
+                <li class="centro ">
+                    <a href="#" class="black-text alto2">
+                        Salir
+                    </a>
+                </li>
+            </ul>
+
+                <!-- Menu lateral para moviles -->
+            <ul class="side-nav" id="nav-mobile">
+                <li><a href="index.html" class="black-text">Equipos</a></li>
+                <li><a href="stock.html" class="black-text">Stock</a></li>
+                <li><a href="clientes.html" class="black-text">Clientes</a></li>
+                <li><a href="departamento.html" class="black-text">Departamentos</a></li>
+                <li><a href="pisos.html" class="black-text">Pisos</a></li>
+                <li><a href="proveedores.html" class="black-text">Proveedores</a></li>
+                <li><a href="Informe.html" class="black-text">Informes</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="tabs tabs-transparent degradado-gris" id="tabs-swipe">
+        <li class="tab col s3"><a class="active black-text" href="#general"><i class="material-icons left">home</i>General</a></li>
+        <li class="tab col s3"><a class="black-text modal-trigger" href="#BuscarPiso"><i class="material-icons left">hot_tub</i>Piso y Departamento</a></li>
+        <li class="tab col s3"><a class="black-text" href="#pedidosPendientes"><i class="material-icons left">import_contacts</i>Pedidos pendientes</a></li>
+        <li class="tab col s3"><a class="black-text modal-trigger" href="#BuscarProveedor"><i class="material-icons left">group</i>Proveedor</a></li>
+        <li class="tab col s3"><a class="black-text modal-trigger" href="#BuscarVentas" id="mostrarVenta"><i class="material-icons left">insert_chart</i>Ventas</a></li>
+  </ul>  
+    <!-- #contenidoWrapper es para que el fondo abarce todo el ancho y el contenido de enmedio se limite a 1200px-->
+    <div id="contenidoWrapper" class="degradado-cafe">
+       <!-- Aqui van todas las tablas, formularios y weas así -->
+        <div id="general" class="col s12">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>Piso</th>
+                        <th>Departamento</th>
+                        <th>Código</th>
+                        <th>Equipo</th>
+                        <th>Cantidad</th>
+                        <th>Valor de costo</th>
+                        <th>Total en línea</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="Piso" contenteditable="false">1A</td>
+                            <td data-title="Departamento" contenteditable="false">Laboratorio</td>
+                            <td data-title="Código" contenteditable="false">LCYN120</td>
+                            <td data-title="Equipo" contenteditable="false">Centrífuga</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">$567</td>
+                            <td data-title="TotLinea" contenteditable="false">$4000</td>
+                        </tr>
+                        <tr>
+                            <td data-title="Piso" contenteditable="false">1B</td>
+                            <td data-title="Departamento" contenteditable="false">Urgencias</td>
+                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
+                            <td data-title="Equipo" contenteditable="false">Báscula</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">$45</td>
+                            <td data-title="TotLinea" contenteditable="false">$500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- PIE DE PÁGINA  -->
+            <footer class="footer-copyright">
+                <div class="row">
+                <div class="col s12 m6 l8">      
+                </div>
+               <div class="col">
+			      <label for="" class="black-text">Total de equipos en inventario</label> <br>
+                  <label for="" class="black-text">Valor total</label> <br> <br>
+                <div>
+                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown4'>Opciones</a>
+                    <!-- Dropdown Structure -->
+                <ul id='dropdown4' class='dropdown-content black-text'>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                </ul> 
+                </div>
+                </div>
+                <div class="col">
+			      <label for="" class="black-text">21</label> <br>
+                  <label for="" class="black-text">$170,000</label> <br>
+                 </div>
+                
+                </div>
+            </footer>
+        </div>
+        
+         <!-- PEDIDOS PENDIENTES  -->
+        <div id="pedidosPendientes" class="col s12">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>No. Pedido</th>
+                        <th>Código</th>
+                        <th>Cantidad</th>
+                        <th>Piso</th>
+                        <th>Valor de Costo</th>
+                        <th>Fecha estimada de recibo</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="NoPedido" contenteditable="false">1123</td>
+                            <td data-title="Código" contenteditable="false">LCYN120</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="Piso" contenteditable="false">1A</td>
+                            <td data-title="blabla" contenteditable="false">$567</td>
+                            <td data-title="FechaEstimada" contenteditable="false">04/11/17</td>
+                        </tr>
+                        <tr>
+                            <td data-title="NoPedido" contenteditable="false">1811</td>
+                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="Piso" contenteditable="false">1B</td>
+                            <td data-title="blabla" contenteditable="false">$45</td>
+                            <td data-title="FechaEstimada" contenteditable="false">17/11/17</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- PIE DE PÁGINA  -->
+            <footer class="footer-copyright">
+                <div class="row">
+                <div class="col s12 m6 l9">      
+                </div>
+               <div class="col">
+                   <br>
+                <div>
+                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown3'>Opciones</a>
+                    <!-- Dropdown Structure -->
+                <ul id='dropdown3' class='dropdown-content black-text'>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                </ul> 
+                </div>
+                </div>
+                
+                </div>
+            </footer>
+        </div>
+         <!-- PISO Y DEPARTAMENTO  -->
+        <div id="pisoYdepartamento" class="col s12">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>Código</th>
+                        <th>Equipo</th>
+                        <th>Cantidad</th>
+                        <th>Valor de costo</th>
+                        <th>Total en línea</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">LCYN120</td>
+                            <td data-title="Equipo" contenteditable="false">Centrífuga</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">$567</td>
+                            <td data-title="TotLinea" contenteditable="false">$4000</td>
+                        </tr>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
+                            <td data-title="Equipo" contenteditable="false">Báscula</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">$45</td>
+                            <td data-title="TotLinea" contenteditable="false">$500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- PIE DE PÁGINA  -->
+            <footer class="footer-copyright">
+                <div class="row">
+                <div class="col s12 m6 l6">      
+                </div>
+               <div class="col">
+			      <label for="" class="black-text">Total de equipos en inventario</label> <br>
+                  <label for="" class="black-text">Valor total</label>
+                </div>
+                <div class="col">
+			      <label for="" class="black-text">21</label> <br>
+                  <label for="" class="black-text">$170,000</label>
+                 </div>
+                <div class="col">
+                 </div>
+                <div class="col">
+			      <label for="" class="black-text">Piso</label> <br>
+                  <label for="" class="black-text">Departamento</label> <br>
+                  <label for="" class="black-text">Área</label> <br>  <br> 
+                  <div>
+                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown5'>Opciones</a>
+                    <!-- Dropdown Structure -->
+                <ul id='dropdown5' class='dropdown-content black-text'>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                </ul> 
+                </div>
+                 </div>
+                <div class="col">
+			      <label for="" class="black-text">1A</label> <br>
+                  <label for="" class="black-text">Ing. Biomédica</label> <br>
+                  <label for="" class="black-text">Urgencias</label> <br> 
+                 </div>
+        
+                </div>
+            </footer>
+        </div>
+     <!-- PROVEEDORES  -->
+        <div id="proveedor" class="col s12">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>Código</th>
+                        <th>Equipo</th>
+                        <th>Piso</th>
+                        <th>Cantidad</th>
+                        <th>Valor de costo</th>
+                        <th>Valor de precio</th>
+                        <th>Total en línea</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">LCYN120</td>
+                            <td data-title="Equipo" contenteditable="false">Centrífuga</td>
+                            <td data-title="Piso" contenteditable="false">1A</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">$567</td>
+                            <td data-title="ValPrecio" contenteditable="false">$400</td>
+                            <td data-title="TotLinea" contenteditable="false">$4000</td>
+                        </tr>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
+                            <td data-title="Equipo" contenteditable="false">Báscula</td>
+                            <td data-title="Piso" contenteditable="false">1B</td>
+                            <td data-title="Cantidad" contenteditable="false">2</td>
+                            <td data-title="blabla" contenteditable="false">$45</td>
+                            <td data-title="ValPrecio" contenteditable="false">$50</td>
+                            <td data-title="TotLinea" contenteditable="false">$500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- PIE DE PÁGINA  -->
+            <footer class="footer-copyright">
+                <div class="row">
+                <div class="col s12 m6 l8">      
+                </div>
+               <div class="col">
+			      <label for="" class="black-text">Total de equipos en inventario</label> <br>
+                  <label for="" class="black-text">Valor total</label> <br>
+                  <label for="" class="black-text">Proveedor</label> <br> <br>
+                <div>
+                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown1'>Opciones</a>
+                    <!-- Dropdown Structure -->
+                <ul id='dropdown1' class='dropdown-content black-text'>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                </ul> 
+                </div>
+                </div>
+                <div class="col">
+			      <label for="" class="black-text">21</label> <br>
+                  <label for="" class="black-text">$170,000</label> <br>
+                  <label for="" class="black-text">Wayne Industries</label>
+                 </div>
+                
+                </div>
+            </footer>
+        </div>
+        
+        <!-- VENTAS  -->
+        <div id="ventas" class="col s12">
+            <div class="table-responsive-vertical">
+                <table class="table striped">
+                    <thead>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Valor de</th>
+                        <th>Valor de precio</th>
+                        <th>Cambio total</th>
+                        <th>Venta total</th>
+                        <th>Total en línea</th>
+                        <th>Ganancia bruta</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">LCYN120</td>
+                            <td data-title="Nombre" contenteditable="false">Centrífuga</td>
+                            <td data-title="Valor" contenteditable="false">$567</td>
+                            <td data-title="ValPrecio" contenteditable="false">$400</td>
+                            <td data-title="CambioTot" contenteditable="false">$567</td>
+                            <td data-title="VentaTot" contenteditable="false">$5679</td>
+                            <td data-title="TotLinea" contenteditable="false">$4000</td>
+                            <td data-title="GananciaBrut" contenteditable="false">$40</td>
+                        </tr>
+                        <tr>
+                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
+                            <td data-title="Nombre" contenteditable="false">Báscula</td>
+                            <td data-title="Valor" contenteditable="false">$56</td>
+                            <td data-title="ValPrecio" contenteditable="false">$50</td>
+                            <td data-title="CambioTot" contenteditable="false">$123</td>
+                            <td data-title="VentaTot" contenteditable="false">$189</td>
+                            <td data-title="TotLinea" contenteditable="false">$500</td>
+                            <td data-title="GananciaBrut" contenteditable="false">$40</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- PIE DE PÁGINA  -->
+            <footer class="footer-copyright">
+                <div class="row">
+                <div class="col s12 m6 l9">      
+                </div>
+               <div class="col">
+                   <br>
+                <div>
+                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown2'>Opciones</a>
+                    <!-- Dropdown Structure -->
+                <ul id='dropdown2' class='dropdown-content black-text'>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                </ul> 
+                </div>
+                </div>
+                
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large brown darken-2">
+          <i class="large material-icons">more_horiz</i>
+        </a>
+        <ul>
+            <li>
+                <a href="#general" class="btn-floating waves-effect waves-light grey lighten-3"><i class="material-icons black-text">home</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">General</a>
+            </li>
+            <li>
+                <a href="#BuscarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">hot_tub</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Piso y Departamento</a>
+            </li>
+            <li>
+                <a href="#pedidosPendientes" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">import_contacts</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Pedidos pendientes</a>
+            </li>
+            <li>
+                <a href="#BuscarProveedor" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">group</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Proveedor</a>
+            </li>
+            <li>
+                <a href="#BuscarVentas" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">insert_chart</i></a>
+                <a href="#" class="btn-floating mobile-fab-tip">Ventas</a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- MODAL PARA BUSCAR PISO Y DEPARTAMENTO -->
+    <div class="modal modal-fixed-footer modal_buscar" id="BuscarPiso">
+           <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>INFORME POR PISO Y DEPARTAMENTO</h4>
+            </div>
+            <div class="modal-content">
+                <form action="#" id="form-buscarPisoYDepartamento">
+                    <div class="row">
+                        <div class="input-field col s12">
+                        <select name="select_piso">
+                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        </select>
+                        <label for="select_piso">Piso</label>
+                        </div>
+                        <div class="input-field col s12">
+                        <select name="select_depa">
+                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        </select>
+                        <label for="select_depa">Departamento</label>
+                        </div>
+                        <div class="input-field col s12">
+                        <select name="select_area">
+                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        </select>
+                        <label for="select_area">Área</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <input type="submit" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Ver Informe"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+    <!-- MODAL PARA BUSCAR PROVEEDOR -->
+    <div class="modal modal-fixed-footer modal_buscar" id="BuscarProveedor">
+           <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>INFORME POR PROVEEDOR</h4>
+            </div>
+            <div class="modal-content">
+                <form action="#" id="form-buscarProveedor">
+                    <div class="row">
+                        <div class="input-field col s12">
+                        <select name="select_proveedor">
+                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        </select>
+                        <label for="select_proveedor">Proveedor</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <input type="submit" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Ver Informe"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <!-- MODAL PARA BUSCAR VENTAS -->
+    <div class="modal modal-fixed-footer modal_buscar" id="BuscarVentas">
+           <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>INFORME DE VENTAS</h4>
+            </div>
+            <div class="modal-content">
+                <form action="#" id="form-buscarProveedor">
+                    <div class="row">
+                      <div class="input-field col s12">
+                      <label for="fecha-ini">Fecha Inicio</label>
+                      <input type="text" class="datepicker">
+                      </div>
+                      <div class="input-field col s12">
+                      <label for="fecha-fin">Fecha Fin</label>
+                      <input type="text" class="datepicker">
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <input type="submit"  id="VerVentas" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Ver Informe"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+</body>
+</html>

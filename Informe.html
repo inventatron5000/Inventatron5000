@@ -133,12 +133,25 @@
             </ul>
         </div>
     </nav>
+<<<<<<< HEAD
     <ul class="tabs tabs-transparent degradado-gris">
         <li id="VerGeneral" class="tab col s3"><a class="active black-text" href="#general"><i class="material-icons left">home</i>General</a></li>
         <li class="tab col s3"><a class="black-text modal-trigger" href="#BuscarPiso"><i class="material-icons left">hot_tub</i>Piso y Departamento</a></li>
         <li id="VerPedidos" class="tab col s3"><a class="black-text" href="#pedidosPendientes"><i class="material-icons left">import_contacts</i>Pedidos pendientes</a></li>
         <li class="tab col s3"><a class="black-text modal-trigger" href="#BuscarProveedor"><i class="material-icons left">group</i>Proveedor</a></li>
         <li class="tab col s3"><a class="black-text modal-trigger" href="#BuscarVentas"><i class="material-icons left">insert_chart</i>Ventas</a></li>
+=======
+    <ul class="tabs tabs-transparent degradado-gris" id="tabs-swipe">
+        <li class="tab col s3"><a class="active black-text" href="#general"><i class="material-icons left">home</i>General</a></li>
+
+        <li class="tab col s3"><a class="black-text" href="#pisoYdepartamento" id="btnPisoYDepartamento"><i class="material-icons left">hot_tub</i>Piso y Departamento</a></li>
+
+        <li class="tab col s3"><a class="black-text" href="#pedidosPendientes" id="btnPedidosPendientes"><i class="material-icons left">import_contacts</i>Pedidos pendientes</a></li>
+
+        <li class="tab col s3"><a class="black-text modal-trigger" href="#proveedor" id="btnProveedor"><i class="material-icons left">group</i>Proveedor</a></li>
+
+        <li class="tab col s3"><a class="black-text modal-trigger" href="#ventas" id="btnVentas"><i class="material-icons left">insert_chart</i>Ventas</a></li>
+>>>>>>> 72bf568315cbf72ceef89596b660aeba52080cb3
   </ul>  
     <!-- #contenidoWrapper es para que el fondo abarce todo el ancho y el contenido de enmedio se limite a 1200px-->
     <div id="contenidoWrapper" class="degradado-cafe">
@@ -459,24 +472,34 @@
           <i class="large material-icons">more_horiz</i>
         </a>
         <ul>
+<<<<<<< HEAD
             <li  class="VerGeneral">
                 <a href="#general" class="btn-floating waves-effect waves-light grey lighten-3"><i class="material-icons black-text">home</i></a>
+=======
+            <li>
+                <a href="#general" class="btn-floating waves-effect waves-light grey lighten-3 btnGeneral"><i class="material-icons black-text">home</i></a>
+>>>>>>> 72bf568315cbf72ceef89596b660aeba52080cb3
                 <a href="#" class="btn-floating mobile-fab-tip">General</a>
             </li>
             <li>
-                <a href="#BuscarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">hot_tub</i></a>
+                <a href="#BuscarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger" id="btnPisoYDepartamentoFAB"><i class="material-icons black-text">hot_tub</i></a>
                 <a href="#" class="btn-floating mobile-fab-tip">Piso y Departamento</a>
             </li>
+<<<<<<< HEAD
             <li id="VerPedidos">
                 <a href="#pedidosPendientes" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">import_contacts</i></a>
+=======
+            <li>
+                <a class="btn-floating waves-effect waves-light grey lighten-3" id="btnPedidosPendientesFAB"><i class="material-icons black-text">import_contacts</i></a>
+>>>>>>> 72bf568315cbf72ceef89596b660aeba52080cb3
                 <a href="#" class="btn-floating mobile-fab-tip">Pedidos pendientes</a>
             </li>
             <li>
-                <a href="#BuscarProveedor" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">group</i></a>
+                <a href="#BuscarProveedor" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text" id="btnProveedorFAB">group</i></a>
                 <a href="#" class="btn-floating mobile-fab-tip">Proveedor</a>
             </li>
             <li>
-                <a href="#BuscarVentas" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text">insert_chart</i></a>
+                <a href="#BuscarVentas" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger"><i class="material-icons black-text" id="btnVentasFAB">insert_chart</i></a>
                 <a href="#" class="btn-floating mobile-fab-tip">Ventas</a>
             </li>
         </ul>

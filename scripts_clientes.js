@@ -11,11 +11,34 @@ $(document).ready(function(){
         var direccionFact = $(this).find("textarea[name='direccionFact']").val();
         var telefono = $(this).find("input[name='telefono']").val();
         var correo = $(this).find("input[name='correo']").val();
+
         var str="Se dió de alta el cliente "+nombreCliente;
 
-         //Aqui pondría la función que registra a la base de datos, SU TUVIERAMOS UNA!
+        $.ajax({
+            url:"php/clientes.php",
+            method:"post",
+            data:{
+                operacion:'A',
+                nombreCliente:nombreCliente,
+                personaContacto:personaContacto,
+                pais:pais,
+                estado:estado,
+                ciudad:ciudad,
+                cp:cp,
+                direccionFact:direccionFact,
+                telefono:telefono,
+                correo:correo
+            }
+        }).done(function(data){
+            if(data=="EXISTE")
+                Materialize.toast("¡Ya existe ese cliente!",2000,"rounded");
+            else if(data=="OK")
+                Materialize.toast(str,2000,"rounded");
+            else
+                Materialize.toast("Error inesperado",2000,"rounded");
+        });
 
-        Materialize.toast(str,2000,'rounded');
+
 
         //Borrar datos y cerrar modal
         $(this).find("input[name='nombreCliente']").val("");
@@ -34,51 +57,60 @@ $(document).ready(function(){
     //Buscar un cliente para editarlo
     $("#form-buscarCliente").submit(function(evt){
         var nombreCliente = $(this).find("input[name='nombreCliente']").val();
-        var personaContacto = "Walter White";
-        var pais = "Mejico";
-        var estado = "Michoacan";
-        var ciudad = "Morelia";
-        var cp = "234";
-        var direccionFact = "308 Negra Arroyo Lane, Albuquerque, New Mexico";
-        var telefono = "32142134";
-        var correo = "adf@rewqwer";
-        if(Math.random()<0.5){  //Existe
-            //Colocar los valores en el modal
-            $("#editarClienteForm").find("input[name='nombreCliente']").val(nombreCliente);
-            $("#editarClienteForm").find("label[for='nombreCliente']").attr("class","active");
+        $.ajax({
+            url:"php/clientes.php",
+            method:"post",
+            data:{
+                operacion:'C',
+                nombreCliente:nombreCliente
+            }
+        }).done(function(data){
+            if(data=="NF"){
+                Materialize.toast("404 alv",2000,'rounded');
+            }else{
+                var datosCliente = JSON.parse(data);
 
-            $("#editarClienteForm").find("input[name='personaContacto']").val(personaContacto);
-            $("#editarClienteForm").find("label[for='personaContacto']").attr("class","active");
+                var personaContacto = datosCliente.personacontactocl;
+                var pais = datosCliente.pais;
+                var estado = datosCliente.estado;
+                var ciudad = datosCliente.ciudad;
+                var cp = datosCliente.codpostal;
+                var direccionFact = datosCliente.direccionfacturacion;
+                var telefono = datosCliente.telefono;
+                var correo = datosCliente.correo;
 
-            $("#editarClienteForm").find("input[name='pais']").val(pais);
-            $("#editarClienteForm").find("label[for='pais']").attr("class","active");
+                $("#editarClienteForm").find("input[name='nombreCliente']").val(nombreCliente);
+                $("#editarClienteForm").find("label[for='nombreCliente']").attr("class","active");
 
-            $("#editarClienteForm").find("input[name='estado']").val(estado);
-            $("#editarClienteForm").find("label[for='estado']").attr("class","active");
+                $("#editarClienteForm").find("input[name='personaContacto']").val(personaContacto);
+                $("#editarClienteForm").find("label[for='personaContacto']").attr("class","active");
 
-            $("#editarClienteForm").find("input[name='ciudad']").val(ciudad);
-            $("#editarClienteForm").find("label[for='ciudad']").attr("class","active");
+                $("#editarClienteForm").find("input[name='pais']").val(pais);
+                $("#editarClienteForm").find("label[for='pais']").attr("class","active");
 
-            $("#editarClienteForm").find("input[name='cp']").val(cp);
-            $("#editarClienteForm").find("label[for='cp']").attr("class","active");
+                $("#editarClienteForm").find("input[name='estado']").val(estado);
+                $("#editarClienteForm").find("label[for='estado']").attr("class","active");
 
-            $("#editarClienteForm").find("textarea[name='direccionFact']").val(direccionFact);
-            $("#editarClienteForm").find("label[for='direccionFact']").attr("class","active");
+                $("#editarClienteForm").find("input[name='ciudad']").val(ciudad);
+                $("#editarClienteForm").find("label[for='ciudad']").attr("class","active");
 
-            $("#editarClienteForm").find("input[name='telefono']").val(telefono);
-            $("#editarClienteForm").find("label[for='telefono']").attr("class","active");
+                $("#editarClienteForm").find("input[name='cp']").val(cp);
+                $("#editarClienteForm").find("label[for='cp']").attr("class","active");
 
-            $("#editarClienteForm").find("input[name='correo']").val(correo);
-            $("#editarClienteForm").find("label[for='correo']").attr("class","active");
+                $("#editarClienteForm").find("textarea[name='direccionFact']").val(direccionFact);
+                $("#editarClienteForm").find("label[for='direccionFact']").attr("class","active");
 
-            //Cerrar ste modal y mostrar e lotro
-            $("#editarCliente").modal("close");
-            $("#editarClienteForm").modal("open");
-        }else{                  //No existe
-            var stg = "No se encontró el cliente \""+nombreCliente+"\"";
-            Materialize.toast(stg,2000,'rounded');
-            $("#editarCliente").modal("close");
-        }
+                $("#editarClienteForm").find("input[name='telefono']").val(telefono);
+                $("#editarClienteForm").find("label[for='telefono']").attr("class","active");
+
+                $("#editarClienteForm").find("input[name='correo']").val(correo);
+                $("#editarClienteForm").find("label[for='correo']").attr("class","active");
+
+                //Cerrar ste modal y mostrar e lotro
+                $("#editarCliente").modal("close");
+                $("#editarClienteForm").modal("open");
+            }
+        });
         return false;
     });
     //Editar un piso

@@ -168,7 +168,7 @@
     <div id="contenidoWrapper" class="degradado-cafe">
        <!-- Aqui van todas las tablas, formularios y weas así -->
         <div id="contenidoPrincipal">
-            <div class="table-responsive-vertical">
+            <div>
                 <table class="table striped">
                     <thead>
                         <th>Código</th>
@@ -182,28 +182,6 @@
                         <th>Venta</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-title="Código" contenteditable="true">C1</td>
-                            <td data-title="Equipo" contenteditable="true">Desfribilador</td>
-                            <td data-title="Departamento" contenteditable="true">Urgencias</td>
-                            <td data-title="Área" contenteditable="true">Biomédica</td>
-                            <td data-title="Piso" contenteditable="true">5</td>
-                            <td data-title="No. de Serie" contenteditable="true">TRON-5036</td>
-                            <td data-title="Modelo" contenteditable="true">A024013</td>
-                            <td data-title="Coste" contenteditable="true">$21000</td>
-                            <td data-title="Venta" contenteditable="true">$30000</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Código" contenteditable="true">C2</td>
-                            <td data-title="Equipo" contenteditable="true">asdFASDF</td>
-                            <td data-title="Departamento" contenteditable="true">Urgencias</td>
-                            <td data-title="Área" contenteditable="true">Interna</td>
-                            <td data-title="Piso" contenteditable="true">4</td>
-                            <td data-title="No. de Serie" contenteditable="true">dfsaf-5036</td>
-                            <td data-title="Modelo" contenteditable="true">A113</td>
-                            <td data-title="Coste" contenteditable="true">$234</td>
-                            <td data-title="Venta" contenteditable="true">$945</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -324,27 +302,25 @@
                 <div class="row modal-div">
                    <div class="input-field col s6">
                       <label for="codigo">Código</label>
-                      <input id="codigo" type="text" class="validate" required>
+                      <input id="codigo" type="text" name="codigo" class="validate" required>
                    </div>
                    <div class="input-field col s6">
                     <label for="equipo">Equipo</label>
-                    <input id="equipo" type="text" class="validate" required>
+                    <input id="equipo" name="equipo" type="text" class="validate" required>
                    </div>
                    <br>
                    <div class="input-field col s6">
                     <label for="modelo">Modelo</label>
-                    <input id="modelo" type="text" class="validate" required>
+                    <input id="modelo" name="modelo" type="text" class="validate" required>
                    </div>
                   <div class="input-field col s6">
                     <label for="serie">Serie</label>
-                    <input id="serie" type="text" class="validate" required>
+                    <input id="serie"  name="serie" type="text" class="validate" required>
                    </div>
                 </div>
-                <div class="row modal-div">
+                <div class="row modal-div ">
                     <div class="input-field col s10">
-                        <select name="select_departamento">
-                            <option value="1" disabled="disabled" selected="selected">Option 1</option>
-                            <option value="2" disabled="disabled">Option 2</option>
+                        <select name="select_departamento" id="select_departamento">
                         </select>
                         <label for="select_departamento">Departamento</label>
                     </div>
@@ -352,45 +328,47 @@
                          <a href="#" class="btn grey"><i class="material-icons">add</i></a>
                     </div>
                     <div class="input-field col s6">
-                        <select name="select_area">
-                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        <select name="select_area" id="select_area">
                         </select>
                         <label for="select_area">Área</label>
                     </div>
                     <div class="input-field col s6">
-                        <select name="select_piso">
-                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        <select name="select_piso" id="select_piso">
                         </select>
                         <label for="select_piso">Piso</label>
                     </div>
                 </div>
 
                 <div class="row modal-div">
-                   <div class="input-field col s4">
+                   <div class="input-field col s3">
                       <label for="cantidad">Cantidad</label>
-                      <input id="cantidad" type="text" class="validate input-field inline" required>
+                      <input id="cantidad" type="text" name="cantidad" class="validate input-field inline" required>
                    </div>
-                   <div class="input-field col s4">
+                   <div class="input-field col s3">
                     <label for="costoC">Costo de Compra</label>
-                    <input id="costoC" type="text" class="validate" required>
+                    <input id="costoC" name="costoC" type="text" class="validate" required>
                    </div>
-                   <div class="input-field col s4">
+                   <div class="input-field col s3">
                     <label for="precioVen">Precio de Venta</label>
-                    <input id="precioVen" type="text" class="validate" required>
+                    <input id="precioVen" name="precioVen" type="text" class="validate" required>
+                   </div>
+                   <div class="input-field col s3">
+                    <label for="proveedor">Proveedor</label>
+                    <input id="proveedor"  name="proveedor" type="text" class="validate" required>
                    </div>
                 </div>
                 <div class="row ">
                    <div class="input-field col s12">
-                      <label for="fecha-sol">Fecha de solicitud</label>
-                      <input type="text" class="datepicker">
+                      <label for="fechaSol">Fecha de solicitud</label>
+                      <input type="text" class="datepicker" id=fechaSol name="fechaSol">
                    </div>
                    <div class="input-field col s12">
-                    <label for="fecha-recibo">Fecha de recibo</label>
-                    <input type="text" class="datepicker">
+                    <label for="fechaRecibo">Fecha de recibo</label>
+                    <input type="text" class="datepicker" id="fechaRecibo" name="fechaRecibo">
                    </div>
                    <div class="input-field col s12">
-                    <label for="fecha-inst">Fecha de instalación</label>
-                    <input type="text" class="datepicker">
+                    <label for="fechaInst">Fecha de instalación</label>
+                    <input type="text" class="datepicker" id="fechaInst" name="fechaInst">
                    </div>
                 </div>
                 <input type="submit" id="btnagregarEquipo" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Agregar">
@@ -427,11 +405,11 @@
                 </div>
                 <div class="row modal-div">
                     <div class="input-field col s10">
-                        <select name="select_departamento">
+                        <select name="">
                             <option value="1" disabled="disabled" selected="selected">Option 1</option>
                             <option value="2" disabled="disabled">Option 2</option>
                         </select>
-                        <label for="select_departamento">Departamento</label>
+                        <label for="">Departamento</label>
                     </div>
                     <div class="input-field col s2">
                          <a href="#" class="btn grey"><i class="material-icons">add</i></a>

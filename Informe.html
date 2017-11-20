@@ -148,314 +148,225 @@
     <!-- #contenidoWrapper es para que el fondo abarce todo el ancho y el contenido de enmedio se limite a 1200px-->
     <div id="contenidoWrapper" class="degradado-cafe">
        <!-- Aqui van todas las tablas, formularios y weas así -->
-        <div id="general" class="col s12">
-            <div class="table-responsive-vertical">
-                <table class="table striped">
-                    <thead>
-                        <th>Piso</th>
-                        <th>Departamento</th>
-                        <th>Código</th>
-                        <th>Equipo</th>
-                        <th>Cantidad</th>
-                        <th>Valor de costo</th>
-                        <th>Total en línea</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-title="Piso" contenteditable="false">1A</td>
-                            <td data-title="Departamento" contenteditable="false">Laboratorio</td>
-                            <td data-title="Código" contenteditable="false">LCYN120</td>
-                            <td data-title="Equipo" contenteditable="false">Centrífuga</td>
-                            <td data-title="Cantidad" contenteditable="false">2</td>
-                            <td data-title="blabla" contenteditable="false">$567</td>
-                            <td data-title="TotLinea" contenteditable="false">$4000</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Piso" contenteditable="false">1B</td>
-                            <td data-title="Departamento" contenteditable="false">Urgencias</td>
-                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
-                            <td data-title="Equipo" contenteditable="false">Báscula</td>
-                            <td data-title="Cantidad" contenteditable="false">2</td>
-                            <td data-title="blabla" contenteditable="false">$45</td>
-                            <td data-title="TotLinea" contenteditable="false">$500</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div id="contenidoPrincipal">
+            <div id="general" class="col s12">
+                <div class="table-responsive-vertical">
+                    <table class="table striped">
+                        <thead>
+                            <th>Piso</th>
+                            <th>Departamento</th>
+                            <th>Código</th>
+                            <th>Equipo</th>
+                            <th>Cantidad</th>
+                            <th>Costo</th>
+                            <th>Precio</th>
+                            <th>Total en línea</th>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- PIE DE PÁGINA  -->
+                <footer class="footer-copyright hide">
+                    <div class="row right">
+                        <div class="col">
+                            <label for="" class="black-text">Total de equipos en inventario</label> <br>
+                            <label for="" class="black-text">Valor total</label> <br> <br>
+                            <div>
+                                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown4'>Opciones</a>
+                                    <!-- Dropdown Structure -->
+                                <ul id='dropdown4' class='dropdown-content black-text'>
+                                    <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
+                                    <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                                    <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                                    <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="" class="black-text totalEquipos"></label> <br>
+                            <label for="" class="black-text valorTotal">$170,000</label> <br>
+                        </div>
+                    </div>
+                </footer>
             </div>
-            <!-- PIE DE PÁGINA  -->
-            <footer class="footer-copyright">
-                <div class="row">
-                <div class="col s12 m6 l8">      
+             <!-- PEDIDOS PENDIENTES  -->
+            <div id="pedidosPendientes" class="col s12">
+                <div class="table-responsive-vertical">
+                    <table class="table striped">
+                        <thead>
+                            <th>No. Pedido</th>
+                            <th>Código</th>
+                            <th>Cantidad</th>
+                            <th>Piso</th>
+                            <th>Costo</th>
+                            <th>Fecha estimada de recibo</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
-               <div class="col">
-			      <label for="" class="black-text">Total de equipos en inventario</label> <br>
-                  <label for="" class="black-text">Valor total</label> <br> <br>
-                <div>
-                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown4'>Opciones</a>
-                    <!-- Dropdown Structure -->
-                <ul id='dropdown4' class='dropdown-content black-text'>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
-                </ul> 
-                </div>
-                </div>
-                <div class="col">
-			      <label for="" class="black-text">21</label> <br>
-                  <label for="" class="black-text">$170,000</label> <br>
-                 </div>
-                
-                </div>
-            </footer>
-        </div>
-        
-         <!-- PEDIDOS PENDIENTES  -->
-        <div id="pedidosPendientes" class="col s12">
-            <div class="table-responsive-vertical">
-                <table class="table striped">
-                    <thead>
-                        <th>No. Pedido</th>
-                        <th>Código</th>
-                        <th>Cantidad</th>
-                        <th>Piso</th>
-                        <th>Valor de Costo</th>
-                        <th>Fecha estimada de recibo</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-title="NoPedido" contenteditable="false">1123</td>
-                            <td data-title="Código" contenteditable="false">LCYN120</td>
-                            <td data-title="Cantidad" contenteditable="false">2</td>
-                            <td data-title="Piso" contenteditable="false">1A</td>
-                            <td data-title="blabla" contenteditable="false">$567</td>
-                            <td data-title="FechaEstimada" contenteditable="false">04/11/17</td>
-                        </tr>
-                        <tr>
-                            <td data-title="NoPedido" contenteditable="false">1811</td>
-                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
-                            <td data-title="Cantidad" contenteditable="false">2</td>
-                            <td data-title="Piso" contenteditable="false">1B</td>
-                            <td data-title="blabla" contenteditable="false">$45</td>
-                            <td data-title="FechaEstimada" contenteditable="false">17/11/17</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- PIE DE PÁGINA  -->
+                <footer class="footer-copyright hide">
+                    <div class="row">
+                       <div class="col">
+                           <br>
+                        <div>
+                            <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown3'>Opciones</a>
+                                <!-- Dropdown Structure -->
+                            <ul id='dropdown3' class='dropdown-content black-text'>
+                                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
+                                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
-            <!-- PIE DE PÁGINA  -->
-            <footer class="footer-copyright">
-                <div class="row">
-                <div class="col s12 m6 l9">      
+             <!-- PISO Y DEPARTAMENTO  -->
+            <div id="pisoYdepartamento" class="col s12">
+                <div class="table-responsive-vertical">
+                    <table class="table striped">
+                        <thead>
+                            <th>Código</th>
+                            <th>Equipo</th>
+                            <th>Cantidad</th>
+                            <th>Costo</th>
+                            <th>Total en línea</th>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
                 </div>
-               <div class="col">
-                   <br>
-                <div>
-                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown3'>Opciones</a>
-                    <!-- Dropdown Structure -->
-                <ul id='dropdown3' class='dropdown-content black-text'>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
-                </ul> 
-                </div>
-                </div>
-                
-                </div>
-            </footer>
-        </div>
-         <!-- PISO Y DEPARTAMENTO  -->
-        <div id="pisoYdepartamento" class="col s12">
-            <div class="table-responsive-vertical">
-                <table class="table striped">
-                    <thead>
-                        <th>Código</th>
-                        <th>Equipo</th>
-                        <th>Cantidad</th>
-                        <th>Valor de costo</th>
-                        <th>Total en línea</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-title="Código" contenteditable="false">LCYN120</td>
-                            <td data-title="Equipo" contenteditable="false">Centrífuga</td>
-                            <td data-title="Cantidad" contenteditable="false">2</td>
-                            <td data-title="blabla" contenteditable="false">$567</td>
-                            <td data-title="TotLinea" contenteditable="false">$4000</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
-                            <td data-title="Equipo" contenteditable="false">Báscula</td>
-                            <td data-title="Cantidad" contenteditable="false">2</td>
-                            <td data-title="blabla" contenteditable="false">$45</td>
-                            <td data-title="TotLinea" contenteditable="false">$500</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- PIE DE PÁGINA  -->
+                <footer class="footer-copyright hide">
+                    <div class="row">
+                    <div class="col s12 m6 l6">
+                    </div>
+                   <div class="col">
+                              <label for="" class="black-text">Total de equipos en inventario</label> <br>
+                      <label for="" class="black-text">Valor total</label>
+                    </div>
+                    <div class="col">
+                        <label for="" class="black-text totalEquipos"></label> <br>
+                        <label for="" class="black-text valorTotal"></label>
+                    </div>
+                    <div class="col">
+                     </div>
+                    <div class="col">
+                            <label for="" class="black-text pisoInforme">Piso</label> <br>
+                            <label for="" class="black-text deptosInforme">Departamento</label> <br>
+                            <label for="" class="black-text areaInforme">Área</label> <br>  <br>
+                      <div>
+                    <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown5'>Opciones</a>
+                        <!-- Dropdown Structure -->
+                    <ul id='dropdown5' class='dropdown-content black-text'>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                    </ul>
+                    </div>
+                     </div>
+                    <div class="col">
+                              <label for="" class="black-text">1A</label> <br>
+                      <label for="" class="black-text">Ing. Biomédica</label> <br>
+                      <label for="" class="black-text">Urgencias</label> <br>
+                     </div>
+
+                    </div>
+                </footer>
             </div>
-            <!-- PIE DE PÁGINA  -->
-            <footer class="footer-copyright">
-                <div class="row">
-                <div class="col s12 m6 l6">      
+             <!-- PROVEEDORES  -->
+            <div id="proveedor" class="col s12">
+                <div class="table-responsive-vertical">
+                    <table class="table striped">
+                        <thead>
+                            <th>Código</th>
+                            <th>Equipo</th>
+                            <th>Piso</th>
+                            <th>Cantidad</th>
+                            <th>Valor de costo</th>
+                            <th>Total en línea</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
-               <div class="col">
-			      <label for="" class="black-text">Total de equipos en inventario</label> <br>
-                  <label for="" class="black-text">Valor total</label>
-                </div>
-                <div class="col">
-			      <label for="" class="black-text">21</label> <br>
-                  <label for="" class="black-text">$170,000</label>
-                 </div>
-                <div class="col">
-                 </div>
-                <div class="col">
-			      <label for="" class="black-text">Piso</label> <br>
-                  <label for="" class="black-text">Departamento</label> <br>
-                  <label for="" class="black-text">Área</label> <br>  <br> 
-                  <div>
-                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown5'>Opciones</a>
-                    <!-- Dropdown Structure -->
-                <ul id='dropdown5' class='dropdown-content black-text'>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
-                </ul> 
-                </div>
-                 </div>
-                <div class="col">
-			      <label for="" class="black-text">1A</label> <br>
-                  <label for="" class="black-text">Ing. Biomédica</label> <br>
-                  <label for="" class="black-text">Urgencias</label> <br> 
-                 </div>
-        
-                </div>
-            </footer>
-        </div>
-     <!-- PROVEEDORES  -->
-        <div id="proveedor" class="col s12">
-            <div class="table-responsive-vertical">
-                <table class="table striped">
-                    <thead>
-                        <th>Código</th>
-                        <th>Equipo</th>
-                        <th>Piso</th>
-                        <th>Cantidad</th>
-                        <th>Valor de costo</th>
-                        <th>Valor de precio</th>
-                        <th>Total en línea</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-title="Código" contenteditable="false">LCYN120</td>
-                            <td data-title="Equipo" contenteditable="false">Centrífuga</td>
-                            <td data-title="Piso" contenteditable="false">1A</td>
-                            <td data-title="Cantidad" contenteditable="false">2</td>
-                            <td data-title="blabla" contenteditable="false">$567</td>
-                            <td data-title="ValPrecio" contenteditable="false">$400</td>
-                            <td data-title="TotLinea" contenteditable="false">$4000</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
-                            <td data-title="Equipo" contenteditable="false">Báscula</td>
-                            <td data-title="Piso" contenteditable="false">1B</td>
-                            <td data-title="Cantidad" contenteditable="false">2</td>
-                            <td data-title="blabla" contenteditable="false">$45</td>
-                            <td data-title="ValPrecio" contenteditable="false">$50</td>
-                            <td data-title="TotLinea" contenteditable="false">$500</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- PIE DE PÁGINA  -->
+                <footer class="footer-copyright hide">
+                    <div class="row">
+                    <div class="col s12 m6 l8">
+                    </div>
+                   <div class="col">
+                              <label for="" class="black-text">Total de equipos en inventario</label> <br>
+                      <label for="" class="black-text">Valor total</label> <br>
+                      <label for="" class="black-text">Proveedor</label> <br> <br>
+                    <div>
+                    <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown1'>Opciones</a>
+                        <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content black-text'>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                    </ul>
+                    </div>
+                    </div>
+                    <div class="col">
+                            <label for="" class="black-text totalEquipos"></label> <br>
+                            <label for="" class="black-text valorTotal"></label> <br>
+                            <label for="" class="black-text proveedorInforme"></label>
+                     </div>
+
+                    </div>
+                </footer>
             </div>
-            <!-- PIE DE PÁGINA  -->
-            <footer class="footer-copyright">
-                <div class="row">
-                <div class="col s12 m6 l8">      
+            <!-- VENTAS  -->
+            <div id="ventas" class="col s12">
+                <div class="table-responsive-vertical">
+                    <table class="table striped">
+                        <thead>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Valor de</th>
+                            <th>Valor de precio</th>
+                            <th>Cambio total</th>
+                            <th>Venta total</th>
+                            <th>Total en línea</th>
+                            <th>Ganancia bruta</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
-               <div class="col">
-			      <label for="" class="black-text">Total de equipos en inventario</label> <br>
-                  <label for="" class="black-text">Valor total</label> <br>
-                  <label for="" class="black-text">Proveedor</label> <br> <br>
-                <div>
-                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown1'>Opciones</a>
-                    <!-- Dropdown Structure -->
-                <ul id='dropdown1' class='dropdown-content black-text'>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
-                </ul> 
-                </div>
-                </div>
-                <div class="col">
-			      <label for="" class="black-text">21</label> <br>
-                  <label for="" class="black-text">$170,000</label> <br>
-                  <label for="" class="black-text">Wayne Industries</label>
-                 </div>
-                
-                </div>
-            </footer>
-        </div>
-        
-        <!-- VENTAS  -->
-        <div id="ventas" class="col s12">
-            <div class="table-responsive-vertical">
-                <table class="table striped">
-                    <thead>
-                        <th>Código</th>
-                        <th>Nombre</th>
-                        <th>Valor de</th>
-                        <th>Valor de precio</th>
-                        <th>Cambio total</th>
-                        <th>Venta total</th>
-                        <th>Total en línea</th>
-                        <th>Ganancia bruta</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-title="Código" contenteditable="false">LCYN120</td>
-                            <td data-title="Nombre" contenteditable="false">Centrífuga</td>
-                            <td data-title="Valor" contenteditable="false">$567</td>
-                            <td data-title="ValPrecio" contenteditable="false">$400</td>
-                            <td data-title="CambioTot" contenteditable="false">$567</td>
-                            <td data-title="VentaTot" contenteditable="false">$5679</td>
-                            <td data-title="TotLinea" contenteditable="false">$4000</td>
-                            <td data-title="GananciaBrut" contenteditable="false">$40</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Código" contenteditable="false">JLCINEMEX</td>
-                            <td data-title="Nombre" contenteditable="false">Báscula</td>
-                            <td data-title="Valor" contenteditable="false">$56</td>
-                            <td data-title="ValPrecio" contenteditable="false">$50</td>
-                            <td data-title="CambioTot" contenteditable="false">$123</td>
-                            <td data-title="VentaTot" contenteditable="false">$189</td>
-                            <td data-title="TotLinea" contenteditable="false">$500</td>
-                            <td data-title="GananciaBrut" contenteditable="false">$40</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- PIE DE PÁGINA  -->
+                <footer class="footer-copyright hide">
+                    <div class="row">
+                    <div class="col s12 m6 l9">
+                    </div>
+                   <div class="col">
+                       <br>
+                    <div>
+                    <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown2'>Opciones</a>
+                        <!-- Dropdown Structure -->
+                    <ul id='dropdown2' class='dropdown-content black-text'>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                    <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                    </ul>
+                    </div>
+                    </div>
+
+                    </div>
+                </footer>
             </div>
-            <!-- PIE DE PÁGINA  -->
-            <footer class="footer-copyright">
-                <div class="row">
-                <div class="col s12 m6 l9">      
-                </div>
-               <div class="col">
-                   <br>
-                <div>
-                <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown2'>Opciones</a>
-                    <!-- Dropdown Structure -->
-                <ul id='dropdown2' class='dropdown-content black-text'>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
-                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
-                </ul> 
-                </div>
-                </div>
-                
-                </div>
-            </footer>
+            <span class="mensaje_error"></span>
         </div>
     </div>
 
@@ -469,7 +380,7 @@
                 <a href="#" class="btn-floating mobile-fab-tip">General</a>
             </li>
             <li>
-                <a href="#BuscarPiso" class="btn-floating waves-effect waves-light grey lighten-3 modal-trigger" id="btnPisoYDepartamentoFAB"><i class="material-icons black-text">hot_tub</i></a>
+                <a class="btn-floating waves-effect waves-light grey lighten-3" id="btnPisoYDepartamentoFAB"><i class="material-icons black-text">hot_tub</i></a>
                 <a href="#" class="btn-floating mobile-fab-tip">Piso y Departamento</a>
             </li>
             <li>
@@ -497,20 +408,20 @@
                 <form action="#" id="form-buscarPisoYDepartamento">
                     <div class="row">
                         <div class="input-field col s12">
-                        <select name="select_piso">
-                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        <select id="select_piso">
+
                         </select>
                         <label for="select_piso">Piso</label>
                         </div>
                         <div class="input-field col s12">
-                        <select name="select_depa">
-                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        <select id="select_depa">
+
                         </select>
                         <label for="select_depa">Departamento</label>
                         </div>
                         <div class="input-field col s12">
-                        <select name="select_area">
-                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        <select id="select_area">
+
                         </select>
                         <label for="select_area">Área</label>
                         </div>
@@ -534,8 +445,8 @@
                 <form action="#" id="form-buscarProveedor">
                     <div class="row">
                         <div class="input-field col s12">
-                        <select name="select_proveedor">
-                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        <select id="select_proveedor">
+
                         </select>
                         <label for="select_proveedor">Proveedor</label>
                         </div>
@@ -555,7 +466,7 @@
                 <h4>INFORME DE VENTAS</h4>
             </div>
             <div class="modal-content">
-                <form action="#" id="form-buscarProveedor">
+                <form action="#" id="form-buscarVentas">
                     <div class="row">
                       <div class="input-field col s12">
                       <label for="fecha-ini">Fecha Inicio</label>

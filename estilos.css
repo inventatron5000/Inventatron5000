@@ -159,7 +159,7 @@ html,body{
     }
 /*    Estilos para modals en general     */
     .modal_buscar{
-        max-height: 300px;
+        max-height: 450px;
         max-width: 500px;
     }
 /*Tamaños de fuente de la tabla responsiva*/
@@ -185,8 +185,6 @@ html,body{
         text-align: center;
         width: 99%;
         margin-bottom: 10px !important;
-    }
-    .button-collapse{
     }
     .tab a{
         font-size: 1.1em !important;

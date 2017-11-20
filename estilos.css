@@ -208,3 +208,6 @@ html,body{
     }
 }
 
+.btnVerCliente{
+    cursor:pointer;
+}

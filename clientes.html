@@ -164,21 +164,13 @@
     <div id="contenidoWrapper" class="degradado-cafe">
        <!-- Aqui van todas las tablas, formularios y weas así -->
         <div id="contenidoPrincipal">
-            <div class="table-responsive-vertical">
+            <div >
                 <table class="table striped">
                     <thead>
                         <th>Lista de Clientes</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-title="Nombre del Cliente" contenteditable="false">Bruce Wayne</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Nombre del Cliente" contenteditable="false">Barry Allen</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Nombre del Cliente" contenteditable="false">Peter Parker</td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -246,7 +238,7 @@
                     </div>
                     <div class="row">
                        <div class="input-field col s12">
-                           <textarea name="direccionFact" id="" cols="30" rows="10" class="materialize-textarea"></textarea>
+                           <textarea name="direccionFact" id="" cols="30" rows="10" class="materialize-textarea" required></textarea>
                            <label for="direccionFact">Dirección de Facturación</label>
                        </div>
                      </div>
@@ -338,6 +330,69 @@
             </div>
         </div>
 
+        <!-- Mostrar un cliente -->
+        <div class="modal" id="mostrarCliente">
+           <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>CLIENTE</h4>
+            </div>
+            <div class="modal-content">
+                <form action="#" id="form-mostrarCliente">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" class="validate" name="nombreCliente" disabled>
+                            <label for="nombreCliente">Nombre del Cliente</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input type="text" name="personaContacto" class="validate" disabled>
+                            <label for="personaContacto">Persona de Contacto</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="pais" class="validate" disabled>
+                            <label for="pais">País</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input type="text" name="estado" class="validate" disabled>
+                            <label for="estado">Estado</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input type="text" name="ciudad" class="validate" disabled>
+                            <label for="ciudad">Ciudad</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input type="number" name="cp" class="validate" disabled>
+                            <label for="cp">C.P.</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class="input-field col s12">
+                           <textarea name="direccionFact" id="" cols="30" rows="10" class="materialize-textarea" disabled></textarea>
+                           <label for="direccionFact">Dirección de Facturación</label>
+                       </div>
+                     </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="number" name="telefono" class="validate" disabled>
+                            <label for="telefono">Teléfono</label>
+                        </div>
+                        <div class="input-field col s6">
+                           <input type="email" name="correo" class="validate" disabled>
+                            <label for="correo">Correo</label>
+                       </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6 center-align">
+                            <a href="#" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cerrar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- Buscar un piso para editar -->
         <div class="modal modal-fixed-footer modal_buscar" id="editarCliente">
            <div class="modal-header degradado-gris">
@@ -375,7 +430,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input type="text" name="nombreCliente" class="validate" required>
-                            <label for="nombreCliente">Número de Piso</label>
+                            <label for="nombreCliente">Nombre de Cliente</label>
                         </div>
                     </div>
                     <div class="row">
@@ -393,7 +448,7 @@
         <div class="modal modal-fixed-footer modal_buscar" id="confirmarEliminar">
             <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
-                <h4>Eliminar Piso</h4>
+                <h4>Eliminar Cliente</h4>
             </div>
             <div class="modal-content">
                 <p>El cliente <span class="nombreCliente"></span> está a punto de ser eliminado del sistema <br> ¿Desa continuar?</p>

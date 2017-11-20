@@ -180,26 +180,9 @@
                         <th>Teléfono</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-title="Nombre" contenteditable="false">Bruce Wayne</td>
-                            <td data-title="Dirección" contenteditable="false">Baticueva</td>
-                            <td data-title="Correo" contenteditable="false">nanana@waynetech.com</td>
-                            <td data-title="Teléfono" contenteditable="false">1342543</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Nombre" contenteditable="false">Barry Allen</td>
-                            <td data-title="Dirección" contenteditable="false">Star Labs</td>
-                            <td data-title="Correo" contenteditable="false">barry@ayuda.cisco.com</td>
-                            <td data-title="Teléfono" contenteditable="false">67543</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Nombre" contenteditable="false">Peter Parker</td>
-                            <td data-title="Dirección" contenteditable="false">Queens</td>
-                            <td data-title="Correo" contenteditable="false">homblealaña@starkindustries.com</td>
-                            <td data-title="Teléfono" contenteditable="false">1342543</td>
-                        </tr>
                     </tbody>
                 </table>
+                <span class="mensaje_error"></span>
             </div>
         </div>
     </div>
@@ -250,7 +233,7 @@
                     </div>
                     <div class="row">
                        <div class="input-field col s12">
-                           <textarea name="direccion" id="" cols="30" rows="10" class="materialize-textarea"></textarea>
+                           <textarea name="direccion" id="" cols="30" rows="10" class="materialize-textarea" required></textarea>
                            <label for="direccion">Dirección del Proveedor</label>
                        </div>
                      </div>
@@ -384,7 +367,7 @@
                 <p>El proveedor <span class="nombreProveedor"></span> está a punto de ser eliminado del sistema <br> ¿Desa continuar?</p>
             </div>
             <div class="modal-footer">
-                <a href="#" class="modal-action btn-flat black-text degradado-cafeHoriz" id="btnEliminar">Eliminar</a>
+                <a href="#" class="modal-action btn-flat black-text degradado-cafeHoriz" id="btnEliminarProveedor">Eliminar</a>
                 <a href="#" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cancelar</a>
             </div>
         </div>

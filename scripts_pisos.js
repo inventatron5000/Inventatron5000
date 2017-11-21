@@ -101,7 +101,7 @@ $(document).ready(function(){
     });
     
     //Editar un piso
-    $("#btneditarPiso").click(function(evt){
+    $("#editarPisoForm").submit(function(evt){
         var id= $(this).attr("data-id");
         var numeroPiso = $("#editarPisoForm").find("input[name='numeroPiso']").val();
         var direccionPiso = $("#editarPisoForm").find("input[name='direccionPiso']").val();

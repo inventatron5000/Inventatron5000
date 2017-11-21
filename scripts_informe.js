@@ -25,6 +25,10 @@ $(document).ready(function(){
         informesPedidosPendientes();
     });
 
+    $("#btnPedidosPendientes").click(function(evt){
+        informesPedidosPendientes();
+    });
+
     $("#btnPisoYDepartamento").click(function(evt){
         $("#BuscarPiso").modal("open");
     });
@@ -63,7 +67,7 @@ function listaPisosDepartamentosAreas(){
             var listaPisos = JSON.parse(data);
             var optionPisos = "";
             for(var i in listaPisos)
-                optionPisos+="<option value='"+listaPisos[i].direccionpiso+"'>"+listaPisos[i].nombrepiso+"</option>";
+                optionPisos+="<option value='"+listaPisos[i].direccionpiso+"'>"+listaPisos[i].direccionpiso+"</option>";
             $("#select_piso").html(optionPisos);
             $("#select_piso").material_select();
             $.ajax({//Lista de departamentos y areas
@@ -123,19 +127,20 @@ function informeGeneral(){
             var valorTotal = 0;
             for(var i in informe){ //piso,departamento,codigo,equipo,cantidad,valor,total :: nombrepiso,departamento,codigo,equipo,cantidad,costocompra,precioventa,totallinea
                 tabla+="<tr><td data-title='Piso'>"+informe[i].nombrepiso+"</td>";
-                tabla+="<tr><td data-title='Departamento'>"+informe[i].departamento+"</td>";
-                tabla+="<tr><td data-title='Código'>"+informe[i].codigo+"</td>";
-                tabla+="<tr><td data-title='Equipo'>"+informe[i].equipo+"</td>";
-                tabla+="<tr><td data-title='Cantidad'>"+informe[i].cantidad+"</td>";
-                tabla+="<tr><td data-title='Costo'>"+informe[i].costocompra+"</td>";
-                tabla+="<tr><td data-title='Precio'>"+informe[i].precioventa+"</td>";
-                tabla+="<tr><td data-title='Total en Línea'>"+informe[i].totallinea+"</td></tr>";
+                tabla+="<td data-title='Departamento'>"+informe[i].departamento+"</td>";
+                tabla+="<td data-title='Código'>"+informe[i].codigo+"</td>";
+                tabla+="<td data-title='Equipo'>"+informe[i].equipo+"</td>";
+                tabla+="<td data-title='Cantidad'>"+informe[i].cantidad+"</td>";
+                tabla+="<td data-title='Costo'>"+informe[i].costocompra+"</td>";
+                tabla+="<td data-title='Precio'>"+informe[i].precioventa+"</td>";
+                tabla+="<td data-title='Total en Línea'>"+informe[i].totallinea+"</td></tr>";
                 totalEquipos+=parseInt(informe[i].totallinea);
                 valorTotal+=parseInt(informe[i].totallinea)*parseInt(informe[i].costocompra);;
             }
             $("#general > .footer-copyright > div.row > div.col > label.totalEquipos").html(totalEquipos);
             $("#general > .footer-copyright > div.row > div.col > label.valorTotal").html(valorTotal);
             $("#general > div > table > tbody").html(tabla);
+            $("#general > .footer-copyright").show();
         }
         else{
             $("#contenidoPrincipal > span.mensaje_error").html("No hay informes por mostrar");
@@ -207,6 +212,7 @@ function listaProveedores(){
                 opciones+="<option value='"+listaProveedores[i].nombrepr+"'>"+listaProveedores[i].nombrepr+"</option>";
             $("#select_proveedor").html(opciones);
             $("#select_proveedor").material_select();
+             $("#proveedor > .footer-copyright").show();
         }else{
             $("#contenidoPrincipal > span.mensaje_error").html("No hay informes por mostrar");
         }
@@ -326,4 +332,26 @@ function informeVentas(ini,fin){
             $("#contenidoPrincipal > span.mensaje_error").html("No hay informes por mostrar");
         $("#BuscarVentas").modal("close");
     });
+}
+
+function demoFromHTML(tabla) {
+            var doc = new jsPDF();
+            doc.text("Reporte del Hospital Star Medica Lomas Verdes", 40, 16);
+            doc.setFontSize(11);
+            doc.setTextColor(100);
+            var text = "A continuación se presenta un reporte correspondiente a las actividades que se han llevado a cabo en el";
+            doc.text(text, 14, 30);
+            text = "Hospital Star Medica ubicado en Avenida Lomas Verdes 2165, Los Alamos, 53230 Naucalpan de Juárez,";
+            doc.text(text, 14, 37);
+            text = "Estado de México.";
+            doc.text(text, 14, 44);
+            var f=new Date();
+            var cad=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
+            text = "Se expide la presente el "+f.getDay()+" de "+f.getMonth()+" del "+f.getFullYear()+" a las "+f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
+            doc.text(text, 14, 51);
+            var elem = document.getElementById(tabla);
+            var res = doc.autoTableHtmlToJson(elem);
+            doc.autoTable(res.columns, res.data, {startY: 57});
+            doc.save('Reporte.pdf');
+            return doc;
 }

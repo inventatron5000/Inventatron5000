@@ -22,6 +22,9 @@
         <link rel="stylesheet" href="tabla-responsiva.css">
     <!-- Scripts de este subsistema -->
         <script src="scripts_informe.js"></script>
+        <script type="text/javascript" src="jspdf.debug.js"></script>
+        <script src="faker.min.js"></script>
+        <script src="jspdf.plugin.autotable.js"></script>
 </head>
 <body>
     <!-- Dentro de la etiqueta nav van todos los elementos de navegacion: menu de escritorio y menu movil-->
@@ -151,8 +154,8 @@
         <div id="contenidoPrincipal">
 
             <div id="general" class="col s12">
-                <div class="table-responsive-vertical">
-                    <table class="table striped">
+                <div>
+                    <table id="pdf" class="table striped">
                         <thead>
                             <th>Piso</th>
                             <th>Departamento</th>
@@ -169,7 +172,7 @@
                     </table>
                 </div>
                 <!-- PIE DE PÁGINA  -->
-                <footer class="footer-copyright hide">
+                <footer class="footer-copyright">
                     <div class="row right">
                         <div class="col">
                             <label for="" class="black-text">Total de equipos en inventario</label> <br>
@@ -178,9 +181,8 @@
                                 <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown4'>Opciones</a>
                                     <!-- Dropdown Structure -->
                                 <ul id='dropdown4' class='dropdown-content black-text'>
-                                    <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
-                                    <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
-                                    <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                                    <li><a href="#!" class="black-text" onclick="javascript:demoFromHTML('pdf')"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                                    <li><a href="#!" class="black-text" name="imprimir" value="Imprimir" onclick="window.print();"><i class="material-icons black-text">print</i>Imprimir</a></li>
                                     <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
                                 </ul>
                             </div>
@@ -195,7 +197,7 @@
              <!-- PEDIDOS PENDIENTES  -->
             <div id="pedidosPendientes" class="col s12">
                 <div class="table-responsive-vertical">
-                    <table class="table striped">
+                    <table  id="pdfpen" class="table striped">
                         <thead>
                             <th>No. Pedido</th>
                             <th>Código</th>
@@ -209,28 +211,27 @@
                     </table>
                 </div>
                 <!-- PIE DE PÁGINA  -->
-                <footer class="footer-copyright hide">
+                <footer class="footer-copyright">
                     <div class="row">
-                       <div class="col">
-                           <br>
-                        <div>
+                        <div class="col s12 m12 l8">
+                        </div>
+                        <div class="col">
                             <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown3'>Opciones</a>
                                 <!-- Dropdown Structure -->
                             <ul id='dropdown3' class='dropdown-content black-text'>
-                                <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
-                                <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
-                                <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                                <li><a href="#!" class="black-text" onclick="javascript:demoFromHTML('pdfpen')"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                                <li><a href="#!" class="black-text" name="imprimir" value="Imprimir" onclick="window.print();"><i class="material-icons black-text">print</i>Imprimir</a></li>
                                 <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
                             </ul>
                         </div>
                         </div>
-                    </div>
+
                 </footer>
             </div>
              <!-- PISO Y DEPARTAMENTO  -->
             <div id="pisoYdepartamento" class="col s12">
                 <div class="table-responsive-vertical">
-                    <table class="table striped">
+                    <table id="pdfd" class="table striped">
                         <thead>
                             <th>Código</th>
                             <th>Equipo</th>
@@ -244,7 +245,7 @@
                     </table>
                 </div>
                 <!-- PIE DE PÁGINA  -->
-                <footer class="footer-copyright hide">
+                <footer class="footer-copyright">
                     <div class="row">
                     <div class="col s12 m6 l6">
                     </div>
@@ -266,9 +267,8 @@
                     <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown5'>Opciones</a>
                         <!-- Dropdown Structure -->
                     <ul id='dropdown5' class='dropdown-content black-text'>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                    <li><a href="#!" class="black-text" onclick="javascript:demoFromHTML('pdfd')"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                    <li><a href="#!" class="black-text" name="imprimir" value="Imprimir" onclick="window.print();"><i class="material-icons black-text">print</i>Imprimir</a></li>
                     <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
                     </ul>
                     </div>
@@ -285,7 +285,7 @@
              <!-- PROVEEDORES  -->
             <div id="proveedor" class="col s12">
                 <div class="table-responsive-vertical">
-                    <table class="table striped">
+                    <table id="pdfp" class="table striped">
                         <thead>
                             <th>Código</th>
                             <th>Equipo</th>
@@ -299,7 +299,7 @@
                     </table>
                 </div>
                 <!-- PIE DE PÁGINA  -->
-                <footer class="footer-copyright hide">
+                <footer class="footer-copyright">
                     <div class="row">
                     <div class="col s12 m6 l8">
                     </div>
@@ -311,9 +311,8 @@
                     <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown1'>Opciones</a>
                         <!-- Dropdown Structure -->
                     <ul id='dropdown1' class='dropdown-content black-text'>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                    <li><a href="#!" class="black-text" onclick="javascript:demoFromHTML('pdfp')"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                    <li><a href="#!" class="black-text" name="imprimir" value="Imprimir" onclick="window.print();"><i class="material-icons black-text">print</i>Imprimir</a></li>
                     <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
                     </ul>
                     </div>
@@ -330,7 +329,7 @@
             <!-- VENTAS  -->
             <div id="ventas" class="col s12">
                 <div class="table-responsive-vertical">
-                    <table class="table striped">
+                    <table id="pdfv" class="table striped">
                         <thead>
                             <th>Código</th>
                             <th>Nombre</th>
@@ -346,7 +345,7 @@
                     </table>
                 </div>
                 <!-- PIE DE PÁGINA  -->
-                <footer class="footer-copyright hide">
+                <footer class="footer-copyright">
                     <div class="row">
                     <div class="col s12 m6 l9">
                     </div>
@@ -356,9 +355,8 @@
                     <a class='dropdown-button btn-flat black-text white' href='#' data-activates='dropdown2'>Opciones</a>
                         <!-- Dropdown Structure -->
                     <ul id='dropdown2' class='dropdown-content black-text'>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">remove_red_eye</i> <br>Vista Previa</a></li>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">file_download</i>Guardar</a></li>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">print</i>Imprimir</a></li>
+                    <li><a href="#!" class="black-text" onclick="javascript:demoFromHTML('pdfv')"><i class="material-icons black-text">file_download</i>Guardar</a></li>
+                    <li><a href="#!" class="black-text" name="imprimir" value="Imprimir" onclick="window.print();"><i class="material-icons black-text">print</i>Imprimir</a></li>
                     <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
                     </ul>
                     </div>

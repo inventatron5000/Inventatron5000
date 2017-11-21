@@ -40,10 +40,10 @@ $(document).ready(function(){
             }
             else
                 Materialize.toast("Error inesperado",2000,"rounded");
-                
-            } 
+
+            }
         });
-        
+
 
         //Borrar datos y cerrar modal
         $(this).find("input[name='nombre']").val("");
@@ -60,17 +60,17 @@ $(document).ready(function(){
         $("#agregarUsuario").modal('close');
         mostrarUsuarios();
         return false;
-       
+
     });
 
     //Buscar usuario para editar
     $("#form-buscarUsuario").submit(function(evt){
         var nombre="1";
         var usuario="1";
-        if($('input:radio[name=tipoBusqueda]:checked').val()=="user") { 
+        if($('input:radio[name=tipoBusqueda]:checked').val()=="user") {
             usuario=$(this).find("input[name='busqueda']").val();
         }
-        if($('input:radio[name=tipoBusqueda]:checked').val()=="nombre") { 
+        if($('input:radio[name=tipoBusqueda]:checked').val()=="nombre") {
             nombre=$(this).find("input[name='busqueda']").val();
         }
         $.ajax({
@@ -131,7 +131,7 @@ $(document).ready(function(){
 
             }
         });
-        
+
         return false;
     });
     //Editar Usuario
@@ -182,10 +182,10 @@ $(document).ready(function(){
     $("#form-eliminarUsuario").submit(function(evt){
         nombre="1";
         usuario="1";
-        if($('input:radio[name=tipoBusqueda1]:checked').val()=="user") { 
+        if($('input:radio[name=tipoBusqueda1]:checked').val()=="user") {
             usuario=$(this).find("input[name='busqueda']").val();
         }
-        if($('input:radio[name=tipoBusqueda1]:checked').val()=="nombre") { 
+        if($('input:radio[name=tipoBusqueda1]:checked').val()=="nombre") {
             nombre=$(this).find("input[name='busqueda']").val();
         }
         $.ajax({
@@ -233,7 +233,7 @@ $(document).ready(function(){
                 operacion:'B',
                 nomusuario:usuario,
                 nombre:nombre
-                
+
             }
         }).done(function(x){
             if(x.substring(0,1)=="O"){
@@ -247,10 +247,10 @@ $(document).ready(function(){
     $("#form-cambiarPass").submit(function(evt){
         nombre="1";
         usuario="1";
-        if($('input:radio[name=tipoBusqueda2]:checked').val()=="user") { 
+        if($('input:radio[name=tipoBusqueda2]:checked').val()=="user") {
             usuario=$(this).find("input[name='busqueda']").val();
         }
-        if($('input:radio[name=tipoBusqueda2]:checked').val()=="nombre") { 
+        if($('input:radio[name=tipoBusqueda2]:checked').val()=="nombre") {
             nombre=$(this).find("input[name='busqueda']").val();
         }
         $.ajax({
@@ -288,7 +288,7 @@ $(document).ready(function(){
         if(contraseña == confirmarContraseña){
             //CAMBIAR CONTRASEÑA
             $("#cambiarPass-form").modal("close");
-            
+
             $.ajax({
             url:"php/admin.php",
             method:"post",
@@ -304,12 +304,12 @@ $(document).ready(function(){
             if(usuario=="1")
                 Materialize.toast("Se actualizó la contraseña del usuario "+nombre,2000,"rounded");
         });
-            
+
         }else
             Materialize.toast("ERROR! Las contraseñas no coinciden",2000,"rounded");
         return false;
     });
-    
+
     function mostrarUsuarios(){
     $.ajax({
         url:"php/admin.php",

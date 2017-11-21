@@ -24,7 +24,7 @@ $(document).ready(function(){
     $("#btnPedidosPendientesFAB").click(function(evt){
         informesPedidosPendientes();
     });
-    
+
     $("#btnPedidosPendientes").click(function(evt){
         informesPedidosPendientes();
     });
@@ -311,7 +311,7 @@ function informeVentas(ini,fin){
         $("#ventas > div > table > tbody").html("");
         if(data!="[]"){
             console.log(data);
-            var informes = JSON.parse(data); 
+            var informes = JSON.parse(data);
             var tabla = "";
             for(var i in informes){    //codigo, equipo, costocompra,precioventa,fechaventa, costototal,ventatotal, gananciabruta
                 tabla+="<tr><td data-title='Código'>"+informes[i].codigo+"</td>";
@@ -347,7 +347,7 @@ function demoFromHTML(tabla) {
             doc.text(text, 14, 44);
             var f=new Date();
             var cad=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
-            text = "Se expide la presente el "+f.getDay()+" de "+f.getMonth()+" del "+f.getFullYear()+" a las "+f.getHours()+":"+f.getMinutes()+":"+f.getSeconds(); 
+            text = "Se expide la presente el "+f.getDay()+" de "+f.getMonth()+" del "+f.getFullYear()+" a las "+f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
             doc.text(text, 14, 51);
             var elem = document.getElementById(tabla);
             var res = doc.autoTableHtmlToJson(elem);

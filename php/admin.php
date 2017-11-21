@@ -57,7 +57,7 @@
                 $q = "UPDATE usuario SET contra='$contra' WHERE nomusuario='$nomusuario'";
                 pg_query($q);
                 echo "OK";
-            
+
         break;
         case 'B': //Baja
             if(strcmp ($nomusuario,"1" )==0 && strcmp ($nombre,"1")!=0)

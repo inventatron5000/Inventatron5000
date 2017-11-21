@@ -35,6 +35,7 @@ function validarLogin(){
             if(usuario[2]!="A"){
                 $(".btnAdmin").hide();
             }
+            $(".nombreUsuario > a").html(usuario[1]);
         }
     });
 }

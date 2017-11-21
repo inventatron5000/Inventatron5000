@@ -24,6 +24,10 @@ $(document).ready(function(){
     $("#btnPedidosPendientesFAB").click(function(evt){
         informesPedidosPendientes();
     });
+    
+    $("#btnPedidosPendientes").click(function(evt){
+        informesPedidosPendientes();
+    });
 
     $("#btnPisoYDepartamento").click(function(evt){
         $("#BuscarPiso").modal("open");
@@ -63,7 +67,7 @@ function listaPisosDepartamentosAreas(){
             var listaPisos = JSON.parse(data);
             var optionPisos = "";
             for(var i in listaPisos)
-                optionPisos+="<option value='"+listaPisos[i].direccionpiso+"'>"+listaPisos[i].nombrepiso+"</option>";
+                optionPisos+="<option value='"+listaPisos[i].direccionpiso+"'>"+listaPisos[i].direccionpiso+"</option>";
             $("#select_piso").html(optionPisos);
             $("#select_piso").material_select();
             $.ajax({//Lista de departamentos y areas
@@ -123,19 +127,20 @@ function informeGeneral(){
             var valorTotal = 0;
             for(var i in informe){ //piso,departamento,codigo,equipo,cantidad,valor,total :: nombrepiso,departamento,codigo,equipo,cantidad,costocompra,precioventa,totallinea
                 tabla+="<tr><td data-title='Piso'>"+informe[i].nombrepiso+"</td>";
-                tabla+="<tr><td data-title='Departamento'>"+informe[i].departamento+"</td>";
-                tabla+="<tr><td data-title='Código'>"+informe[i].codigo+"</td>";
-                tabla+="<tr><td data-title='Equipo'>"+informe[i].equipo+"</td>";
-                tabla+="<tr><td data-title='Cantidad'>"+informe[i].cantidad+"</td>";
-                tabla+="<tr><td data-title='Costo'>"+informe[i].costocompra+"</td>";
-                tabla+="<tr><td data-title='Precio'>"+informe[i].precioventa+"</td>";
-                tabla+="<tr><td data-title='Total en Línea'>"+informe[i].totallinea+"</td></tr>";
+                tabla+="<td data-title='Departamento'>"+informe[i].departamento+"</td>";
+                tabla+="<td data-title='Código'>"+informe[i].codigo+"</td>";
+                tabla+="<td data-title='Equipo'>"+informe[i].equipo+"</td>";
+                tabla+="<td data-title='Cantidad'>"+informe[i].cantidad+"</td>";
+                tabla+="<td data-title='Costo'>"+informe[i].costocompra+"</td>";
+                tabla+="<td data-title='Precio'>"+informe[i].precioventa+"</td>";
+                tabla+="<td data-title='Total en Línea'>"+informe[i].totallinea+"</td></tr>";
                 totalEquipos+=parseInt(informe[i].totallinea);
                 valorTotal+=parseInt(informe[i].totallinea)*parseInt(informe[i].costocompra);;
             }
             $("#general > .footer-copyright > div.row > div.col > label.totalEquipos").html(totalEquipos);
             $("#general > .footer-copyright > div.row > div.col > label.valorTotal").html(valorTotal);
             $("#general > div > table > tbody").html(tabla);
+            $("#general > .footer-copyright").show();
         }
         else{
             $("#contenidoPrincipal > span.mensaje_error").html("No hay informes por mostrar");
@@ -207,6 +212,7 @@ function listaProveedores(){
                 opciones+="<option value='"+listaProveedores[i].nombrepr+"'>"+listaProveedores[i].nombrepr+"</option>";
             $("#select_proveedor").html(opciones);
             $("#select_proveedor").material_select();
+             $("#proveedor > .footer-copyright").show();
         }else{
             $("#contenidoPrincipal > span.mensaje_error").html("No hay informes por mostrar");
         }

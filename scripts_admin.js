@@ -2,6 +2,8 @@ var rol="1";
 $(document).ready(function(){
     mostrarUsuarios();
     var rol="1"
+    var nombre="1";
+    var usuario="1";
     $("#form-agregarUsuario").submit(function(evt){
         var nombre = $(this).find("input[name='nombre']").val();
         var apPaterno = $(this).find("input[name='apPaterno']").val();
@@ -30,7 +32,6 @@ $(document).ready(function(){
                 rol:rol
             }
         }).done(function(data){
-            alert(data);
             if(data.substring(0,1)=="E")
                 Materialize.toast("¡Ya existe ese usuario!",2000,"rounded");
             else{
@@ -145,7 +146,6 @@ $(document).ready(function(){
         var nomusuario = $("#form-editarUsuarioForm").find("input[name='usuario']").val();
         var contraseña = $("#form-editarUsuarioForm").find("input[name='contraseña']").val();
         var rol=$("#form-editarUsuarioForm").find("select[name='rol']").val();
-
         //Funcion de agregar rol
         $.ajax({
             url:"php/admin.php",
@@ -180,8 +180,8 @@ $(document).ready(function(){
 
     //Buscar usuario para eliminar
     $("#form-eliminarUsuario").submit(function(evt){
-        var nombre="1";
-        var usuario="1";
+        nombre="1";
+        usuario="1";
         if($('input:radio[name=tipoBusqueda1]:checked').val()=="user") { 
             usuario=$(this).find("input[name='busqueda']").val();
         }
@@ -198,14 +198,19 @@ $(document).ready(function(){
             }
         }).done(function(data){
             if(data.substring(0,1)!="N"){
-                $("#confirmarEliminar").find("span.rol").html(rol);
+                if(nombre=="1")
+                 $("#confirmarEliminar").find("span.usuario").html(usuario);
+                if(usuario=="1")
+                $("#confirmarEliminar").find("span.usuario").html(nombre);
                 $("#buscarUsuario").modal("close");
                 $("#confirmarEliminar").modal("open");
             }
             else{
-                alert("hola");
                 $("#buscarUsuario").modal("close");
-                var stg = "No se encontró el usuario \""+nomusuario+"\"";
+                if(nombre=="1")
+                var stg = "No se encontró el usuario \""+usuario+"\"";
+                if(usuario=="1")
+                var stg = "No se encontró el nombre \""+nombre+"\"";
                 Materialize.toast(stg,2000,'rounded');
             }
         });
@@ -215,29 +220,67 @@ $(document).ready(function(){
     });
     //Eliminar alv
     $("#btnEliminarUsuario").click(function(evt){
-        var rol = $("#confirmarEliminar").find("span.rol").html();
-        var nom = $("#confirmarEliminar").find("span.nombre").html();
         $("#confirmarEliminar").modal("close");
-        Materialize.toast("Se borró el "+rol+" "+nom,2000,"rounded");
+        if(nombre=="1")
+             Materialize.toast("Se borró el "+usuario+" ",2000,"rounded");
+        if(usuario=="1")
+             Materialize.toast("Se borró el usuario con nombre "+nombre+" ",2000,"rounded");
+        $("#confirmarEliminar").modal("close");
+        $.ajax({
+            url:"php/admin.php",
+            method:"post",
+            data:{
+                operacion:'B',
+                nomusuario:usuario,
+                nombre:nombre
+                
+            }
+        }).done(function(x){
+            if(x.substring(0,1)=="O"){
+                var stg = "Se eliminó el usuario "+$("#confirmarEliminar").find("span.usuario").html();
+                Materialize.toast(stg,2000,"rounded");
+            }
+        });
+        mostrarUsuarios();
     });
     //Buscar usuario para cambiar su contraseña
     $("#form-cambiarPass").submit(function(evt){
-        var tipoBusqueda = $(this).find("input[name='tipoBusqueda']:checked").val();
-        var termino = $(this).find("input[name='busqueda']").val();
+        nombre="1";
+        usuario="1";
+        if($('input:radio[name=tipoBusqueda2]:checked').val()=="user") { 
+            usuario=$(this).find("input[name='busqueda']").val();
+        }
+        if($('input:radio[name=tipoBusqueda2]:checked').val()=="nombre") { 
+            nombre=$(this).find("input[name='busqueda']").val();
+        }
+        $.ajax({
+            url:"php/admin.php",
+            method:"post",
+            data:{
+                operacion:'C',
+                nombre:nombre,
+                nomusuario:usuario
+            }
+        }).done(function(data){
+            if(data.substring(0,1)!="N"){
+                $("#cambiarPass").modal("close");
+                $("#cambiarPass-form").modal("open");
+            }
+            else{
+                $("#cambiarPass").modal("close");
+                if(nombre=="1")
+                var stg = "No se encontró el usuario \""+usuario+"\"";
+                if(usuario=="1")
+                var stg = "No se encontró el nombre \""+nombre+"\"";
+                Materialize.toast(stg,2000,'rounded');
+            }
+        });
 
-        //BUSCAR USUARIO
-
-        var nombreCompleto = "Steve Rogers";
-        $("#cambiarPass-form").find("input[name='nombreCompleto']").val(nombreCompleto);
-        $("#cambiarPass-form").find("label[for='nombreCompleto']").attr("class","active");
-        $("#cambiarPass").modal("close");
-        $("#cambiarPass-form").modal("open");
         return false;
+
     });
     //Cambiar contraseña
     $("#cambiarPass-form").submit(function(evt){
-
-        var nombre = $(this).find("input[name='nombreCompleto']").val().split(" ")[0];
         var contraseña = $(this).find("input[name='contraseña']").val();
         var confirmarContraseña = $(this).find("input[name='confirmarContraseña']").val();
 
@@ -245,7 +288,23 @@ $(document).ready(function(){
         if(contraseña == confirmarContraseña){
             //CAMBIAR CONTRASEÑA
             $("#cambiarPass-form").modal("close");
-            Materialize.toast("Se actualizó la contraseña del usuario "+nombre,2000,"rounded");
+            
+            $.ajax({
+            url:"php/admin.php",
+            method:"post",
+            data:{
+                operacion:'Con',
+                nombre:nombre,
+                nomusuario:usuario,
+                contra:contraseña
+            }
+        }).done(function(data){
+            if(nombre=="1")
+                Materialize.toast("Se actualizó la contraseña del usuario "+usuario,2000,"rounded");
+            if(usuario=="1")
+                Materialize.toast("Se actualizó la contraseña del usuario "+nombre,2000,"rounded");
+        });
+            
         }else
             Materialize.toast("ERROR! Las contraseñas no coinciden",2000,"rounded");
         return false;

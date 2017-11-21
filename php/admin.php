@@ -50,11 +50,20 @@
                 echo "OK";
             }
         break;
+            case 'Con':   //Modificar
+            if(strcmp ($nomusuario,"1" )==0 && strcmp ($nombre,"1")!=0)
+                $q = "UPDATE usuario SET contra='$contra' WHERE nombre='$nombre'";
+            if(strcmp ($nombre,"1" )==0 && strcmp ($nomusuario,"1")!=0)
+                $q = "UPDATE usuario SET contra='$contra' WHERE nomusuario='$nomusuario'";
+                pg_query($q);
+                echo "OK";
+            
+        break;
         case 'B': //Baja
-            if(strcmp ($codigo,"1" )==0 && strcmp ($equipo,"1")!=0)
-            $q0 = "DELETE FROM equipo WHERE equipo = '$equipo'";
-            if(strcmp ($equipo,"1" )==0 && strcmp ($codigo,"1")!=0)
-            $q0 = "DELETE FROM equipo WHERE codigo = '$codigo'";
+            if(strcmp ($nomusuario,"1" )==0 && strcmp ($nombre,"1")!=0)
+            $q0 = "DELETE FROM usuario WHERE nombre = '$nombre'";
+            if(strcmp ($nombre,"1" )==0 && strcmp ($nomusuario,"1")!=0)
+            $q0 = "DELETE FROM usuario WHERE nomusuario = '$nomusuario'";
             $res = pg_query($q0);
             if($res)
                 echo "OK";

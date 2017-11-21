@@ -294,12 +294,12 @@
             <form action="#" id="form-cambiarPass">
                 <div class="row">
                     <p class="col s6">
-                      <input name="tipoBusqueda" type="radio" id="buscarUser-cambiar" required/>
-                      <label for="buscarUser-cambiar">Buscar por nombre de pila</label>
+                      <input name="tipoBusqueda2" type="radio" id="buscarNombre-cambiar" value="nombre" required/>
+                      <label for="buscarNombre-cambiar">Buscar por nombre de pila</label>
                     </p>
                     <p class="col s6">
-                        <input name="tipoBusqueda" type="radio" id="buscarNombre-cambiar" required/>
-                        <label for="buscarNombre-cambiar">Buscar por nombre de usuario</label>
+                        <input name="tipoBusqueda2" type="radio" id="buscarUsuario-cambiar" value="user"required/>
+                        <label for="buscarUsuario-cambiar">Buscar por nombre de usuario</label>
                     </p>
                 </div>
                 <div class="row">
@@ -326,12 +326,6 @@
         </div>
         <div class="modal-content">
             <form action="#" id="cambiarPass-form">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <label for="nombreCompleto" >Nombre Completo</label>
-                        <input type="text" name="nombreCompleto" disabled>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <input type="password" name="contraseña" required>
@@ -361,7 +355,7 @@
                 <h4>ELIMINAR USUARIO</h4>
             </div>
             <div class="modal-content">
-                <p>El <span class="rol"></span> <span class="nombre"></span> está apunto de ser eliminado<br> ¿Desa continuar?</p>
+                <p>El usuario <span class="usuario"></span> está apunto de ser eliminado<br> ¿Desa continuar?</p>
             </div>
             <div class="modal-footer">
                 <a href="#" class="modal-action btn-flat black-text degradado-cafeHoriz" id="btnEliminarUsuario">Eliminar</a>

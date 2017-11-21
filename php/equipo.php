@@ -18,7 +18,7 @@
                     else
                     echo '<option  selected="selected" value="'.$fila["nombre"].'">'.$fila["nombre"].'</option>';
                 }
-                echo '<option  selected="selected" value="'.$campo.'">'.$campo.'</option>';
+                echo '<option  selected="selected" value="1">'.$campo.'</option>';
             }
             
         break;
@@ -39,7 +39,7 @@
                         echo '<option  selected="selected" value="'.$fila["area"].'">'.$fila["area"].'</option>';
                     }
                 }
-                 echo '<option  selected="selected" value="'.$campo.'">'.$campo.'</option>';
+                 echo '<option  selected="selected" value="1">'.$campo.'</option>';
             }
         break;
         case 'SP'://llenar select piso
@@ -58,7 +58,7 @@
                     else
                     echo '<option  selected="selected" value="'.$fila["direccionpiso"].'">'.$fila["direccionpiso"].'</option>';
                 }
-                echo '<option  selected="selected" value="'.$campo.'">'.$campo.'</option>';
+                echo '<option  selected="selected" value="1">'.$campo.'</option>';
             }
             
         break;
@@ -102,10 +102,10 @@
         case 'M':   //Modificar
             $q0 = "SELECT codigo FROM equipo WHERE equipo='$equipo'";
             $res0 = pg_query($q0);
-            if($row0 = pg_fetch_array($res0))
+            if(pg_num_rows($res0)<0)
                 echo "NOK";
             else{
-                $q = "UPDATE equipo SET codigo= '$codigo', equipo='$equipo',departamento='$departamento',area='$area',costocompra='$costocompra',precioventa='$precioventa',modelo='$modelo',serie='$serie',piso='$piso',cantidad='$cantidad',fechasolicitud='$fechasolicitud',fecharecibo='$fecharecibo',fechainstalacion='$fechainstalacion' WHERE codigo='$codigopast'";
+                $q = "UPDATE equipo SET codigo= '$codigo', equipo='$equipo',departamento='$departamento',area='$area',costocompra='$costocompra',precioventa='$precioventa',modelo='$modelo',serie='$serie',piso='$piso',cantidad='$cantidad',fechasolicitud='$fechasolicitud',fecharecibo='$fecharecibo',fechainstalacion='$fechainstalacion' WHERE codigo='$codigo'";
                 pg_query($q);
                 echo "OK";
             }

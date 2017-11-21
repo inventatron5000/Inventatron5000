@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var departamento="1";
     var piso="1";
+    var area="1";
     mostrarEquipos()
    $('.datepicker').pickadate({
           format: 'dd/mm/yyyy',
@@ -146,13 +147,13 @@ $(document).ready(function(){
                 var datosEquipo = JSON.parse(data);
                 var codigo = datosEquipo.codigo;
                 var equipo = datosEquipo.equipo;
-                var departamento = datosEquipo.departamento;
-                var area = datosEquipo.area;
+                departamento = datosEquipo.departamento;
+                area = datosEquipo.area;
                 var costocompra = datosEquipo.costocompra;
                 var precioventa = datosEquipo.precioventa;
                 var modelo = datosEquipo.modelo;
                 var serie = datosEquipo.serie;
-                var piso = datosEquipo.piso;
+                piso = datosEquipo.piso;
                 var cantidad=datosEquipo.cantidad;
                 var fechasolicitud=datosEquipo.fechasolicitud;
                 var fecharecibo=datosEquipo.fecharecibo;
@@ -269,21 +270,32 @@ $(document).ready(function(){
     });
     //Editar un depa
     $("#form-editarEquipo").submit(function(evt){
+        
         var id= $(this).attr("data-id");
         var codigo =$(this).find("input[name='codigo']").val();
         var equipo = $(this).find("input[name='equipo']").val();
-        var departamento= $( "#select_departamento option:selected" ).text();
-        var area= $( "#select_area option:selected" ).text();
+        //var departamento= $('#select_departamento[value="0"]').val();
+        //var area= $( "#select_area option:selected" ).text();
         var costocompra =$(this).find("input[name='costoC']").val();
         var precioventa =$(this).find("input[name='precioVen']").val();
         var modelo =$(this).find("input[name='modelo']").val();
         var serie=$(this).find("input[name='serie']").val();
-        var piso= $( "#select_piso option:selected" ).text();
+        //var piso= $( "#select_piso option:selected" ).text();
         var cantidad =$(this).find("input[name='cantidad']").val();
-        var fechasolicitud=$(this).find("input[name='fechaSol']").val();
+        var fechasolicitud=$(this).find("input[name='fechaSole']").val();
         var fecharecibo=$(this).find("input[name='fechaRecibo']").val();
         var fechainstalacion=$(this).find("input[name='fechaInst']").val();
         var proveedor=$(this).find("input[name='proveedor']").val();
+         $("#select_departamento").change(function(){
+         departamento= $( "#select_departamento option:selected" ).text();
+        });
+        $("#select_area").change(function(){
+        area= $( "#select_area option:selected" ).text();
+        var piso= $( "#select_piso option:selected" ).text();   
+        });
+        $("#select_piso").change(function(){
+        piso= $( "#select_piso option:selected" ).text();   
+        });
         //AQUI VA LA FUNCION QUE CONECTA CON LA DB
         $.ajax({
             url:"php/equipo.php",
@@ -306,6 +318,7 @@ $(document).ready(function(){
                 proveedor:proveedor  
             }
         }).done(function(data){
+            alert(area);
             console.log(data);
             if(data.substring(0,1)=="N"){
                 Materialize.toast("El nuevo codigo del nuevo equipo ya existe",2000,"rounded");

@@ -50,5 +50,21 @@
                 array_push($informe,$row);
             echo json_encode($informe);
         break;
+        case "PP":
+            $q = "SELECT * FROM informependientes";
+            $res = pg_query($q);
+            $lista = array();
+            while($row = pg_fetch_array($res))
+                array_push($lista,$row);
+            echo json_encode($lista);
+        break;
+        case "V":   //codigo, equipo, costocompra,precioventa,fechaventa, costototal,ventatotal, gananciabruta
+            $q = "SELECT * FROM informeventas WHERE fechaventa >= '$inicio' AND fechaventa<='$fin'";
+            $res = pg_query($q);
+            $informe = array();
+            while($row = pg_fetch_array($res))
+                array_push($informe,$row);
+            echo json_encode($informe);
+        break;
     }
 ?>

@@ -272,8 +272,10 @@ function mostrarClientes(){
             operacion:'L'
         }
     }).done(function(data){
+        $("#contenidoPrincipal > div > table > tbody").html("")
+        $("#contenidoPrincipal > span.error_msj").html("");
         if(data=="[]")
-            $("#contenidoPrincipal").append("No hay clientes por mostrar");
+            $("#contenidoPrincipal > span.error_msj").html("No hay clientes por mostrar");
         else{
             var listaClientes = JSON.parse(data);
             var tabla = "";

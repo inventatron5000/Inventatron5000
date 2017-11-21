@@ -18,6 +18,7 @@ $(document).ready(function(){
                 nombreDepa:nombreDepa
             }
         }).done(function(data){
+            alert(JSON.stringify(data));
             if(data=="EXISTE")
                 Materialize.toast("¡Ya existe ese cliente!",2000,"rounded");
             else if(data=="OK"){

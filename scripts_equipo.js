@@ -97,7 +97,7 @@ $(document).ready(function(){
             }
             else
                 Materialize.toast("Error inesperado",2000,"rounded");
-                
+                console.log(data)
             } 
         });
         

@@ -192,6 +192,8 @@
                         <th>Fecha de Emisión</th>
                         <th>No. Pedido</th>
                         <th>Proveedor</th>
+                        <th>Equipo</th>
+                        <th>Cantidad</th>
                         <th>Importe</th>
                         <th>Estado</th>
                     </thead>
@@ -256,13 +258,15 @@
             <div class="modal-content">
                 <form action="#" id="form-pedir">
                     <div class="row">
-                        <div class="input-field col s10">
+                        <div class="input-field col s6">
                             <select id="select_proveedor">
                             </select>
                             <label for="select_proveedor">Proveedor</label>
                         </div>
-                        <div class="input-field col s2">
-                            <a href="#" class="btn grey"><i class="material-icons">add</i></a>
+                        <div class="input-field col s6">
+                            <select name="select_piso">
+                            </select>
+                            <label for="select_piso">Piso</label>
                         </div>
                     </div>
                     <div class="row">
@@ -358,7 +362,7 @@
 
 
         <!-- Buscar un pedido para eliminar -->
-         <div id="buscarPedido" class="modal">
+        <div id="buscarPedido" class="modal">
         <div class="modal-header degradado-gris">
             <img src="imagenes/logo.png" alt="">
             <h4>CANCELAR PEDIDO</h4>
@@ -366,8 +370,10 @@
         <div class="modal-content">
             <form action="#" id="form-eliminarPedido">
                 <div class="row">
-                    <input type="text" name="num_seguimiento">
-                    <label for="num_seguimiento">No. de Pedido</label>
+                    <div class="input-field col s12">
+                        <input type="text" name="noPedido">
+                        <label for="noPedido">No. de Pedido</label>
+                    </div>
                 </div>
                 <div class="row">
                         <div class="col s6">
@@ -382,15 +388,14 @@
         </div>
     </div>
 
-
         <!-- Confirmación para eliminar un pedido -->
         <div class="modal modal-fixed-footer" id="cancelarPedido">
             <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
-                <h4>Cancelar Pedido</h4>
+                <h4>CANCELAR PEDIDO</h4>
             </div>
             <div class="modal-content">
-                <p>El pedido XXX está a punto de ser CANCELADO <br> ¿Desa continuar?</p>
+                <p>El pedido #<span class="nopedido"></span> por <span class="cant"></span> equipos está a punto de ser CANCELADO <br> ¿Desa continuar?</p>
             </div>
             <div class="modal-footer">
                 <a href="#" class="modal-action btn-flat black-text degradado-cafeHoriz" id="btnEliminarPedido">Eliminar</a>
@@ -406,8 +411,10 @@
         <div class="modal-content">
             <form action="#" id="form-editarPedido">
                 <div class="row">
-                    <input type="text" name="num_seguimiento">
-                    <label for="num_seguimiento">No. de Pedido</label>
+                    <div class="input-field col s12">
+                        <input type="text" name="nopedido">
+                        <label for="nopedido">No. de Pedido</label>
+                    </div>
                 </div>
                 <div class="row">
                         <div class="col s6">
@@ -420,45 +427,57 @@
             </form>
         </div>
     </div>
-    <!-- EDITAR Stock -->
+    <!-- EDITAR Pedido -->
         <div class="modal modal-fixed-footer" id="editarStock">
            <div class="modal-header degradado-gris">
                 <img src="imagenes/logo.png" alt="">
-                <h4>EDITAR STOCK</h4>
+                <h4>EDITAR PEDIDO</h4>
             </div>
             <div class="modal-content">
                 <form action="#" id="form-editar">
                     <div class="row">
-                        <div class="input-field col s10">
-                            <select name="nombreProveedor" id="">
-                                <option value="1">Cisco</option>
-                                <option value="2">Dell</option>
-                            </select>
-                            <label for="nombreProveedor">Proveedor</label>
+                        <div class="input-field col s6">
+                            <input type="text" name="nombreProveedor" disabled>
+                            <label for="nombreProveedor" class="active">Proveedor</label>
                         </div>
-                        <div class="input-field col s2">
-                            <a href="#" class="btn grey"><i class="material-icons">add</i></a>
+                        <div class="input-field col s6">
+                            <select name="select_piso">
+                            </select>
+                            <label for="select_piso">Piso</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
                            <!-- <input type="date" name="fechaEmision"> -->
-                            <input type="text" class="datepicker" name="fechaEmision">
+                            <input type="text" name="fechaEmision" disabled>
                             <label for="fechaEmision">Fecha de Emisión</label>
                         </div>
                         <div class="input-field col s6">
-                            <input type="text" class="datepicker" name="fechaRecibes">
+                            <input type="text" name="fechaRecibes" disabled>
                             <label for="fechaRecibes">Fecha Estimada de Recibo</label> 
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input type="text" name="num_seguimiento">
+                            <input type="text" name="num_seguimiento" disabled>
                             <label for="num_seguimiento">No. de Seguimiento</label>
                         </div>
                         <div class="input-field col s6">
-                            <input type="text" name="op_envio">
+                            <input type="text" name="op_envio" disabled>
                             <label for="op_envio">Opción de Envio</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 table-responsive-vertical">
+                            <table class="table striped listaEquipos">
+                                <thead>
+                                    <th>Equipo</th>
+                                    <th>Cant</th>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <input type="submit" id="btnagregarPedido" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Guardar">

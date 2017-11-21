@@ -174,7 +174,7 @@
     <div id="contenidoWrapper" class="degradado-cafe">
        <!-- Aqui van todas las tablas, formularios y weas así -->
         <div id="contenidoPrincipal">
-            <div class="table-responsive-vertical">
+            <div>
                 <table class="table striped">
                     <thead>
                         <th>Nombre</th>
@@ -182,21 +182,6 @@
                         <th>Tipo</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-title="Nombre" contenteditable="true">Bruce Wayne</td>
-                            <td data-title="Usuario" contenteditable="true">imBatman</td>
-                            <td data-title="Tipo" contenteditable="true">Admin</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Nombre" contenteditable="true">Caitlyn Snow</td>
-                            <td data-title="Usuario" contenteditable="true">cait_frozen</td>
-                            <td data-title="Tipo" contenteditable="true">Biomedico</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Nombre" contenteditable="true">Barry Allen</td>
-                            <td data-title="Usuario" contenteditable="true">superFast</td>
-                            <td data-title="Tipo" contenteditable="true">Biomedico</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -237,11 +222,11 @@
                 <form action="" id="form-buscarUsuario">
                     <div class="row">
                         <p class="col s6">
-                          <input name="tipoBusqueda" type="radio" id="buscarUser" required value="user"/>
+                          <input name="tipoBusqueda" type="radio" id="buscarUser" required value="nombre"/>
                           <label for="buscarUser">Buscar por nombre de pila</label>
                         </p>
                         <p class="col s6">
-                          <input name="tipoBusqueda" type="radio" id="buscarNombre" required value="nombre"/>
+                          <input name="tipoBusqueda" type="radio" id="buscarNombre" required value="user"/>
                           <label for="buscarNombre">Buscar por nombre de usuario</label>
                         </p>
                     </div>
@@ -273,12 +258,12 @@
                 <div class="row">
                         <!-- Y por cada input, checkbox y weas asi, un div.input-field y usas .col y .s12 para que la columna abarque todo el ancho, .s6 para la mitad y así -->
                         <p class="col s6">
-                          <input name="tipoBusqueda" type="radio" id="buscarUser-eliminar" required/>
-                          <label for="buscarUser-eliminar">Buscar por nombre de pila</label>
+                          <input name="tipoBusqueda1" type="radio" id="buscarNombre-eliminar" required value="nombre"/>
+                          <label for="buscarNombre-eliminar">Buscar por nombre de pila</label>
                         </p>
                         <p class="col s6">
-                          <input name="tipoBusqueda" type="radio" id="buscarNombre-eliminar" required/>
-                          <label for="buscarNombre-eliminar">Buscar por nombre de usuario</label>
+                          <input name="tipoBusqueda1" type="radio" id="buscarUser-eliminar" required value="user"/>
+                          <label for="buscarUser-eliminar">Buscar por nombre de usuario</label>
                         </p>
                     </div>
                 <div class="row">
@@ -420,7 +405,7 @@
                 <div class="row">
                    <div class="input-field col s12">
                     <label for="hospital">Hospital Sede</label>
-                    <input name="hospital" type="text" class="validate" required>
+                    <input name="hospital" type="text" class="validate" value="Lomas Verdes" readonly="readonly">
                    </div>
                 </div>
                 <div class="row">
@@ -435,11 +420,11 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <select name="rol" id="rol">
-                            <option value="bio">Biomédico</option>
-                            <option value="admin">Administrador</option>
+                        <select name="rol">
+                            <option value="B">Biomédico</option>
+                            <option value="A">Administrador</option>
                         </select>
-                        <label for="bio">Rol</label>
+                        <label for="rol">Rol</label>
                     </div>
                 </div>
                 <input type="submit" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Agregar">
@@ -484,7 +469,7 @@
                 <div class="row">
                    <div class="input-field col s12">
                     <label for="hospital">Hospital Sede</label>
-                    <input name="hospital" type="text" class="validate" required>
+                     <input name="hospital" type="text" class="validate" value="Lomas Verdes" readonly="readonly">
                    </div>
                 </div>
                 <div class="row">
@@ -493,14 +478,20 @@
                         <input name="usuario" type="text" class="validate" required>
                    </div>
                    <div class="input-field col s6">
-                        <select name="rol" id="rol">
-                            <option value="bio">Biomédico</option>
-                            <option value="admin">Administrador</option>
+                    <label for="contraseña">Contraseña</label>
+                    <input name="contraseña" type="password" class="validate" required>
+                   </div>
+                <div class="row">
+                   <div class="input-field col s6">
+                        <select name="rol">
+                            <option value="B">Biomédico</option>
+                            <option value="A">Administrador</option>
                         </select>
-                        <label for="bio">Rol</label>
+                        <label for="rol">Rol</label>
+                    </div>
                     </div>
                 </div>
-                <input type="submit" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Guardar">
+                <input type="submit" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Editar">
                 <a href="#" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cancelar</a>
             </form>
         </div>

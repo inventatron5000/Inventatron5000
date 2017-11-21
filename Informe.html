@@ -183,7 +183,7 @@
                                 <ul id='dropdown4' class='dropdown-content black-text'>
                                     <li><a href="#!" class="black-text" onclick="javascript:demoFromHTML('pdf')"><i class="material-icons black-text">file_download</i>Guardar</a></li>
                                     <li><a href="#!" class="black-text" name="imprimir" value="Imprimir" onclick="window.print();"><i class="material-icons black-text">print</i>Imprimir</a></li>
-                                    <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                                    <li><a href="#correo" class="black-text modal-trigger"><i class="material-icons black-text">email</i> <br>Correo</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -221,7 +221,7 @@
                             <ul id='dropdown3' class='dropdown-content black-text'>
                                 <li><a href="#!" class="black-text" onclick="javascript:demoFromHTML('pdfpen')"><i class="material-icons black-text">file_download</i>Guardar</a></li>
                                 <li><a href="#!" class="black-text" name="imprimir" value="Imprimir" onclick="window.print();"><i class="material-icons black-text">print</i>Imprimir</a></li>
-                                <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                                <li><a href="#correo" class="black-text modal-trigger"><i class="material-icons black-text">email</i> <br>Correo</a></li>
                             </ul>
                         </div>
                         </div>
@@ -269,7 +269,7 @@
                     <ul id='dropdown5' class='dropdown-content black-text'>
                     <li><a href="#!" class="black-text" onclick="javascript:demoFromHTML('pdfd')"><i class="material-icons black-text">file_download</i>Guardar</a></li>
                     <li><a href="#!" class="black-text" name="imprimir" value="Imprimir" onclick="window.print();"><i class="material-icons black-text">print</i>Imprimir</a></li>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                    <li><a href="#correo" class="black-text modal-trigger"><i class="material-icons black-text">email</i> <br>Correo</a></li>
                     </ul>
                     </div>
                      </div>
@@ -313,7 +313,7 @@
                     <ul id='dropdown1' class='dropdown-content black-text'>
                     <li><a href="#!" class="black-text" onclick="javascript:demoFromHTML('pdfp')"><i class="material-icons black-text">file_download</i>Guardar</a></li>
                     <li><a href="#!" class="black-text" name="imprimir" value="Imprimir" onclick="window.print();"><i class="material-icons black-text">print</i>Imprimir</a></li>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                    <li><a href="#correo" class="black-text modal-trigger"><i class="material-icons black-text">email</i> <br>Correo</a></li>
                     </ul>
                     </div>
                     </div>
@@ -357,7 +357,7 @@
                     <ul id='dropdown2' class='dropdown-content black-text'>
                     <li><a href="#!" class="black-text" onclick="javascript:demoFromHTML('pdfv')"><i class="material-icons black-text">file_download</i>Guardar</a></li>
                     <li><a href="#!" class="black-text" name="imprimir" value="Imprimir" onclick="window.print();"><i class="material-icons black-text">print</i>Imprimir</a></li>
-                    <li><a href="#!" class="black-text"><i class="material-icons black-text">email</i> <br>Correo</a></li>
+                    <li><a href="#correo" class="black-text modal-trigger"><i class="material-icons black-text">email</i> <br>Correo</a></li>
                     </ul>
                     </div>
                     </div>
@@ -481,6 +481,30 @@
                             <input type="submit"  id="VerVentas" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Ver Informe"/>
                         </div>
                     </div>
+                </form>
+            </div>
+        </div>
+    
+    
+    <div class="modal modal-fixed-footer" id="correo">
+           <div class="modal-header degradado-gris">
+                <img src="imagenes/logo.png" alt="">
+                <h4>CORREO</h4>
+            </div>
+            <div class="modal-content">
+                <form action="#" id="form-buscarVentas">
+                    <div class="row">
+                      <div class="input-field col s12">
+                       <input type="text" class="validate" name="correo">
+                       <label for="correo">Correo</label>
+                      </div>
+                      <div class="input-field col s12">
+                      <textarea id="mensaje" class="materialize-textarea"></textarea>
+                      <label for="mensaje">Mensaje</label>
+                      </div>
+                    </div>
+                    <input type="submit" id="btnagregarEquipo" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Mandar">
+                    <a href="#" class="modal-action modal-close btn-flat black-text degradado-cafeHoriz">Cancelar</a>
                 </form>
             </div>
         </div>

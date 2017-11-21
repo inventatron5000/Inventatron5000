@@ -27,7 +27,7 @@
             echo json_encode($lista);
         break;
         case "LD":  //Lista de departamentos y areas
-            $q0 = "SELECT * FROM departamento ORDER BY nombre";
+            $q0 = "SELECT * FROM deparea ORDER BY nombre";
             $res0 = pg_query($q0);
             $lista = array();
             while($dep = pg_fetch_array($res0))

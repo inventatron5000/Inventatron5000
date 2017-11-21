@@ -30,6 +30,7 @@ $(document).ready(function(){
                 rol:rol
             }
         }).done(function(data){
+            alert(data);
             if(data.substring(0,1)=="E")
                 Materialize.toast("¡Ya existe ese usuario!",2000,"rounded");
             else{

@@ -13,6 +13,7 @@ $(document).ready(function(){
         today:"Hoy",
         clear:"Restablecer",
         close:"Cerrar",
-        closeOnSelect:false
+        closeOnSelect:false,
+        format: 'dd/mm/yyyy'
     });
 });

@@ -22,7 +22,7 @@
     <!-- Estilos para la tabla responsiva-->
         <link rel="stylesheet" href="tabla-responsiva.css">
 </head>
-<body >
+<body>
     <!-- Dentro de la etiqueta nav van todos los elementos de navegacion: menu de escritorio y menu movil-->
         <!-- En Materializ todo es con clases, 'degradado-gris' no es del framework-->
     <nav class="grey lighten-3 degradado-gris alto">
@@ -43,7 +43,7 @@
             <ul class="hide-on-med-and-down right">
                    <!--  -->
                 <li class="centro">
-                    <a href="index.html" class="black-text alto single-line">
+                    <a href="equipo.html" class="black-text alto single-line">
                         <br>
                         <img src="iconos/principal/equipos.png">
                         <br><br>
@@ -122,7 +122,7 @@
 
                 <!-- Menu lateral para moviles -->
             <ul class="side-nav" id="nav-mobile">
-                <li><a href="index.html" class="black-text">Equipos</a></li>
+                <li><a href="equipo.html" class="black-text">Equipos</a></li>
                 <li><a href="stock.html" class="blue-text">Stock</a></li>
                 <li><a href="clientes.html" class="black-text">Clientes</a></li>
                 <li><a href="departamento.html" class="black-text">Departamentos</a></li>
@@ -196,30 +196,10 @@
                         <th>Estado</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-title="Fecha de Emisión" contenteditable="false">01/10/3024</td>
-                            <td data-title="No. Pedido" contenteditable="false">10</td>
-                            <td data-title="Proveedor" contenteditable="false">Cisco</td>
-                            <td data-title="Importe" contenteditable="false">1203</td>
-                            <td data-title="Estado" contenteditable="false">VTP</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Fecha de Emisión" contenteditable="false">23/12/3024</td>
-                            <td data-title="No. Pedido" contenteditable="false">34</td>
-                            <td data-title="Proveedor" contenteditable="false">HP</td>
-                            <td data-title="Importe" contenteditable="false">453</td>
-                            <td data-title="Estado" contenteditable="false">SSH</td>
-                        </tr>
-                        <tr>
-                            <td data-title="Fecha de Emisión" contenteditable="false">01/10/2166</td>
-                            <td data-title="No. Pedido" contenteditable="false">32</td>
-                            <td data-title="Proveedor" contenteditable="false">Dell</td>
-                            <td data-title="Importe" contenteditable="false">483</td>
-                            <td data-title="Estado" contenteditable="false">ROUTER</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
+            <span class="msj_error"></span>
         </div>
     </div>
 
@@ -277,11 +257,9 @@
                 <form action="#" id="form-pedir">
                     <div class="row">
                         <div class="input-field col s10">
-                            <select name="nombreProveedor" id="">
-                                <option value="1">Cisco</option>
-                                <option value="2">Dell</option>
+                            <select id="select_proveedor">
                             </select>
-                            <label for="nombreProveedor">Proveedor</label>
+                            <label for="select_proveedor">Proveedor</label>
                         </div>
                         <div class="input-field col s2">
                             <a href="#" class="btn grey"><i class="material-icons">add</i></a>
@@ -306,6 +284,22 @@
                         <div class="input-field col s6">
                             <input type="text" name="op_envio">
                             <label for="op_envio">Opción de Envio</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <label for="">Lista de Equipos</label>
+                        <div class="col s12 table-responsive-vertical">
+                            <table class="table striped listaEquipos">
+                                <thead>
+                                    <th>Equipo</th>
+                                    <th>Cant</th>
+                                    <th>Precio U</th>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                            <a class="btn brown lighten-1" id="btnAgregarEquipo-pedir"><i class="material-icons">add</i></a>
                         </div>
                     </div>
                     <input type="submit" id="btnagregarPedido" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Agregar">

@@ -121,7 +121,7 @@ CREATE TABLE PEDIDO (
 	Proveedor VARCHAR(40),
 	Piso VARCHAR(10),
 	CantidadSol INT,
-    Estado  CHAR(1)S
+    Estado  CHAR(1)
 );
 -- LLAVE PRIMARIA DE PEDIDO
 ALTER TABLE PEDIDO ADD PRIMARY KEY (NoPedido,CodEquipo);

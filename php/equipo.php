@@ -3,25 +3,64 @@
     extract($_POST);
     switch($operacion){
         case 'SD'://llenar select departamento
-            $query="SELECT nombre FROM departamento";
+            $query="SELECT nombre FROM departamento ";
             $result = pg_query($query); 
-            while (($fila = pg_fetch_array($result)) != NULL) {
-                echo '<option  selected="selected" value="'.$fila["nombre"].'">'.$fila["nombre"].'</option>';
+            if(strcmp ($nombre,"1" )==0){
+               while (($fila = pg_fetch_array($result)) != NULL) {
+               echo '<option  selected="selected" value="'.$fila["nombre"].'">'.$fila["nombre"].'</option>';
+                } 
             }
+            else{
+                while (($fila = pg_fetch_array($result)) != NULL) {
+                    if(strcmp ($fila["nombre"],$nombre)==0){
+                        $campo=$fila["nombre"];
+                    }
+                    else
+                    echo '<option  selected="selected" value="'.$fila["nombre"].'">'.$fila["nombre"].'</option>';
+                }
+                echo '<option  selected="selected" value="'.$campo.'">'.$campo.'</option>';
+            }
+            
         break;
         case 'SA'://llenar select area
-            $query="SELECT area FROM departamento where nombre='".$nombre."'";
+            $query="SELECT area FROM deparea where nombre='".$nombre."'";
             $result = pg_query($query); 
+            if(strcmp ($funcion,"0" )==0){
             while (($fila = pg_fetch_array($result)) != NULL) {
                 echo '<option selected="selected" value="'.$fila["area"].'">'.$fila["area"].'</option>';
+            }
+            }
+            else{
+                while (($fila = pg_fetch_array($result)) != NULL) {
+                    if(strcmp ($fila["area"],$area)==0){
+                        $campo=$fila["area"];
+                    }
+                    else{
+                        echo '<option  selected="selected" value="'.$fila["area"].'">'.$fila["area"].'</option>';
+                    }
+                }
+                 echo '<option  selected="selected" value="'.$campo.'">'.$campo.'</option>';
             }
         break;
         case 'SP'://llenar select piso
             $query="SELECT direccionpiso FROM piso";
             $result = pg_query($query); 
-            while (($fila = pg_fetch_array($result)) != NULL) {
+            if(strcmp ($direccionpiso,"1" )==0){
+                while (($fila = pg_fetch_array($result)) != NULL) {
                 echo '<option selected="selected" value="'.$fila["direccionpiso"].'">'.$fila["direccionpiso"].'</option>';
+                }
             }
+            else{
+                while (($fila = pg_fetch_array($result)) != NULL) {
+                    if(strcmp ($fila["direccionpiso"],$direccionpiso)==0){
+                        $campo=$fila["direccionpiso"];
+                    }
+                    else
+                    echo '<option  selected="selected" value="'.$fila["direccionpiso"].'">'.$fila["direccionpiso"].'</option>';
+                }
+                echo '<option  selected="selected" value="'.$campo.'">'.$campo.'</option>';
+            }
+            
         break;
         case 'A'://Alta
             $q = "SELECT codigo FROM equipo WHERE codigo = '".$codigo."'";
@@ -40,6 +79,9 @@
             }
         break;
         case 'C':
+            if(strcmp ($codigo,"1" )==0 && strcmp ($equipo,"1")!=0)
+            $q = "SELECT * from equipo WHERE equipo = '$equipo'";
+            if(strcmp ($equipo,"1" )==0 && strcmp ($codigo,"1")!=0)
             $q = "SELECT * from equipo WHERE codigo = '$codigo'";
             $res = pg_query($q);
             if($row = pg_fetch_array($res)){//Ya existe
@@ -58,12 +100,12 @@
             echo json_encode($lista);
         break;
         case 'M':   //Modificar
-            $q0 = "SELECT nombrecl FROM cliente WHERE nombrecl='$nombreCliente' AND '$id'!='$nombreCliente'";
+            $q0 = "SELECT codigo FROM equipo WHERE equipo='$equipo'";
             $res0 = pg_query($q0);
             if($row0 = pg_fetch_array($res0))
                 echo "NOK";
             else{
-                $q = "UPDATE cliente SET nombrecl = '$nombreCliente',personacontactocl='$personaContacto',direccionfacturacion='$direccionFact',ciudad='$ciudad',estado='$estado',codpostal='$cp',pais='$pais',telefono='$telefono',correo='$correo' WHERE nombrecl='$id'";
+                $q = "UPDATE equipo SET codigo= '$codigo', equipo='$equipo',departamento='$departamento',area='$area',costocompra='$costocompra',precioventa='$precioventa',modelo='$modelo',serie='$serie',piso='$piso',cantidad='$cantidad',fechasolicitud='$fechasolicitud',fecharecibo='$fecharecibo',fechainstalacion='$fechainstalacion' WHERE codigo='$codigopast'";
                 pg_query($q);
                 echo "OK";
             }

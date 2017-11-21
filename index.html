@@ -218,17 +218,18 @@
                 <form action="#" id="form-buscarEquipo">
                     <div class="row">
                     <!-- Y por cada input, checkbox y weas asi, un div.input-field y usas .col y .s12 para que la columna abarque todo el ancho, .s6 para la mitad y así -->
-                    <div class="input-field col s6">
-                        <input name="radio-gap" type="radio" value="radio-gap-1" id="radio-gap-1"/>
+                        <p class="col s6">
+                        <input name="radio-gap" type="radio" id="radio-gap-1" required value="codigo"/>
                         <label for="radio-gap-1">Buscar por código &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
+                        </p>
+                        <p class="col s6">
+                          <input name="radio-gap" type="radio" id="radio-gap-2" required value="nombre"/> <label for="radio-gap-2">Buscar por nombre</label>
+                        </p>
                     </div>
-                    <div class="input-field col s6">
-                        <input name="radio-gap" type="radio" value="radio-gap-2" id="radio-gap-2"/> <label id="form-label" for="radio-gap-2">Buscar por nombre</label>
-                    </div>
-                </div>
+                   
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="Buscar" id="buscarEquipo" type="text" class="validate" required/>
+                        <input placeholder="Buscar" id="buscarEquipo" name="buscarEquipo" type="text" class="validate" required/>
                     </div>
                 </div>
                     <div class="row">
@@ -252,11 +253,11 @@
             <form action="#" id="form-eliminarEquipo">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input name="radio-gap" type="radio" value="radio-gap-1" id="radio-gap-1"/>
+                        <input name="radio-gap1" type="radio" value="radio-gap-1" id="radio-gap-1"/>
                         <label for="radio-gap-1">Buscar por código &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
                     </div>
                     <div class="input-field col s6">
-                        <input name="radio-gap" type="radio" value="radio-gap-2" id="radio-gap-2"/> <label id="form-label" for="radio-gap-2">Buscar por nombre</label>
+                        <input name="radio-gap1" type="radio" value="radio-gap-2" id="radio-gap-2"/> <label id="form-label" for="radio-gap-2">Buscar por nombre</label>
                     </div>
                 </div>
                 <div class="row">
@@ -387,73 +388,69 @@
                 <div class="row modal-div">
                    <div class="input-field col s6">
                       <label for="codigo">Código</label>
-                      <input id="codigo" type="text" class="validate input-field inline" required>
+                      <input id="codigo" name="codigo" type="text" class="validate input-field inline" required>
                    </div>
                    <div class="input-field col s6">
                     <label for="equipo">Equipo</label>
-                    <input id="equipo" type="text" class="validate" required>
+                    <input id="equipo" name="equipo" type="text" class="validate" required>
                    </div>
                    <br>
                    <div class="input-field col s6">
                     <label for="modelo">Modelo</label>
-                    <input id="modelo" type="text" class="validate" required>
+                    <input id="modelo" name="modelo" type="text" class="validate" required>
                    </div>
                   <div class="input-field col s6">
                     <label for="serie">Serie</label>
-                    <input id="serie" type="text" class="validate" required>
+                    <input id="serie"  name="serie" type="text" class="validate" required>
                    </div>
                 </div>
                 <div class="row modal-div">
                     <div class="input-field col s10">
-                        <select name="">
-                            <option value="1" disabled="disabled" selected="selected">Option 1</option>
-                            <option value="2" disabled="disabled">Option 2</option>
+                        <select name="select_depa" id="select_depa">
                         </select>
-                        <label for="">Departamento</label>
+                        <label for="select_depa">Departamento</label>
                     </div>
                     <div class="input-field col s2">
                          <a href="#" class="btn grey"><i class="material-icons">add</i></a>
                     </div>
                     <div class="input-field col s6">
-                        <select name="select_area">
-                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        <select name="select_ar" id="select_ar">
                         </select>
-                        <label for="select_area">Área</label>
+                        <label for="select_ar">Área</label>
                     </div>
                     <div class="input-field col s6">
-                        <select name="select_piso">
-                               <option value="1" disabled="disabled" selected="selected">Option 1</option>
+                        <select name="select_pis" id="select_pis">
                         </select>
-                        <label for="select_piso">Piso</label>
+                        <label for="select_pis">Piso</label>
                     </div>
                 </div>
 
                 <div class="row modal-div">
                    <div class="input-field col s4">
                       <label for="cantidad">Cantidad</label>
-                      <input id="cantidad" type="text" class="validate input-field inline" required>
+                      <input id="cantidad" type="text" name="cantidad" class="validate input-field inline" required>
                    </div>
                    <div class="input-field col s4">
                     <label for="costoC">Costo de Compra</label>
-                    <input id="costoC" type="text" class="validate" required>
+                    <input id="costoC" name="costoC" type="text" class="validate" required>
                    </div>
                    <div class="input-field col s4">
                     <label for="precioVen">Precio de Venta</label>
-                    <input id="precioVen" type="text" class="validate" required>
+                    <input id="precioVen" name="precioVen" type="text" class="validate" required>
                    </div>
                 </div>
                 <div class="row ">
                    <div class="input-field col s12">
-                      <label for="fecha-sole">Fecha de solicitud</label>
-                      <input type="text" class="datepicker">
+                      <label for="fechaSole">Fecha de solicitud</label>
+                      <input type="text" class="datepicker"name="fechaSole" id="fechaSole">
                    </div>
                    <div class="input-field col s12">
-                    <label for="fecha-recibo">Fecha de recibo</label>
-                    <input type="text" class="datepicker">
+                    <label for="fechaRecibo">Fecha de recibo</label>
+                    <input type="text" class="datepicker" id="fechaRecibo" name="fechaRecibo">
                    </div>
                    <div class="input-field col s12">
-                    <label for="fecha-inst">Fecha de instalación</label>
-                    <input type="text" class="datepicker">
+                    <label for="fechaInst">Fecha de instalación</label>
+                    <input type="text" class="datepicker" name="fechaInst" id="fechaInst">
                    </div>
                 </div>
             <input type="submit" id="btnagregarEquipo" class="modal-action btn-flat black-text degradado-cafeHoriz" value="Guardar">

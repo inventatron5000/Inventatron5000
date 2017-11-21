@@ -111,12 +111,27 @@
             }
         break;
         case 'B': //Baja
-            $q0 = "DELETE FROM cliente WHERE nombrecl = '$nombreCliente'";
+            if(strcmp ($codigo,"1" )==0 && strcmp ($equipo,"1")!=0)
+            $q0 = "DELETE FROM equipo WHERE equipo = '$equipo'";
+            if(strcmp ($equipo,"1" )==0 && strcmp ($codigo,"1")!=0)
+            $q0 = "DELETE FROM equipo WHERE codigo = '$codigo'";
             $res = pg_query($q0);
             if($res)
                 echo "OK";
             else
                 echo "NOK";
+        break;
+       case 'CE':
+            if(strcmp ($codigo,"1" )==0 && strcmp ($equipo,"1")!=0)
+            $q = "SELECT * from equipo WHERE equipo = '$equipo'";
+            if(strcmp ($equipo,"1" )==0 && strcmp ($codigo,"1")!=0)
+            $q = "SELECT * from equipo WHERE codigo = '$codigo'";
+            $res = pg_query($q);
+            if($row = pg_fetch_array($res)){//Ya existe
+                echo json_encode($row);
+            }
+            else
+                echo "NF";
         break;
     }
 ?>

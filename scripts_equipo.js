@@ -286,15 +286,14 @@ $(document).ready(function(){
         var fecharecibo=$(this).find("input[name='fechaRecibo']").val();
         var fechainstalacion=$(this).find("input[name='fechaInst']").val();
         var proveedor=$(this).find("input[name='proveedor']").val();
-         $("#select_departamento").change(function(){
-         departamento= $( "#select_departamento option:selected" ).text();
+        $("#select_depa").change(function(){
+         departamento= $( "#select_depa option:selected" ).text();
         });
-        $("#select_area").change(function(){
-        area= $( "#select_area option:selected" ).text();
-        var piso= $( "#select_piso option:selected" ).text();   
+        $("#select_ar").change(function(){
+        area= $( "#select_ar option:selected" ).text(); 
         });
-        $("#select_piso").change(function(){
-        piso= $( "#select_piso option:selected" ).text();   
+        $("#select_pis").change(function(){
+        piso= $( "#select_pis option:selected" ).text();   
         });
         //AQUI VA LA FUNCION QUE CONECTA CON LA DB
         $.ajax({
@@ -318,7 +317,6 @@ $(document).ready(function(){
                 proveedor:proveedor  
             }
         }).done(function(data){
-            alert(area);
             console.log(data);
             if(data.substring(0,1)=="N"){
                 Materialize.toast("El nuevo codigo del nuevo equipo ya existe",2000,"rounded");
@@ -337,17 +335,36 @@ $(document).ready(function(){
 
     //Funcion para buscar un piso y eliminarlo
     $("#form-eliminarEquipo").submit(function(evt){
-        var buscarEquipo = $(this).find("input[name='buscarEquipo']").val();
-        if(Math.random()<0.5){
-            $("#confirmarEliminar").find("span.buscarEquipo").html(buscarEquipo);
-            $("#modal_eliminar").modal("close");
-            $("#confirmarEliminar").modal("open");
+        var codigo="1";
+        var equipo="1";
+        var buscarEquipo=$(this).find("input[name='buscarEquipo']").val();
+        if($('input:radio[name=radio-1]:checked').val()=="codigo") { 
+            codigo=$(this).find("input[name='buscarEquipo']").val();
         }
-        else{
-            $("#modal_eliminar").modal("close");
-            var stg = "No se encontró el equipo \""+buscarEquipo+"\"";
-            Materialize.toast(stg,1500,'rounded');
+        if($('input:radio[name=radio-1]:checked').val()=="nombre") { 
+            equipo=$(this).find("input[name='buscarEquipo']").val();
         }
+        $.ajax({
+            url:"php/equipo.php",
+            method:"post",
+            data:{
+                operacion:'C',
+                codigo:codigo,
+                equipo:equipo
+            }
+        }).done(function(data){
+            if(data.substring(0,1)!="N"){
+                $("#confirmarEliminar").find("span.buscarEquipo").html(buscarEquipo);
+                $("#modal_eliminar").modal("close");
+                $("#confirmarEliminar").modal("open");
+            }
+            else{
+                $("#modal_eliminar").modal("close");
+                var stg = "No se encontró el equipo \""+buscarEquipo+"\"";
+                Materialize.toast(stg,2000,'rounded');
+            }
+        });
+
         return false;
     });
     //Funcion para eliminar un piso

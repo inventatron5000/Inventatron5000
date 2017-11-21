@@ -252,17 +252,17 @@
         <div class="modal-content">
             <form action="#" id="form-eliminarEquipo">
                 <div class="row">
-                    <div class="input-field col s6">
-                        <input name="radio-gap1" type="radio" value="radio-gap-1" id="radio-gap-1"/>
-                        <label for="radio-gap-1">Buscar por código &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input name="radio-gap1" type="radio" value="radio-gap-2" id="radio-gap-2"/> <label id="form-label" for="radio-gap-2">Buscar por nombre</label>
-                    </div>
+                    <p class="col s6">
+                        <input name="radio-1" type="radio" id="radio-gap1" required value="codigo"/>
+                        <label for="radio-gap1">Buscar por código &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
+                        </p>
+                        <p class="col s6">
+                          <input name="radio-1" type="radio" id="radio-gap2" required value="nombre"/> <label for="radio-gap2">Buscar por nombre</label>
+                        </p>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="Buscar" id="buscarEquipo" type="text" class="validate"/>
+                        <input placeholder="Buscar" id="buscarEquipo"  name="buscarEquipo" type="text" class="validate" required/>
                     </div>
                 </div>
                 <div class="row">

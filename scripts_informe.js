@@ -311,7 +311,7 @@ function informeVentas(ini,fin){
         $("#ventas > div > table > tbody").html("");
         if(data!="[]"){
             console.log(data);
-            var informes = JSON.parse(data);
+            var informes = JSON.parse(data); 
             var tabla = "";
             for(var i in informes){    //codigo, equipo, costocompra,precioventa,fechaventa, costototal,ventatotal, gananciabruta
                 tabla+="<tr><td data-title='Código'>"+informes[i].codigo+"</td>";

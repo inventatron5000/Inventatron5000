@@ -18,17 +18,18 @@ $(document).ready(function(){
                 nombreDepa:nombreDepa
             }
         }).done(function(data){
-            if(data=="EXISTE")
+            if(data.substring(0,1)=="E")
                 Materialize.toast("¡Ya existe ese cliente!",2000,"rounded");
             else if(data=="OK"){
                 seguir = true;
+                alert(seguir);
             }
             else
                 Materialize.toast("Error inesperado",2000,"rounded");
         });
 
 
-        if(seguir){
+        if(seguir==true){
             ////////////////////////////////////////AREAS
                 console.log("Areas sin modificar: "+areaDepas);
                 //Debido a que pueden ser uno o varios departamentos separados por comas, primero verificamos que exista más de uno

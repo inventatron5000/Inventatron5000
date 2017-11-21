@@ -333,3 +333,25 @@ function informeVentas(ini,fin){
         $("#BuscarVentas").modal("close");
     });
 }
+
+function demoFromHTML(tabla) {
+            var doc = new jsPDF();
+            doc.text("Reporte del Hospital Star Medica Lomas Verdes", 40, 16);
+            doc.setFontSize(11);
+            doc.setTextColor(100);
+            var text = "A continuación se presenta un reporte correspondiente a las actividades que se han llevado a cabo en el";
+            doc.text(text, 14, 30);
+            text = "Hospital Star Medica ubicado en Avenida Lomas Verdes 2165, Los Alamos, 53230 Naucalpan de Juárez,";
+            doc.text(text, 14, 37);
+            text = "Estado de México.";
+            doc.text(text, 14, 44);
+            var f=new Date();
+            var cad=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
+            text = "Se expide la presente el "+f.getDay()+" de "+f.getMonth()+" del "+f.getFullYear()+" a las "+f.getHours()+":"+f.getMinutes()+":"+f.getSeconds(); 
+            doc.text(text, 14, 51);
+            var elem = document.getElementById(tabla);
+            var res = doc.autoTableHtmlToJson(elem);
+            doc.autoTable(res.columns, res.data, {startY: 57});
+            doc.save('Reporte.pdf');
+            return doc;
+}

@@ -335,8 +335,8 @@ $(document).ready(function(){
 
     //Funcion para buscar un piso y eliminarlo
     $("#form-eliminarEquipo").submit(function(evt){
-        var codigo="1";
-        var equipo="1";
+        codigo="1";
+        equipo="1";
         var buscarEquipo=$(this).find("input[name='buscarEquipo']").val();
         if($('input:radio[name=radio-1]:checked').val()=="codigo") { 
             codigo=$(this).find("input[name='buscarEquipo']").val();
@@ -370,9 +370,22 @@ $(document).ready(function(){
     //Funcion para eliminar un piso
     $("#btnEliminarEquipo").click(function(evt){
         $("#confirmarEliminar").modal("close");
-        //FUNCION PARA BORRAR EN LA DB
-        var stg = "Se eliminó el equipo "+$("#confirmarEliminar").find("span.buscarEquipo").html();
-        Materialize.toast(stg,2000,"rounded");
+        $.ajax({
+            url:"php/equipo.php",
+            method:"post",
+            data:{
+                operacion:'B',
+                equipo:equipo,
+                codigo:codigo
+                
+            }
+        }).done(function(x){
+            if(x.substring(0,1)=="O"){
+                var stg = "Se eliminó el equipo "+$("#confirmarEliminar").find("span.equipo").html();
+                Materialize.toast(stg,2000,"rounded");
+                mostrarEquipos();
+            }
+        });
     });
     
     function mostrarEquipos(){

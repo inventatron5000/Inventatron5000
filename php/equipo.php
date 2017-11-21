@@ -121,18 +121,6 @@
             else
                 echo "NOK";
         break;
-       case 'CE':
-            if(strcmp ($codigo,"1" )==0 && strcmp ($equipo,"1")!=0)
-            $q = "SELECT * from equipo WHERE equipo = '$equipo'";
-            if(strcmp ($equipo,"1" )==0 && strcmp ($codigo,"1")!=0)
-            $q = "SELECT * from equipo WHERE codigo = '$codigo'";
-            $res = pg_query($q);
-            if($row = pg_fetch_array($res)){//Ya existe
-                echo json_encode($row);
-            }
-            else
-                echo "NF";
-        break;
     }
 ?>
 

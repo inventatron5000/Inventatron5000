@@ -1,0 +1,621 @@
+options {   Ignore_Case = false;   }
+PARSER_BEGIN (Lexico)
+ public class Lexico {
+ public static void main (String[] argum) throws ParseException {
+ Lexico anLexSint = new Lexico (System.in);
+ anLexSint.unaExpresion();
+ System.out.println("Análisis terminado:");
+}}
+PARSER_END (Lexico)
+
+TOKEN:
+{
+
+    //TIPOS DE BASE
+
+	<BIN: "%"("0"|"1")+>|
+	<HEXA: "$"(["A"-"F"]|["a"-"f"]|<DIG>)+>|
+	<OCTA: "0"(["0"-"7"])+>|
+	<DEC: (<DIG>)+>|
+	<ORG: "ORG">|
+	<BYTE: "BYTE">|
+	<WORD: "WORD">|
+	<LONG: "LONG">|
+	<END: "END">|
+
+	<DEF: "DEF">|
+	<EQU: "EQU">|
+	<AN: "A"(["0"-"7"])>|
+	<INDAN: "("(<AN>)")">|
+	<ANMAS: (<INDAN>)"+">|
+	<ANMENOS: "-"(<INDAN>)>|
+	<ANASTER: <AN>"*">|
+	<DN: "D"(["0"-"7"])>|
+	<XN: "X"(["0"-"7"])>|
+	<RN: "R"(["0"-"7"])>|
+	<B: ".B" | ".b">|
+	<W: ".W" | ".w">|
+	<L: ".L" | ".l">|
+
+//	<ADDFUENTEEA: <DN>|<ANASTER>|<INDAN>|<ANMENOS>>|
+
+
+    //DESPLPAZAMIENTO DE BASE
+	<BD8: "$"(["0"-"9"]|["a"-"f"]|["A"-"F"]){1,2}>|
+	<BD16: "$"(["0"-"9"]|["a"-"f"]|["A"-"F"]){1,4}>|
+	<BD32: "$"(["0"-"9"]|["a"-"f"]|["A"-"F"]){1,8}>|
+
+    //COMENTARIO
+	<COMENT: ("//")((<LETRA>)|(<DIG>))*>|
+
+	<DATA: "#"(<DEC>|<OCTA>|<BIN>|(<HEXA>))>|
+
+	//REGISTER NAMES
+	<CCR: "CCR">|
+	<DFC: "DFC">|
+	<PC: "PC">|
+	<SR: "SR">|
+
+	//TABLA 3.1///////////////////////////////////
+	<CC: "cc">|
+	<SP: "SP">|
+
+
+	//TABLA 3.2 TERMINADA//////////////////////////////////////////////////////////TOKENS TABLA 3.2
+	<EXG: "EXG">|
+	<FMOVE: "FMOVE">|
+	<FSMOVE: "FSMOVE">|
+	<FDMOVE: "FDMOVE">|
+	<FMOVEM: "FMOVEM">|
+	<LEA: "LEA">|
+	<LINK: "LINK">|
+	<MOVE: "MOVE"|"MOVE16"|"MOVEA"|"MOVEM"|"MOVEP"|"MOVEQ">|
+	<PEA: "PEA">|
+	<UNLK: "UNLK">|
+
+	//TABLA 3.3 TERMINADA//////////////////////////////////////////////////////////TOKENS TABLA 3.3
+	<ADD: "ADD">|
+	<ADDA: "ADDA">|
+	<ADDI: "ADDI">|
+	<ADDQ: "ADDQ">|
+	<ADDX: "ADDX">|
+	<CLR: "CLR">|
+	<CMP: "CMP">|
+	<CMPA: "CMPA">|
+	<CMPI: "CMPI">|
+	<CMPM: "CMPM">|
+	<CMP2: "CMP2">|
+	<DIVS: "DIVS"|"DIVSL">|
+	<DIVU: "DIVU"|"DIVUL">|
+	<EXT: "EXT"|"EXTB">|
+	<MULS: "MULS">|
+	<MULU: "MULU">|
+	<NEG: "NEG">|
+	<NEGX: "NEGX">|
+	<SUB: "SUB">|
+	<SUBA: "SUBA">|
+	<SUBI: "SUBI">|
+	<SUBQ: "SUBQ">|
+	<SUBX: "SUBX">|
+
+	//TABLA 3.4 TERMINADA//////////////////////////////////////////////////////////TOKENS TABLA 3.4
+	<AND: "AND">|
+	<ANDI: "ANDI">|
+	<EOR: "EOR">|
+	<EORI: "EORI">|
+	<NOT: "NOT">|
+	<OR: "OR">|
+	<ORI: "ORI">|
+
+	//TABLA 3.5 TERMINADA//////////////////////////////////////////////////////////TOKENS TABLA 3.5
+	<ASL: "ASL"|"ASR">|
+	<LSL: "LSL"|"LSR">|
+	<ROL: "ROL"|"ROR">|
+	<ROXL: "ROXL"|"ROXR">|
+	<SWAP: "SWAP">|
+
+	//TABLA 3.6 TERMINADA//////////////////////////////////////////////////////////TOKENS TABLA 3.6
+	<BCHG: "BCHG">|
+	<BCLR: "BCLR">|
+	<BSET: "BSET">|
+	<BTST: "BTST">|
+
+	//TABLA 3.8 TERMINADA//////////////////////////////////////////////////////////TOKENS TABLA 3.8
+	<ABCD: "ABCD">|
+	<NBCD: "NBCD">|
+	<PACK: "PACK">|
+	<SBCD: "SBCD">|
+	<UNPK: "UNPK">|
+
+	//TABLA 3.9 TERMINADA////////////////////////////////////////TOKENS TABLA 3.9
+	<BCC: "BCC">|
+	<BLS: "BLS">|
+	<BCS: "BCS">|
+	<BLT: "BLT">|
+	<BEQ: "BEQ">|
+	<BMI: "BMI">|
+	<BNE: "BNE">|
+	<BGE: "BGE">|
+	<BPL: "BPL">|
+	<BGT: "BGT">|
+	<BHI: "BHI">|
+	<BVC: "BVC">|
+	<BLE: "BLE">|
+	<BVS: "BVS">|
+
+    <FBCC: "FBCC">|
+    <FBLS: "FBLS">|
+    <FBCS: "FBCS">|
+    <FBLT: "FBLT">|
+    <FBEQ: "FBEQ">|
+    <FBMI: "FBMI">|
+    <FBF: "FBF">|
+    <FBNE: "FBNE">|
+    <FBGE: "FBGE">|
+    <FBPL: "FBPL">|
+    <FBGT: "FBGT">|
+    <FBT: "FBT">|
+    <FBHI: "FBHI">|
+    <FBVC: "FBVC">|
+    <FBLE: "FBLE">|
+    <FBVS: "FBVS">|
+
+	<FDBCC: "FDBCC">|
+    <FDBLS: "FDBLS">|
+    <FDBCS: "FDBCS">|
+    <FDBLT: "FDBLT">|
+    <FDBEQ: "FDBEQ">|
+    <FDBMI: "FDBMI">|
+    <FDBF: "FDBF">|
+    <FDBNE: "FDBNE">|
+    <FDBGE: "FDBGE">|
+    <FDBPL: "FDBPL">|
+    <FDBGT: "FDBGT">|
+    <FDBT: "FDBT">|
+    <FDBHI: "FDBHI">|
+    <FDBVC: "FDBVC">|
+    <FDBLE: "FDBLE">|
+    <FDBVS: "FDBVS">|
+
+	<DBCC: "DBCC">|
+	<DBLS: "DBLS">|
+	<DBCS: "DBCS">|
+	<DBLT: "DBLT">|
+	<DBEQ: "DBEQ">|
+	<DBMI: "DBMI">|
+	<DBF: "DBF">|
+	<DBNE: "DBNE">|
+	<DBGE: "DBGE">|
+	<DBPL: "DBPL">|
+	<DBGT: "DBGT">|
+	<DBT: "DBT">|
+	<DBHI: "DBHI">|
+	<DBVC: "DBVC">|
+	<DBLE: "DBLE">|
+	<DBVS: "DBVS">|
+
+	<SCC: "SCC">|
+	<SLS: "SLS">|
+	<SCS: "SCS">|
+	<SLT: "SLT">|
+	<SEQ: "SEQ">|
+	<SMI: "SMI">|
+	<SF:"SF">|
+	<SNE: "SNE">|
+	<SGE: "SGE">|
+	<SPL: "SPL">|
+	<SGT: "SGT">|
+	<ST: "ST">|
+	<SHI: "SHI">|
+	<SVC: "SVC">|
+	<SLE: "SLE">|
+	<SVS: "SVS">|
+
+	<FSCC: "FSCC">|
+	<FSLS: "FSLS">|
+	<FSCS: "FSCS">|
+	<FSLT: "FSLT">|
+	<FSEQ: "FSEQ">|
+	<FSMI: "FSMI">|
+	<FSF:"FSF">|
+	<FSNE: "FSNE">|
+	<FSGE: "FSGE">|
+	<FSPL: "FSPL">|
+	<FSGT: "FSGT">|
+	<FST: "FST">|
+	<FSHI: "FSHI">|
+	<FSVC: "FSVC">|
+	<FSLE: "FSLE">|
+	<FSVS: "FSVS">|
+
+	<BRA: "BRA">|
+    <BSR: "BSR">|
+    <JMP: "JMP">|
+    <JSR: "JSR">|
+    <NOP: "NOP">|
+    <FNOP: "FNOP">|
+    <RTD: "RTD">|
+    <RTR: "RTR">|
+    <RTS: "RTS">|
+    <TST: "TST">|
+    <FTST: "FTST">|
+
+
+	//TABLA 3.10 //////////////////////////////////////////////TOKENS TABLA 3.10
+    <ANDITOSR: "ANDI to SR" | "ANDI TO SR">|
+    <EORITOSR: "EORI to SR"| "EORI TO SR">|
+	<FRESTORE: "FRESTORE">|
+	<FSAVE: "FSAVE">|
+    <MOVETOSR: "MOVE to SR"|"MOVE TO SR">|
+	<MOVEFROMSR: "MOVE from SR"| "MOVE FROM SR">|
+	<MOVEUSP: "MOVE USP">|
+	<MOVEC: "MOVEC">|
+	<MOVES: "MOVES">|
+    <ORITOSR: "ORI to SR"| "ORI TO SR">|
+	<RESET: "RESET">|
+	<RTE: "RTE">|
+	<STOP: "STOP">|
+	<BKPT: "BKPT">|
+	<CHK: "CHK">|
+	<CHK2: "CHK2">|
+	<ILLEGAL: "ILLEGAL">|
+	<TRAP: "TRAPcc"|"FTRAPcc">|
+	<TRAPV: "TRAPV">|
+
+
+
+
+	<SIMB: "("|")"|"["|"]"|"."|","|";"|"&"|"+"|"-">|
+
+
+	<LETRA: ["A"-"Z"]|["a"-"z"]>|
+	<DIG: ["0"-"9"]> |
+
+    <DATAS: "DDATA"(".B"|".W"|".L")>|
+	
+
+  //TABLA 3.11 //////////////////////////////////////////////TOKENS TABLA 3.11
+  <CINVL:"CINVL">|
+  <CINVP:"CINVP">|
+  <CINVA:"CINVA">|
+  <CPUSHL:"CPUSHL">|
+  <CPUSHP:"CPUSHP">|
+  <CPUSHA:"CPUSHA">|
+
+  //TABLA 3.12 //////////////////////////////////////////////TOKENS TABLA 3.12
+  <CAS:"CAS">|
+  <CAS2:"CAS2">|
+  <TAS:"TAS">|
+  <cpBCC:"cpBCC">|
+  <cpBLS:"cpBLS">|
+  <cpBCS:"cpBCS">|
+  <cpBLT:"cpBLT">|
+  <cpBEQ:"cpBEQ">|
+  <cpBMI:"cpBMI">|
+  <cpBF:"cpBF">|
+  <cpBNE:"cpBNE">|
+  <cpBGE:"cpBGE">|
+  <cpBPL:"cpBPL">|
+  <cpBGT:"cpBGT">|
+  <cpBT:"cpBT">|
+  <cpBHI:"cpBHI">|
+  <cpBVC:"cpBVC">|
+  <cpBLE:"cpBLE">|
+  <cpBVS:"cpBVS">|
+  <cpBDCC:"cpBDCC">|
+  <cpBDLS:"cpBDLS">|
+  <cpBDCS:"cpBDCS">|
+  <cpBDLT:"cpBDLT">|
+  <cpBDEQ:"cpBDEQ">|
+  <cpBDMI:"cpBDMI">|
+  <cpBDF:"cpBDF">|
+  <cpBDNE:"cpBDNE">|
+  <cpBDGE:"cpBDGE">|
+  <cpBDPL:"cpBDPL">|
+  <cpBDGT:"cpBDGT">|
+  <cpBDT:"cpBDT">|
+  <cpBDHI:"cpBDHI">|
+  <cpBDVC:"cpBDVC">|
+  <cpBDLE:"cpBDLE">|
+  <cpBDVS:"cpBDVS">|
+  <cpGEN:"cpGEN">|
+  <cpRESTORE:"cpRESTORE">|
+  <cpSAVE:"cpSAVE"> |
+  <cpSCC:"cpSCC">|
+  <cpSLS:"cpSLS">|
+  <cpSCS:"cpSCS">|
+  <cpSLT:"cpSLT">|
+  <cpSEQ:"cpSEQ">|
+  <cpSMI:"cpSMI">|
+  <cpSF:"cpSF">|
+  <cpSNE:"cpSNE">|
+  <cpSGE:"cpSGE">|
+  <cpSPL:"cpSPL">|
+  <cpSGT:"cpSGT">|
+  <cpST:"cpST">|
+  <cpSHI:"cpSHI">|
+  <cpSVC:"cpSVC">|
+  <cpSLE:"cpSLE">|
+  <cpSVS:"cpSVS">|
+  <cpTRAPCC:"cpTRAPCC">|
+  <cpTRAPLS:"cpTRAPLS">|
+  <cpTRAPCS:"cpTRAPCS">|
+  <cpTRAPLT:"cpTRAPLT">|
+  <cpTRAPEQ:"cpTRAPEQ">|
+  <cpTRAPMI:"cpTRAPMI">|
+  <cpTRAPF:"cpTRAPF">|
+  <cpTRAPNE:"cpTRAPNE">|
+  <cpTRAPGE:"cpTRAPGE">|
+  <cpTRAPPL:"cpTRAPPL">|
+  <cpTRAPGT:"cpTRAPGT">|
+  <cpTRAPT:"cpTRAPT">|
+  <cpTRAPHI:"cpTRAPHI">|
+  <cpTRAPVC:"cpTRAPVC">|
+  <cpTRAPLE:"cpTRAPLE">|
+  <cpTRAPVS:"cpTRAPVS">|
+	
+
+//Tabla 3.13//
+	<PBcc:"PPcc">|
+	<PDBcc:"PDBcc">|
+	<PFLUSHA:"PFLUSHA">|
+	<PFLUSH:"PFLUSH">|
+	<PFLUSHN:"PFLUSHN">|
+	<PFLUSHAN:"PFLUSHAN">|
+	<PFLUSHS:"PFLUSHS">|
+	<PFLUSHR:"PFLUSHR">|
+	<PLOAD:"PLOAD">|
+	<PMOVE:"PMOVE">|
+	<PRESTORE:"PRESTORE">|
+	<PSAVE:"PSAVE">|
+	<PScc:"PScc">|
+	<PTEST:"PTEST">|
+	<PTRAPcc:"PTRAPcc">|
+
+  <LABEL: (<LETRA>)(((<LETRA>) | (<DIG>))){1,8}>
+}
+
+SKIP:
+{ " " | "\t" | "\n" | "\r" }
+
+void unaExpresion() :
+	{for (Token t = getNextToken(); t.kind!=EOF; t = getNextToken()) {
+
+    ///////////Impresiones
+
+		if (t.kind==AN)			 {System.out.println("<ADDRESS REGISTER " + "(" + t.image+")>");}
+	else if (t.kind==INDAN)	     {System.out.println("INDIRECTO A REGISTRO DE DIRECCIONES.");}
+	else if (t.kind==ANMAS)	     {System.out.println("INDIRECTO A REGISTRO DE DIRECCIONES CON POSTINCREMENTO.");}
+	else if (t.kind==ANMENOS)	     {System.out.println("INDIRECTO A REGISTRO DE DIRECCIONES CON PREDECREMENTO.");}
+	else if (t.kind==ANASTER)	     {System.out.println("AN ASTERISCO.");}
+
+	else if (t.kind==BD8)	     {System.out.println("BASE DISPLACEMENT 8 BITS");}
+	else if (t.kind==BD16)	     {System.out.println("BASE DISPLACEMENT 16 BITS");}
+	else if (t.kind==BD32)	     {System.out.println("BASE DISPLACEMENT 32 BITS");}
+
+	else if (t.kind==COMENT)	     {System.out.println("COMENTARIO");}
+
+
+   else if (t.kind==ORG)	     {System.out.println("MNEMOTECNICO ORG");}
+   else if (t.kind==BYTE)	     {System.out.println("MNEMOTECNICO BYTE");}
+   else if (t.kind==WORD)	     {System.out.println("MNEMOTECNICO WORD");}
+   else if (t.kind==LONG)	     {System.out.println("MNEMOTECNICO LONG");}
+   else if (t.kind==DATAS)	     {System.out.println("MNEMOTECNICO DDATA.S");}
+   else if (t.kind==END)	     {System.out.println("MNEMOTECNICO END");}
+   else if (t.kind==DEF)	     {System.out.println("MNEMOTECNICO DEF");}
+
+   else if (t.kind==EQU)	     {System.out.println("DEFINICION SIMBOLO (EQU)");}
+
+   else if (t.kind==DEC)	     {System.out.println("DECIMAL");}
+   else if (t.kind==BIN)	     {System.out.println("BINARIO");}
+   else if (t.kind==HEXA)	     {System.out.println("HEXADECIMAL");}
+   else if (t.kind==OCTA)	     {System.out.println("OCTADECIMAL");}
+
+   else if (t.kind==DN)          {System.out.println("<DATA REGISTER " + "(" + t.image+")>");}
+   else if (t.kind==XN)          {System.out.println("<INDEX REGISTER " + "(" + t.image+")>");}
+   else if (t.kind==RN)          {System.out.println("<ADDRESS/DATA REGISTER " + "(" + t.image+")>");}
+   else if (t.kind==EXG)         {System.out.println("<EXCHANGE REGISTERS>");}
+   else if (t.kind==CMPM)        {System.out.println("<COMPARE MEMORY>");}
+   else if (t.kind==PC)          {System.out.println("<PROGRAM COUNTER>");}
+   else if (t.kind==SR)          {System.out.println("<STATUS REGISTER>");}
+   else if (t.kind==CC)          {System.out.println("<CONDITION CODE>");}
+   else if (t.kind==SP)          {System.out.println("<ACTIVE STACK POINTER>");}
+
+   else if (t.kind==CCR)         {System.out.println("<CONDITION CODE REGISTER>");}
+   else if (t.kind==DFC)         {System.out.println("<DESTINATION FUNCTION CODE REGISTER>");}
+   else if (t.kind==FMOVE)       {System.out.println("<MOVE FLOATING-POINT SYSTEM CONTROL REGISTER>");}
+   else if (t.kind==FSMOVE)      {System.out.println("<SINGLE PRECISION>");}
+   else if (t.kind==FDMOVE)      {System.out.println("<DOUBLE PRECISION>");}
+   else if (t.kind==FMOVEM)      {System.out.println("<MOVE MULTIPLE FLOATING-POINT DATA REGISTERS>");}
+   else if (t.kind==LEA)         {System.out.println("<LEA: LOADS THE ADDRESS OF THE SOURCE OPERAND>");}
+   else if (t.kind==LINK)        {System.out.println("<LINK AND ALLOCATE>");}
+   else if (t.kind==MOVE)        {System.out.println("<"+t.image+">");}
+   else if (t.kind==PEA)         {System.out.println("<PEA: PUSH EFECTIVE ADDRESS>");}
+   else if (t.kind==UNLK)        {System.out.println("<UNLINK>");}
+   else if (t.kind==ADD)         {System.out.println("<ADD>");}
+   else if (t.kind==ADDA)        {System.out.println("<ADD ADDRESS>");}
+   else if (t.kind==ADDI)        {System.out.println("<ADD IMMEDIATE>");}
+   else if (t.kind==ADDQ)        {System.out.println("<ADD QUICK>");}
+   else if (t.kind==ADDX)        {System.out.println("<ADD EXTENDED>");}
+   else if (t.kind==CLR)         {System.out.println("<CLEAR AN OPERAND>");}
+   else if (t.kind==CMP)         {System.out.println("<COMPARE>");}
+   else if (t.kind==CMPA)        {System.out.println("<COMPARE ADDRESS>");}
+   else if (t.kind==CMPI)        {System.out.println("<COMPARE IMMEDIATE>");}
+   else if (t.kind==CMP2)        {System.out.println("<COMPARE REGISTER AGAINST BOUNDS>");}
+   else if (t.kind==DIVS)        {System.out.println("<SIGNED DIVIDE "+"("+t.image+")>");}
+   else if (t.kind==DIVU)        {System.out.println("<UNSIGNED DIVIDE "+"("+t.image+")>");}
+   else if (t.kind==EXT)         {System.out.println("<SIGN-EXTEND "+ "("+t.image+")>");}
+   else if (t.kind==MULS)        {System.out.println("<MULS: SIGNED MULTIPLY>");}
+   else if (t.kind==MULU)        {System.out.println("<MULU: UNSIGNED MULTIPLY>");}
+   else if (t.kind==NEG)         {System.out.println("<NEGATE>");}
+   else if (t.kind==NEGX)        {System.out.println("<NEGATE WITH EXTEND>");}
+   else if (t.kind==SUB)         {System.out.println("<SUBTRACT>");}
+   else if (t.kind==SUBA)        {System.out.println("<SUBTRACT ADDRESS>");}
+   else if (t.kind==SUBI)        {System.out.println("<SUBTRACT IMMEDIATE>");}
+   else if (t.kind==SUBQ)        {System.out.println("<SUBTRACT QUICK>");}
+   else if (t.kind==SUBX)        {System.out.println("<SUBTRACT WITH EXTEND>");}
+   else if (t.kind==AND)         {System.out.println("<AND LOGICAL>");}
+   else if (t.kind==ANDI)        {System.out.println("<AND IMMEDIATE>");}
+   else if (t.kind==EOR)         {System.out.println("<EXCLUSIVE-OR LOGICAL>");}
+   else if (t.kind==EORI)        {System.out.println("<EXCLUSIVE-OR IMMEDIATE>");}
+   else if (t.kind==NOT)         {System.out.println("<LOGICAL COMPLEMENT>");}
+   else if (t.kind==OR)          {System.out.println("<INCLUSIVE-OR LOGICAL>");}
+   else if (t.kind==ORI)         {System.out.println("<INCLUSIVE-OR>");}
+   else if (t.kind==ASL)         {System.out.println("<ARITHMETIC SHIFT "+ "("+t.image+")>");}
+   else if (t.kind==LSL)         {System.out.println("<SHIFT THE OPERAND TO THE LEFT/RIGHT "+ "("+t.image+")>");}
+   else if (t.kind==ROL)         {System.out.println("<ROTATE THE OPERAND TO THE LEFT/RIGHT "+ "("+t.image+")>");}
+   else if (t.kind==ROXL)        {System.out.println("<ROTATE WITH EXTEND TO LEFT/RIGHT "+ "("+t.image+")>");}
+   else if (t.kind==SWAP)        {System.out.println("<SWAP REGISTER HALVES>");}
+   else if (t.kind==BCHG)        {System.out.println("<TEST A BIT AND CHANGE>");}
+   else if (t.kind==BCLR)        {System.out.println("<TEST A BIT AND CLEAR>");}
+   else if (t.kind==BSET)        {System.out.println("<TEST A BIT AND SET>");}
+   else if (t.kind==BTST)        {System.out.println("<TEST A BIT>");}
+   else if (t.kind==ABCD)        {System.out.println("<ADD DECIMAL WITH EXTEND>");}
+   else if (t.kind==NBCD)        {System.out.println("<NEGATE DECIMAL WITH EXTEND>");}
+   else if (t.kind==PACK)        {System.out.println("<PACK>");}
+   else if (t.kind==SBCD)        {System.out.println("<SUBTRACT DECIMAL WITH EXTEND>");}
+   else if (t.kind==UNPK)        {System.out.println("<UNPACK BCD>");}
+   else if (t.kind==B)           {System.out.println("<TAMAÑO BYTE>");}
+   else if (t.kind==W)           {System.out.println("<TAMAÑO PALABRA>");}
+   else if (t.kind==L)           {System.out.println("<TAMAÑO LONG>");}
+
+   else if (t.kind==LABEL)       {System.out.println("<LABEL>");}
+
+   else if (t.kind==SIMB)      {System.out.println("<SIMBOLO:  "+t.image+">");}
+
+   else if (t.kind==BCC)         {System.out.println("<BRANCH CONDITIONALLY CARRY CLEAR>");}
+   else if (t.kind==BLS)         {System.out.println("<BRANCH CONDITIONALLY LOWEROR SAME>");}
+   else if (t.kind==BCS)         {System.out.println("<BRANCH CONDITIONALLY CARRY SET>");}
+   else if (t.kind==BLT)         {System.out.println("<BRANCH CONDITIONALLY LESS THAN>");}
+   else if (t.kind==BEQ)         {System.out.println("<BRANCH CONDITIONALLY EQUAL>");}
+   else if (t.kind==BMI)         {System.out.println("<BRANCH CONDITIONALLY MINUS>");}
+   else if (t.kind==BNE)         {System.out.println("<BRANCH CONDITIONALLY NOT EQUAL>");}
+   else if (t.kind==BGE)         {System.out.println("<BRANCH CONDITIONALLY GREATER THAN OR EQUAL>");}
+   else if (t.kind==BPL)         {System.out.println("<BRANCH CONDITIONALLY PLUS>");}
+   else if (t.kind==BGT)         {System.out.println("<BRANCH CONDITIONALLY GREATER THAN>");}
+   else if (t.kind==BHI)         {System.out.println("<BRANCH CONDITIONALLY HIGHER>");}
+   else if (t.kind==BVC)         {System.out.println("<BRANCH CONDITIONALLY OVERFLOW CLEAR>");}
+   else if (t.kind==BLE)         {System.out.println("<BRANCH CONDITIONALLY LESS THAN OR EQUAL>");}
+   else if (t.kind==BVS)         {System.out.println("<BRANCH CONDITIONALLY OVERFLOW SET>");}
+
+   else if (t.kind==FBCC)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY CARRY CLEAR>");}
+   else if (t.kind==FBLS)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY LOWER OR SAME>");}
+   else if (t.kind==FBCS)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY CARRY SET>");}
+   else if (t.kind==FBLT)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY LESS THAN>");}
+   else if (t.kind==FBEQ)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY EQUAL>");}
+   else if (t.kind==FBMI)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY MINUS>");}
+   else if (t.kind==FBF)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY NEVER TRUE>");}
+   else if (t.kind==FBNE)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY NOT EQUAL>");}
+   else if (t.kind==FBGE)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY GRATER THAN OR EQUAL>");}
+   else if (t.kind==FBPL)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY PLUS>");}
+   else if (t.kind==FBGT)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY GREATER THAN>");}
+   else if (t.kind==FBT)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY ALWAYS TRUE>");}
+   else if (t.kind==FBHI)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY HIGHER>");}
+   else if (t.kind==FBVC)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY OVERFLOW CLEAR>");}
+   else if (t.kind==FBLE)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY LESS THAN OR EQUAL>");}
+   else if (t.kind==FBVS)       {System.out.println("<FLOATING-POINT BRANCH CONDITIONALLY OVERFLOW SET>");}
+
+   else if (t.kind==FDBCC)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH CARRY CLEAR>");}
+   else if (t.kind==FDBLS)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCHLOWER OR SAME>");}
+   else if (t.kind==FDBCS)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH CARRY SET>");}
+   else if (t.kind==FDBLT)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH LESS THAN>");}
+   else if (t.kind==FDBEQ)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH EQUAL>");}
+   else if (t.kind==FDBMI)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH MINUS>");}
+   else if (t.kind==FDBF)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH NEVER TRUE>");}
+   else if (t.kind==FDBNE)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH NOT EQUAL>");}
+   else if (t.kind==FDBGE)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH GRATER THAN OR EQUAL>");}
+   else if (t.kind==FDBPL)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH PLUS>");}
+   else if (t.kind==FDBGT)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH GREATER THAN>");}
+   else if (t.kind==FDBT)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH ALWAYS TRUE>");}
+   else if (t.kind==FDBHI)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH HIGHER>");}
+   else if (t.kind==FDBVC)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH OVERFLOW CLEAR>");}
+   else if (t.kind==FDBLE)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH LESS THAN OR EQUAL>");}
+   else if (t.kind==FDBVS)       {System.out.println("<FLOATING-POINT TEST CONDITION, DECREMENT, AND BRANCH OVERFLOW SET>");}
+
+   else if (t.kind==DBCC)        {System.out.println("<TST COND, DEC AND BRANCH CARRY CLEAR>");}
+   else if (t.kind==DBLS)         {System.out.println("<TST COND, DEC AND BRANCH LOWER OR SAME>");}
+   else if (t.kind==DBCS)         {System.out.println("<TST COND, DEC AND BRANCH CARRY SET>");}
+   else if (t.kind==DBLT)         {System.out.println("<TST COND, DEC AND BRANCH LESS THAN>");}
+   else if (t.kind==DBEQ)         {System.out.println("<TST COND, DEC AND BRANCH EQUAL>");}
+   else if (t.kind==DBMI)         {System.out.println("<TST COND, DEC AND BRANCH MINUS>");}
+   else if (t.kind==DBF)         {System.out.println("<TST COND, DEC AND BRANCH NEVER TRUE>");}
+   else if (t.kind==DBNE)         {System.out.println("<TST COND, DEC AND BRANCH NOT EQUAL >");}
+   else if (t.kind==DBGE)         {System.out.println("<TST COND, DEC AND BRANCH GREATER THAN OR EQUAL>");}
+   else if (t.kind==DBPL)         {System.out.println("<TST COND, DEC AND BRANCH PLUS>");}
+   else if (t.kind==DBGT)         {System.out.println("<TST COND, DEC AND BRANCH GREATER THAN>");}
+   else if (t.kind==DBT)         {System.out.println("<TST COND, DEC AND BRANCH ALWAYS TRUE>");}
+   else if (t.kind==DBHI)         {System.out.println("<TST COND, DEC AND BRANCH HIGHER>");}
+   else if (t.kind==DBVC)         {System.out.println("<TST COND, DEC AND BRANCH OVERFLOW CLEAR>");}
+   else if (t.kind==DBLE)         {System.out.println("<TST COND, DEC AND BRANCH LESS THAN OR EQUAL>");}
+   else if (t.kind==DBVS)         {System.out.println("<TST COND, DEC AND BRANCH OVERFLOW SET>");}
+
+
+
+   else if (t.kind==SCC)        {System.out.println("<SET ACCORDING TO CONDITION CARRY CLEAR>");}
+   else if (t.kind==SLS)         {System.out.println("<SET ACCORDING TO CONDITION LOWER OR SAME>");}
+   else if (t.kind==SCS)         {System.out.println("<SET ACCORDING TO CONDITION CARRY SET>");}
+   else if (t.kind==SLT)         {System.out.println("<SET ACCORDING TO CONDITION LESS THAN>");}
+   else if (t.kind==SEQ)         {System.out.println("<SET ACCORDING TO CONDITION EQUAL>");}
+   else if (t.kind==SMI)         {System.out.println("<SET ACCORDING TO CONDITION MINUS>");}
+   else if (t.kind==SF)         {System.out.println("<SET ACCORDING TO CONDITION NEVER TRUE>");}
+   else if (t.kind==SNE)         {System.out.println("<SET ACCORDING TO CONDITION NOT EQUAL >");}
+   else if (t.kind==SGE)         {System.out.println("<SET ACCORDING TO CONDITION GREATER THAN OR EQUAL>");}
+   else if (t.kind==SPL)         {System.out.println("<SET ACCORDING TO CONDITION PLUS>");}
+   else if (t.kind==SGT)         {System.out.println("<SET ACCORDING TO CONDITION GREATER THAN>");}
+   else if (t.kind==ST)         {System.out.println("<SET ACCORDING TO CONDITION ALWAYS TRUE>");}
+   else if (t.kind==SHI)         {System.out.println("<SET ACCORDING TO CONDITION HIGHER>");}
+   else if (t.kind==SVC)         {System.out.println("<SET ACCORDING TO CONDITION OVERFLOW CLEAR>");}
+   else if (t.kind==SLE)         {System.out.println("<SET ACCORDING TO CONDITION LESS THAN OR EQUAL>");}
+   else if (t.kind==SVS)         {System.out.println("<SET ACCORDING TO CONDITION OVERFLOW SET>");}
+
+   else if (t.kind==FSCC)        {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION CARRY CLEAR>");}
+   else if (t.kind==FSLS)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION LOWER OR SAME>");}
+   else if (t.kind==FSCS)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION CARRY SET>");}
+   else if (t.kind==FSLT)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION LESS THAN>");}
+   else if (t.kind==FSEQ)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION EQUAL>");}
+   else if (t.kind==FSMI)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION MINUS>");}
+   else if (t.kind==FSF)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION NEVER TRUE>");}
+   else if (t.kind==FSNE)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION NOT EQUAL >");}
+   else if (t.kind==FSGE)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION GREATER THAN OR EQUAL>");}
+   else if (t.kind==FSPL)         {System.out.println("<SET ACCORDING FLOATING-POINT TO CONDITION PLUS>");}
+   else if (t.kind==FSGT)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION GREATER THAN>");}
+   else if (t.kind==FST)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION ALWAYS TRUE>");}
+   else if (t.kind==FSHI)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION HIGHER>");}
+   else if (t.kind==FSVC)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION OVERFLOW CLEAR>");}
+   else if (t.kind==FSLE)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION LESS THAN OR EQUAL>");}
+   else if (t.kind==FSVS)         {System.out.println("<SET ACCORDING TO FLOATING-POINT CONDITION OVERFLOW SET>");}
+
+   else if (t.kind==BRA)         {System.out.println("<BRANCH ALWAYS>");}
+   else if (t.kind==BSR)         {System.out.println("<BRANCH TO SUBROUTINE>");}
+   else if (t.kind==JMP)         {System.out.println("<JUMP>");}
+   else if (t.kind==JSR)         {System.out.println("<JUMP TO SUBROUTINE>");}
+   else if (t.kind==NOP)         {System.out.println("<NO OPERATION>");}
+   else if (t.kind==FNOP)         {System.out.println("<NO OPERATION>");}
+   else if (t.kind==RTD)         {System.out.println("<RETURN AND DEALLOCATE>");}
+   else if (t.kind==RTR)         {System.out.println("<RETURN AND RESTORE CONDITION CODES>");}
+   else if (t.kind==RTS)         {System.out.println("<BRANCH TO SUBROUTINE>");}
+   else if (t.kind==TST)         {System.out.println("<TEST AN OPERAND>");}
+   else if (t.kind==FTST)         {System.out.println("<TEST FLOATING-POINT OPERAND>");}
+
+   else if (t.kind==ANDITOSR)         {System.out.println("<ANDI TO SR>");}
+   else if (t.kind==EORITOSR)         {System.out.println("<EORI TO SR>");}
+   else if (t.kind==FRESTORE)         {System.out.println("<RESTORE INTERNAL FLOATING-POINT STATE>");}
+   else if (t.kind==FSAVE)            {System.out.println("<SAVE INTERNAL FLOATING-POINT STATE>");}
+   else if (t.kind==MOVETOSR)         {System.out.println("<MOVE TO SR>");}
+   else if (t.kind==MOVEC)         {System.out.println("<MOVE CONTROL REGISTER>");}
+   else if (t.kind==MOVES)         {System.out.println("<MOVE ADDRESS SPACE>");}
+   else if (t.kind==RESET)         {System.out.println("<RESET EXTERNAL DEVICES>");}
+   else if (t.kind==RTE)         {System.out.println("<RETURN FROM EXCEPTION>");}
+   else if (t.kind==STOP)         {System.out.println("<LOAD STATUS REGISTER AND STOP>");}
+   else if (t.kind==CHK)         {System.out.println("<CHECK REGISTER AGAINST BOUNDS>");}
+   else if (t.kind==CHK2)         {System.out.println("<CHECK REGISTER AGAINST BOUNDS>");}
+   else if (t.kind==ILLEGAL)         {System.out.println("<TAKE ILLEGAL INSTRUCTION TRAP>");}
+   else if (t.kind==TRAP)         {System.out.println("<TRAP>");}
+   else if (t.kind==TRAPV)         {System.out.println("<TRAP ON OVERFLOW>");}
+   else if (t.kind==DATA)         {System.out.println("<DATA>");}
+
+}}
+
+{
+ (<MOVE>)+ <EOF>
+}
